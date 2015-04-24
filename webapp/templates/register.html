@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Hello, Bootstraps</h1>
 {% from "_formhelpers.html" import render_field %}
 <form method=post action="/register">
   <dl>
@@ -10,3 +14,4 @@
   </dl>
   <p><input type=submit value=Register>
 </form>
+{% endblock %}
