@@ -3,18 +3,33 @@
 
 {% block styles %}
 {{super()}}
+
+<link rel="shortcut icon" href="{{url_for('.static', filename='img/favicon.ico')}}" type="image/x-icon">
+<link rel="apple-touch-icon" href="{{url_for('.static', filename='img/apple-touch-icon.png')}}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{url_for('.static', filename='img/apple-touch-icon-72x72.png')}}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{url_for('.static', filename='img/apple-touch-icon-114x114.png')}}">
+
+
 <link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/bootstrap.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='fonts/font-awesome/css/font-awesome.css')}}">
 
 <!-- Slider
 ================================================== -->
-<link href="{{url_for('.static', filename='css/owl.carousel.css" rel="stylesheet" media="screen')}}">
-<link href="{{url_for('.static', filename='css/owl.theme.css" rel="stylesheet" media="screen')}}">
+<!-- <link href="{{url_for('.static', filename='css/owl.carousel.css')}}" rel="stylesheet" media="screen"> -->
+<link href="{{url_for('.static', filename='css/owl.theme.css')}}" rel="stylesheet" media="screen">
 
 <!-- Stylesheet
 ================================================== -->
 <link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/style.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/responsive.css')}}">
+
+
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript" src="{{url_for('.static', filename='js/modernizr.custom.js')}}"></script>
+
 {% endblock %}
 
 {% block navbar %}
@@ -54,8 +69,8 @@
     <div id="tf-home" class="text-center">
         <div class="overlay">
             <div class="content">
-                <h1>Welcome on <strong><span class="color">Fractal Flows</span></strong></h1>
-                <p class="lead">Where <strong>researchers</strong>, <strong>engineers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong></p>
+                <h1>Welcome on <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>
+                <p class="lead">Where <strong>researchers</strong>, <strong>engineers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information.</p>
                 <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>
             </div>
         </div>
@@ -67,7 +82,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="static/img/02.png" class="img-responsive">
+                    <img src="{{url_for('.static', filename='img/02.png')}}" class="img-responsive">
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
@@ -113,7 +128,7 @@
                 <div id="team" class="owl-carousel owl-theme row">
                     <div class="item">
                         <div class="thumbnail">
-                            <img src="static/img/team/01.jpg" alt="..." class="img-circle team-img">
+                            <img src="{{url_for('.static', filename='img/team/01.jpg')}}" alt="..." class="img-circle team-img">
                             <div class="caption">
                                 <h3>Imad Abdallah</h3>
                                 <p>CEO / Founder</p>
@@ -124,7 +139,7 @@
 
                     <div class="item">
                         <div class="thumbnail">
-                            <img src="static/img/team/02.jpg" alt="..." class="img-circle team-img">
+                            <img src="{{url_for('.static', filename='img/team/02.jpg')}}" alt="..." class="img-circle team-img">
                             <div class="caption">
                                 <h3>Pierre-Elouan Réthoré</h3>
                                 <p>CTO / Founder</p>
@@ -194,25 +209,25 @@
                 </div>
                 <div id="clients" class="owl-carousel owl-theme">
                     <div class="item">
-                        <img src="static/img/client/01.png">
+                        <img src="{{url_for('.static', filename='img/client/01.png')}}">
                     </div>
                     <div class="item">
-                        <img src="static/img/client/02.png">
+                        <img src="{{url_for('.static', filename='img/client/02.png')}}">
                     </div>
                     <div class="item">
-                        <img src="static/img/client/03.png">
+                        <img src="{{url_for('.static', filename='img/client/03.png')}}">
                     </div>
                     <div class="item">
-                        <img src="static/img/client/04.png">
+                        <img src="{{url_for('.static', filename='img/client/04.png')}}">
                     </div>
                     <div class="item">
-                        <img src="static/img/client/05.png">
+                        <img src="{{url_for('.static', filename='img/client/05.png')}}">
                     </div>
                     <div class="item">
-                        <img src="static/img/client/06.png">
+                        <img src="{{url_for('.static', filename='img/client/06.png')}}">
                     </div>
                     <div class="item">
-                        <img src="static/img/client/07.png">
+                        <img src="{{url_for('.static', filename='img/client/07.png')}}">
                     </div>
                 </div>
 
@@ -263,7 +278,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/01.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/01.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -279,7 +294,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/02.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/02.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -295,7 +310,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/03.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/03.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -311,7 +326,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/04.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/04.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -327,7 +342,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/05.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/05.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -343,7 +358,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/06.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/06.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -359,7 +374,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/07.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/07.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -375,7 +390,7 @@
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
-                                <img src="static/img/portfolio/08.jpg" class="img-responsive" alt="...">
+                                <img src="{{url_for('.static', filename='img/portfolio/08.jpg')}}" class="img-responsive" alt="...">
                             </a>
                         </div>
                     </div>
@@ -466,5 +481,34 @@
         </div>
     </div>
 
+    <nav id="footer">
+        <div class="container">
+            <div class="pull-left fnav">
+                <p>ALL RIGHTS RESERVED. COPYRIGHT Fractal Flows © 2015.</p>
+            </div>
+            <div class="pull-right fnav">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.1.11.1.js')}}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="{{url_for('.static', filename='js/bootstrap.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/SmoothScroll.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.isotope.js')}}"></script>
+
+    <script src="{{url_for('.static', filename='js/owl.carousel.js')}}"></script>
+
+    <!-- Javascripts
+    ================================================== -->
+    <script type="text/javascript" src="js/main.js"></script>
 
 {% endblock %}    
