@@ -1,3 +1,4 @@
+ROOT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
 build:
 	docker build -t webapp .
@@ -14,3 +15,9 @@ tests:
 stop:
 	docker stop webapp
 	docker rm webapp
+
+run_local:
+	docker run -d -p 49500:5000 -v $(ROOT_DIR)/webapp:/opt/webapp --name webapp webapp
+	docker ps 
+	open http://docker:49500/register
+	docker logs -f webapp 
