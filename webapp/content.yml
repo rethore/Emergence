@@ -1,0 +1,12 @@
+#content.yml
+members:
+    - name: Imad Abdallah
+      title: CEO / Founder
+      extra: If you never fail, you are not inovating enough.
+      img: img/team/01.jpg
+      linkedin: https://dk.linkedin.com/in/imadabdallah
+    - name: Pierre-Elouan Réthoré
+      title: CTO / Founder
+      extra: Life starts outside your comfort zone.
+      img: img/team/02.jpg
+      linkedin: https://dk.linkedin.com/in/rethore

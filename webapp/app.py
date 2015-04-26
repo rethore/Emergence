@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 
 from flask import Flask, request, render_template, flash
@@ -8,7 +10,11 @@ from flask_wtf import Form, RecaptchaField
 from wtforms import TextField, HiddenField, ValidationError, RadioField,\
     BooleanField, SubmitField, IntegerField, FormField, validators, PasswordField
 from wtforms.validators import Required
+import yaml 
 
+## Load the data to be injected in the templates
+with open('content.yml', 'r') as f:
+    data = yaml.load(f.read())
 
 # straight from the wtforms docs:
 class TelephoneForm(Form):
@@ -95,9 +101,11 @@ def hello():
     provider = str(os.environ.get('PROVIDER', 'world'))
     return render_template('base.html', form={'hello':'world'})
 
+
+
 @app.route('/landing')
 def landing():
-    return render_template('landing.html', form={'hello':'world'})
+    return render_template('landing.html', form={'hello':'world'}, data=data)
 
 
 if __name__ == '__main__':

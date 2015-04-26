@@ -126,28 +126,19 @@
                 </div>
 
                 <div id="team" class="owl-carousel owl-theme row">
+                    {% for member in data.members %}
                     <div class="item">
                         <div class="thumbnail">
-                            <img src="{{url_for('.static', filename='img/team/01.jpg')}}" alt="..." class="img-circle team-img">
+                            <img src="{{url_for('.static', filename= member.img )}}" alt="..." class="img-circle team-img">
                             <div class="caption">
-                                <h3>Imad Abdallah</h3>
-                                <p>CEO / Founder</p>
-                                <p>Do not seek to change what has come before. Seek to create that which has not.</p>
+                                <h3>{{ member.name }}</h3>
+                                <p>{{ member.title }} <a href="{{ member.linkedin }}"><i class="fa fa-linkedin-square"></i></a></p>
+                                <p>{{ member.extra }}</p>
+
                             </div>
                         </div>
                     </div>
-
-                    <div class="item">
-                        <div class="thumbnail">
-                            <img src="{{url_for('.static', filename='img/team/02.jpg')}}" alt="..." class="img-circle team-img">
-                            <div class="caption">
-                                <h3>Pierre-Elouan Réthoré</h3>
-                                <p>CTO / Founder</p>
-                                <p>Life starts outside your confort zone.</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
                 
             </div>
@@ -491,7 +482,7 @@
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
         </div>
