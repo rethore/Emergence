@@ -26,3 +26,8 @@ The website is based on Flask, a minimalistic python webframework, and Bootstrap
     $ docker run -d -p 49500:5000 --name webapp webapp
 
 * Point your webbrowser to the docker ip address: http://xxx.xxx.xxx.xxx:49500/landing
+
+### Automatic deployment
+* Once the changes have been commited and pushed to the repo, just do:
+
+    $ make deploy
