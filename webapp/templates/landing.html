@@ -1,4 +1,4 @@
-
+{% import "bootstrap/wtf.html" as wtf %}
 {% extends "bootstrap/base.html" %}
 
 {% block styles %}
@@ -32,6 +32,10 @@
 
 {% endblock %}
 
+{% block title %}
+Emergence from Fractal Flows
+{% endblock %}
+
 {% block navbar %}
     <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top"> 
       <div class="container">
@@ -52,9 +56,12 @@
             <li><a href="#tf-home" class="page-scroll">Home</a></li>
             <li><a href="#tf-about" class="page-scroll">About</a></li>
             <li><a href="#tf-team" class="page-scroll">Team</a></li>
+<!-- 
             <li><a href="#tf-services" class="page-scroll">Services</a></li>
             <li><a href="#tf-works" class="page-scroll">Portfolio</a></li>
-            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
+            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li> 
+-->
+
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -69,7 +76,7 @@
     <div id="tf-home" class="text-center">
         <div class="overlay">
             <div class="content">
-                <h1>Welcome on <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>
+                <h1>Welcome to <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>
                 <p class="lead">Where <strong>researchers</strong>, <strong>engineers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information.</p>
                 <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>
             </div>
@@ -125,28 +132,31 @@
                     </div>
                 </div>
 
-                <div id="team" class="owl-carousel owl-theme row">
+                <div id="team" class="row">
                     {% for member in data.members %}
-                    <div class="item">
+                    <div class="col-sm-6 ">
                         <div class="thumbnail">
                             <img src="{{url_for('.static', filename= member.img )}}" alt="..." class="img-circle team-img">
                             <div class="caption">
                                 <h3>{{ member.name }}</h3>
-                                <p>{{ member.title }} <a href="{{ member.linkedin }}"><i class="fa fa-linkedin-square"></i></a></p>
-                                <p>{{ member.extra }}</p>
-
+                                <p>{{ member.title }}</p>
+                                <p>
+                                {% for met in member.meta %} 
+                                  <a href="{{ met.address }}"><i class="fa {{ met.font }}"></i></a>
+                                {% endfor %}
+                                </p>
+                                <p class="italic">"{{ member.extra }}"</p>
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                    {% endfor %}     
                 </div>
-                
             </div>
         </div>
     </div>
 
     <!-- Services Section
-    ==========================================-->
+    ==========================================--
     <div id="tf-services" class="text-center">
         <div class="container">
             <div class="section-title center">
@@ -185,9 +195,9 @@
             </div>
         </div>
     </div>
-
+-->
     <!-- Clients Section
-    ==========================================-->
+    ==========================================
     <div id="tf-clients" class="text-center">
         <div class="overlay">
             <div class="container">
@@ -225,11 +235,12 @@
             </div>
         </div>
     </div>
+    -->
 
     <!-- Portfolio Section
-    ==========================================-->
+    ==========================================
     <div id="tf-works">
-        <div class="container"> <!-- Container -->
+        <div class="container"> 
             <div class="section-title text-center center">
                 <h2>Take a look at <strong>our services</strong></h2>
                 <div class="line">
@@ -390,9 +401,9 @@
             </div>
         </div>
     </div>
-
+-->
     <!-- Testimonials Section
-    ==========================================-->
+    ==========================================
     <div id="tf-testimonials" class="text-center">
         <div class="overlay">
             <div class="container">
@@ -425,9 +436,9 @@
             </div>
         </div>
     </div>
-
+-->
     <!-- Contact Section
-    ==========================================-->
+    ==========================================--
     <div id="tf-contact" class="text-center">
         <div class="container">
 
@@ -444,7 +455,7 @@
                     </div>
 
                     <form>
-                        <div class="row">
+                            <div class="row">                    
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
@@ -453,10 +464,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <label for="exampleInputName1">Name</label>
+                                    <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name">
                                 </div>
-                            </div>
+                            </div>          
+                          </div>          
+                        <div class="form-group">
+                            <label for="exampleInputsubject1">Subject</label>
+                            <input type="subject" class="form-control" id="exampleInputsubject1" placeholder="Enter Subject">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Message</label>
@@ -471,11 +486,43 @@
 
         </div>
     </div>
+    -->
+
+    <div id="tf-contact" class="text-center">
+      <div class="container">
+
+           <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <div class="section-title center">
+                        <h2>Feel free to <strong>contact us</strong></h2>
+                        <div class="line">
+                            <hr>
+                        </div>
+                        <div class="clearfix"></div>
+                        <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            
+
+                    </div>
+
+              {% for message in get_flashed_messages() %}
+                <div class="flash">{{ message }}</div>
+              {% endfor %}
+
+              <br>
+
+
+              {{ wtf.quick_form(form, form_type='horizontal', 
+                                button_map={'submit_button': 'primary'})}}
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <nav id="footer">
         <div class="container">
             <div class="pull-left fnav">
-                <p>ALL RIGHTS RESERVED. COPYRIGHT Fractal Flows © 2015.</p>
+                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>
             </div>
             <div class="pull-right fnav">
                 <ul class="footer-social">

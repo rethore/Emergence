@@ -7,6 +7,15 @@ body, html{
 	-webkit-font-smoothing: antialiased !important;
 	color: #5a5a5a;
 }
+.italic{
+	font-style: italic;
+}
+.flash {
+  background-color: #FBB0B0;
+  padding: 10px;
+  background-position: center;  
+  text-align: center;  
+}
 
 h1{
 	text-transform: uppercase;
@@ -230,6 +239,7 @@ ul.about-list li span{
     color: #FFF;
     text-align: center;
 }
+
 
 img.img-circle.team-img {
 	width: 120px;

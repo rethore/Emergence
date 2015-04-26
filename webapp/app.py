@@ -7,58 +7,34 @@ from wtforms.widgets import TextArea
 from flask_bootstrap import Bootstrap
 from flask_appconfig import AppConfig
 from flask_wtf import Form, RecaptchaField
+from flask.ext.mail import Message, Mail
 from wtforms import TextField, HiddenField, ValidationError, RadioField,\
-    BooleanField, SubmitField, IntegerField, FormField, validators, PasswordField
+    BooleanField, SubmitField, IntegerField, FormField, validators, PasswordField, TextAreaField
 from wtforms.validators import Required
 import yaml 
+
+
 
 ## Load the data to be injected in the templates
 with open('content.yml', 'r') as f:
     data = yaml.load(f.read())
 
-# straight from the wtforms docs:
-class TelephoneForm(Form):
-    country_code = IntegerField('Country Code', [validators.required()])
-    area_code = IntegerField('Area Code/Exchange', [validators.required()])
-    number = TextField('Number')
+## Processing the content to prepare for the landing page
+metadic = { # Contains the relevant font for each meta team info
+    'github': 'fa-github-square',
+    'email': 'fa-envelope-square',
+    'linkedin': 'fa-linkedin-square'}
+
+for m in data['members']:
+    m['meta'] = [{'address':v, 'font': metadic[k]} for k,v in m.iteritems() if k in metadic]
 
 
-class ExampleForm(Form):
-    field1 = TextField('First Field', description='This is field one.')
-    field2 = TextField('Second Field', description='This is field two.',
-                       validators=[Required()])
-    hidden_field = HiddenField('You cannot see this', description='Nope')
-    recaptcha = RecaptchaField('A sample recaptcha field')
-    radio_field = RadioField('This is a radio field', choices=[
-        ('head_radio', 'Head radio'),
-        ('radio_76fm', "Radio '76 FM"),
-        ('lips_106', 'Lips 106'),
-        ('wctr', 'WCTR'),
-    ])
-    checkbox_field = BooleanField('This is a checkbox',
-                                  description='Checkboxes can be tricky.')
-
-    # subforms
-    mobile_phone = FormField(TelephoneForm)
-
-    # you can change the label as well
-    office_phone = FormField(TelephoneForm, label='Your office phone')
-
-    submit_button = SubmitField('Submit Form')
-
-    def validate_hidden_field(form, field):
-        raise ValidationError('Always wrong')
-
-class RegistrationForm(Form):
-    username = TextField('Username',  [validators.Length(min=4, max=25)], default='pire')
-    email = TextField('Email Address', [validators.Length(min=6, max=35)])
-    password = PasswordField('New Password', [
-        validators.Required(),
-        validators.EqualTo('confirm', message='Passwords must match')
-    ])
-    confirm = PasswordField('Repeat Password')
-    longer_text = TextField('Long text', [validators.Length(min=4, max=250)], widget=TextArea())
-    accept_tos = BooleanField('I accept the TOS', [validators.Required()])
+class ContactForm(Form):
+  name = TextField("Name",  [validators.Required()])
+  email = TextField("Email",  [validators.Required(), validators.Email()])
+  subject = TextField("Subject",  [validators.Required()])
+  message = TextAreaField("Message",  [validators.Required()])
+  submit = SubmitField("Send")
 
 
 app = Flask(__name__)
@@ -66,35 +42,24 @@ configfile=None
 AppConfig(app, configfile)  # Flask-Appconfig is not necessary, but
                             # highly recommend =)
                             # https://github.com/mbr/flask-appconfig
+
+mail = Mail()
+
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = 'fractalflows@gmail.com'
+app.config["MAIL_PASSWORD"] = 'emergence'
+mail.init_app(app)                            
+
 Bootstrap(app)
 # in a real app, these should be configured through Flask-Appconfig
 app.config['SECRET_KEY'] = 'devkey'
-app.config['RECAPTCHA_PUBLIC_KEY'] = \
-    '6Lfol9cSAAAAADAkodaYl9wvQCwBMr3qGR_PPHcw'
 
-@app.route('/tests', methods=('GET', 'POST'))
-def tests():
-    form = ExampleForm()
-    form.validate_on_submit()  # to get error messages to the browser
-    # flash('critical message', 'critical')
-    # flash('error message', 'error')
-    # flash('warning message', 'warning')
-    # flash('info message', 'info')
-    # flash('debug message', 'debug')
-    # flash('different message', 'different')
-    # flash('uncategorized message')
-    return render_template('index.html', form=form)
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        user = User(form.username.data, form.email.data,
-                    form.password.data)
-        db_session.add(user)
-        flash('Thanks for registering')
-        return redirect(url_for('login'))
-    return render_template('register.html', form=form)
+@app.route('/contact')
+def contact():
+  form = ContactForm()
+  return render_template('contact.html', form=form)
 
 @app.route('/')
 def hello():
@@ -103,9 +68,25 @@ def hello():
 
 
 
-@app.route('/landing')
+@app.route('/landing', methods=['GET', 'POST'])
 def landing():
-    return render_template('landing.html', form={'hello':'world'}, data=data)
+    form = ContactForm()
+    if request.method == 'POST':
+        if form.validate() == False:
+            flash('All fields are required.')
+            return render_template('landing.html', form=form, data=data)
+        else:
+            msg = Message(form.subject.data, 
+                          sender='fractalflows@gmail.com', 
+                          recipients=['rethore@fractalflows.com'])
+            msg.body = """
+            From: %s <%s>
+            %s
+            """ % (form.name.data, form.email.data, form.message.data)
+            mail.send(msg)            
+            return 'Form posted.'
+
+    return render_template('landing.html', form=form, data=data)
 
 
 if __name__ == '__main__':
