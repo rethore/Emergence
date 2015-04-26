@@ -23,4 +23,5 @@ run_local:
 	docker ps 
 
 deploy:
-	ssh synnefo2 "echo hello; ls -lrtkh; cd fractalflows.com; git pull; make stop; make build; make run"
+	deploy.sh
+
