@@ -106,7 +106,7 @@ def landing():
             %s
             """ % (form.name.data, form.email.data, form.message.data)
             mail.send(msg)            
-            return 'Form posted.'
+            return render_template('landing.html', form=form, data=data, success=True)
 
     return render_template('landing.html', form=form, data=data)
 

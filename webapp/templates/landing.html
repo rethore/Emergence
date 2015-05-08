@@ -500,20 +500,30 @@ Emergence from Fractal Flows
                         <div class="line">
                             <hr>
                         </div>
+
                         <div class="clearfix"></div>
+          {% if success %}
+            <p>Thank you for your message. We'll get back to you shortly.</p>
+
+                    </div>
+          {% else %}                    
                         Are you interested to joining us / funding us / obtaining further information?
 
                     </div>
 
-              {% for message in get_flashed_messages() %}
-                <div class="flash">{{ message }}</div>
-              {% endfor %}
+         
 
-              <br>
+                {% for message in get_flashed_messages() %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+
+                <br>
 
 
-              {{ wtf.quick_form(form, form_type='horizontal', 
+                {{ wtf.quick_form(form, form_type='horizontal', 
                                 button_map={'submit_button': 'primary'})}}
+
+              {% endif %}                                
                 </div>
             </div>
 
