@@ -27,6 +27,10 @@ The website is based on Flask, a minimalistic python webframework, and Bootstrap
 
 * Point your webbrowser to the docker ip address: http://xxx.xxx.xxx.xxx:49500/landing
 
+* Look at the logs:
+    
+   $ docker logs -f webapp
+
 ### Automatic deployment
 * Once the changes have been commited and pushed to the repo, just do:
 
