@@ -1,0 +1,106 @@
+%-----------------------
+% STATUS: DONE/NOT DONE
+%-----------------------
+TC0001/ As a researcher I can type Fractal Flows URL so that I land on the website
+- type URL
+- get to main landing page
+- main page laods
+- on the main page a researcher has the option to search for a specific paper/problem
+- on the main page a researcher has the option to generate a specific paper/problem
+
+
+%-----------------------
+% STATUS: 
+%-----------------------
+TC0002/ As a researcher I can search for a specific paper/problem
+- TC0001
+- type problem title or keywords in search box
+- click "seach problem" bottom
+- a page with the list of papers is loaded. The list of papers correspdong to the title or keywords I typed
+in the search box (list similar to Google Scholar)
+
+%-----------------------
+% STATUS: 
+%-----------------------
+TC0003/ As a researcher I can click on the link of a paper in the search to see the Emergence view
+- TC0002
+- click on target paper link in the list
+- a page containing the Emergence View is now loaded
+- The top of the Emergence View page contains: paper tile, abstract, authors, DOI, journal name, some links where one can read the paper. Next to that there is a counter for the total number of unique contributions to the target problem.
+- Below that there are 4 action bottons next to each other called: Follow, Request, Contribute, Invite
+- Below that there is the list of papers citing the target paper (in the form of a collapsable list)
+- Below that there is the list of "Hooks" corresponding to users contributions to this paper. Initially this might be completely empty.
+- "Hooks" come in the from of: Wiki/Git/Zenodo/Docker/BitBucket/Jupiter/Slack/Sage/OpenAire/Link to website/ Links to ftp server/ collapsible python notebooks/Mathematica notebooks/email contact/Box, DropBox, Google Drive, etc.
+
+
+%-----------------------
+% STATUS: 
+%-----------------------
+TC0004/ As a researcher I can generate my own specific paper/problem to get new contributions
+- TC0001
+- click "generate bottom"
+- an empty "Emergence Form" page loads.
+- researcher fills the "Emergence Form":
+- on top of the page a researcher fills out: problem title, abstract, authors, DOI on Zenodo if applicable
+- Below that there are 4 action bottons next to each other called: Follow, Request, Contribute, Invite
+- Below that there is the list of papers citing the target paper (in the form of a collapsable list): here the list is empty because it is a new problem
+- Below that there is the list of "Hooks": here the list of "Hooks" is empty because this is a new problem
+- Here the reseacher clicks on "Contribute" botton to be first contributor to problem
+- The reseacher is then prompted to add a contribution similar to how Slack does it through "add a service integration"
+- At the bottom of the "Emergence Form" page the researcher clicks on the Save botton to save the problem. It is now searchable by others.
+
+
+
+%-----------------------
+% STATUS: 
+%-----------------------
+TC0005/ As a researcher I can follow a problem to get alerted to latest contributions
+- TC0003 & TC0004
+- click the botton "Follow"
+- en email alert is sent to your email account everytime a new contribution or an update to a contribution has taken
+place on the "Emergence View" of the target problem.
+
+
+%-----------------------
+% STATUS: 
+%-----------------------
+TC0006/ As a researcher I can invite users to contribute to a problem
+- TC0003 & TC0004
+- click the button "Invite"
+- enter list of emails, separated by a comma, of all users you wish to invite to contribute to a problem
+- an email is sent to all users on the list. A "tag" and a link to the emergence view of the problem are included in the email
+
+
+%-----------------------
+% STATUS: 
+%-----------------------
+TC0007/ As a researcher I can request users to contribute to a problem
+- TC0003 & TC0004
+- click the button "Request"
+- en email alert is sent to all users on Fractal Flows to help contribute to a target problem. A "tag" and a link to 
+the emergence view of the problem are included in the email
+
+
+
+
+%-----------------------
+% STATUS: 
+%-----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
