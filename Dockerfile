@@ -11,11 +11,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
     python3-pip \
     wget
 
-ADD ./webapp /opt/webapp/
+ADD ./webapp/requirements.txt /opt/webapp/
 
 WORKDIR /opt/webapp
 RUN pip install -r requirements.txt
 
 EXPOSE 5000
+
+ADD ./webapp /opt/webapp/
 
 CMD ["python3", "app.py"]
