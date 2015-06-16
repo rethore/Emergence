@@ -37,7 +37,7 @@ Emergence from Fractal Flows
 {% endblock %}
 
 {% block navbar %}
-    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top"> 
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -56,17 +56,17 @@ Emergence from Fractal Flows
             <li><a href="#tf-home" class="page-scroll">Home</a></li>
             <li><a href="#tf-about" class="page-scroll">About</a></li>
             <li><a href="#tf-team" class="page-scroll">Team</a></li>
-<!-- 
+<!--
             <li><a href="#tf-services" class="page-scroll">Services</a></li>
             <li><a href="#tf-works" class="page-scroll">Portfolio</a></li>
-            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li> 
+            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
 -->
 
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-</nav> 
+</nav>
 {% endblock %}
 
 
@@ -142,7 +142,7 @@ Emergence from Fractal Flows
                                 <p>{{ member.title }}</p>
                                 <p>{{ member.experience|linebreaks }}</p>
                                 <p>
-                                {% for met in member.meta %} 
+                                {% for met in member.meta %}
                                   <a href="{{ met.address }}"><i class="fa {{ met.font }}"></i></a>
                                 {% endfor %}
                                 </p>
@@ -150,13 +150,13 @@ Emergence from Fractal Flows
                             </div>
                         </div>
                     </div>
-                    {% endfor %}     
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Services Section
+     Services Section
     ==========================================--
     <div id="tf-services" class="text-center">
         <div class="container">
@@ -196,7 +196,7 @@ Emergence from Fractal Flows
             </div>
         </div>
     </div>
--->
+
     <!-- Clients Section
     ==========================================
     <div id="tf-clients" class="text-center">
@@ -241,7 +241,7 @@ Emergence from Fractal Flows
     <!-- Portfolio Section
     ==========================================
     <div id="tf-works">
-        <div class="container"> 
+        <div class="container">
             <div class="section-title text-center center">
                 <h2>Take a look at <strong>our services</strong></h2>
                 <div class="line">
@@ -253,7 +253,7 @@ Emergence from Fractal Flows
             <div class="space"></div>
 
             <div class="categories">
-                
+
                 <ul class="cat">
                     <li class="pull-left"><h4>Filter by Type:</h4></li>
                     <li class="pull-right">
@@ -452,11 +452,11 @@ Emergence from Fractal Flows
                             <hr>
                         </div>
                         <div class="clearfix"></div>
-                        <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            
+                        <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
                     </div>
 
                     <form>
-                            <div class="row">                    
+                            <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
@@ -468,8 +468,8 @@ Emergence from Fractal Flows
                                     <label for="exampleInputName1">Name</label>
                                     <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name">
                                 </div>
-                            </div>          
-                          </div>          
+                            </div>
+                          </div>
                         <div class="form-group">
                             <label for="exampleInputsubject1">Subject</label>
                             <input type="subject" class="form-control" id="exampleInputsubject1" placeholder="Enter Subject">
@@ -478,7 +478,7 @@ Emergence from Fractal Flows
                             <label for="exampleInputEmail1">Message</label>
                             <textarea class="form-control" rows="3"></textarea>
                         </div>
-                        
+
                         <button type="submit" class="btn tf-btn btn-default">Submit</button>
                     </form>
 
@@ -506,12 +506,12 @@ Emergence from Fractal Flows
             <p>Thank you for your message. We'll get back to you shortly.</p>
 
                     </div>
-          {% else %}                    
+          {% else %}
                         Are you interested to joining us / funding us / obtaining further information?
 
                     </div>
 
-         
+
 
                 {% for message in get_flashed_messages() %}
                   <div class="flash">{{ message }}</div>
@@ -520,10 +520,10 @@ Emergence from Fractal Flows
                 <br>
 
 
-                {{ wtf.quick_form(form, form_type='horizontal', 
+                {{ wtf.quick_form(form, form_type='horizontal',
                                 button_map={'submit_button': 'primary'})}}
 
-              {% endif %}                                
+              {% endif %}
                 </div>
             </div>
 
@@ -560,4 +560,4 @@ Emergence from Fractal Flows
     ================================================== -->
     <script type="text/javascript" src="js/main.js"></script>
 
-{% endblock %}    
+{% endblock %}
