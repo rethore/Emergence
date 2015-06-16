@@ -61,7 +61,7 @@ def contact():
   form = ContactForm()
   return render_template('contact.html', form=form)
 
-@app.route('/')
+@app.route('/hello')
 def hello():
     provider = str(os.environ.get('PROVIDER', 'world'))
     return render_template('base.html', form={'hello':'world'})
@@ -90,6 +90,7 @@ def linebreaksbr(eval_ctx, value):
     paras = u'\n\n'.join(paras)
     return Markup(paras)
 
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/landing', methods=['GET', 'POST'])
 def landing():
     form = ContactForm()
@@ -113,5 +114,6 @@ def landing():
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
+    # Bind to PORT 127.0.0.1.
     port = int(os.environ.get('PORT', 5000))
     app.run(host='127.0.0.1', port=port, debug=True)
