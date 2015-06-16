@@ -13,10 +13,10 @@ from wtforms import TextField, HiddenField, ValidationError, RadioField,\
 from wtforms.validators import Required
 import yaml 
 
-
+path = os.path.dirname(os.path.realpath(__file__))
 
 ## Load the data to be injected in the templates
-with open('content.yml', 'r') as f:
+with open(path+'/content.yml', 'r') as f:
     data = yaml.load(f.read())
 
 ## Processing the content to prepare for the landing page
@@ -26,7 +26,7 @@ metadic = { # Contains the relevant font for each meta team info
     'linkedin': 'fa-linkedin-square'}
 
 for m in data['members']:
-    m['meta'] = [{'address':v, 'font': metadic[k]} for k,v in m.iteritems() if k in metadic]
+    m['meta'] = [{'address':v, 'font': metadic[k]} for k,v in m.items() if k in metadic]
 
 
 class ContactForm(Form):
