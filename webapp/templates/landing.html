@@ -4,7 +4,8 @@
 {% block styles %}
 {{super()}}
 
-<link rel="shortcut icon" href="{{url_for('.static', filename='img/favicon.ico')}}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('.static', filename='img/favicon.ico') }}" type="image/x-icon"
+      xmlns="http://www.w3.org/1999/html">
 <link rel="apple-touch-icon" href="{{url_for('.static', filename='img/apple-touch-icon.png')}}">
 <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('.static', filename='img/apple-touch-icon-72x72.png')}}">
 <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('.static', filename='img/apple-touch-icon-114x114.png')}}">
@@ -55,14 +56,10 @@ Emergence from Fractal Flows
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#tf-home" class="page-scroll">Home</a></li>
             <li><a href="#tf-about" class="page-scroll">About</a></li>
-            <li><a href="#tf-team" class="page-scroll">Team</a></li>
-<!--
-            <li><a href="#tf-services" class="page-scroll">Services</a></li>
-            <li><a href="#tf-works" class="page-scroll">Portfolio</a></li>
-            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>
--->
-
-            <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
+            <li><a href="#tf-benefits" class="page-scroll">Benefits</a></li>
+            <li><a href="#tf-team" class="page-scroll">Team</a></li><!--
+            <!--<li><a href="#tf-contact" class="page-scroll">Contact</a></li>-->
+            <li><a href="#tf-blog" class="page-scroll">Blog</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -77,8 +74,11 @@ Emergence from Fractal Flows
         <div class="overlay">
             <div class="content">
                 <h1>Welcome to <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>
-                <p class="lead">Where <strong>researchers</strong>, <strong>engineers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information.</p>
-                <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>
+                <p class="lead">Where <strong>engineers</strong>, <strong>researchers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information</p>
+                <p class="lead"> <strong>Search</strong>, <strong>discover</strong>, <strong>acquire</strong> and <strong>exchange</strong> engineering knowledge products</p>
+                <form action="http://www.google.com">
+                    <button type="button" class="btn btn-success">Try it for free  &#8594;</button>
+                </form>
             </div>
         </div>
     </div>
@@ -89,17 +89,17 @@ Emergence from Fractal Flows
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{url_for('.static', filename='img/02.png')}}" class="img-responsive">
+                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h4>About us</h4>
-                            <h2>Some words <strong>about us</strong></h2>
+                            <h2><strong>about</strong></h2>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">We love building and rebuilding brands through our  specific skills. Using colour, fonts, and illustration, we brand companies in a way they will never forget.</p>
+                        <p class="intro">Emergence from Fractal Flows is a highly interactive online exchange system that makes it easier for engineers, scientists, researchers and students to search, discover, collaborate, acquire and exchange engineering information, data and knowledge products. The exchange system links knowledge repositories and tracks their evolution and <strong>emerge</strong> a value from the perspective of various communities.</p>
+<!--
                         <ul class="about-list">
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>
@@ -114,11 +114,33 @@ Emergence from Fractal Flows
                                 <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
                             </li>
                         </ul>
+-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <!-- Tour the benefits Section
+    ==========================================
+    -->
+    <div id="tf-benefits" class="text-center">
+        <div class="overlay">
+            <div class="section-title center">
+                <h2><strong>Take a tour</strong></h2>
+                <div class="line">
+                    <hr>
+                </div>
+                <div class="clearfix"></div>
+        		<span>Learn what Emergence from Fractal Flows can do for you. </span>
+                <a class="btn btn-success" href="http://www.google.com" role="button">Take a tour  &#8594;</a>
+            </div>
+            <div class="space"></div>
+        </div>
+    </div>
+
 
     <!-- Team Page
     ==========================================-->
@@ -126,7 +148,7 @@ Emergence from Fractal Flows
         <div class="overlay">
             <div class="container">
                 <div class="section-title center">
-                    <h2>Meet <strong>our team</strong></h2>
+                    <h2><strong>The team</strong></h2>
                     <div class="line">
                         <hr>
                     </div>
@@ -146,7 +168,7 @@ Emergence from Fractal Flows
                                   <a href="{{ met.address }}"><i class="fa {{ met.font }}"></i></a>
                                 {% endfor %}
                                 </p>
-                                <p class="italic">"{{ member.extra }}"</p>
+                                <!--<p class="italic">"{{ member.extra }}"</p>-->
                             </div>
                         </div>
                     </div>
@@ -156,46 +178,6 @@ Emergence from Fractal Flows
         </div>
     </div>
 
-     Services Section
-    ==========================================--
-    <div id="tf-services" class="text-center">
-        <div class="container">
-            <div class="section-title center">
-                <h2>Take a look at <strong>our services</strong></h2>
-                <div class="line">
-                    <hr>
-                </div>
-                <div class="clearfix"></div>
-                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
-            </div>
-            <div class="space"></div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-desktop"></i>
-                    <h4><strong>Web design</strong></h4>
-                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                </div>
-
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-mobile"></i>
-                    <h4><strong>Mobile Apps</strong></h4>
-                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                </div>
-
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-camera"></i>
-                    <h4><strong>Photography</strong></h4>
-                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                </div>
-
-                <div class="col-md-3 col-sm-6 service">
-                    <i class="fa fa-bullhorn"></i>
-                    <h4><strong>Marketing</strong></h4>
-                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Clients Section
     ==========================================
@@ -496,7 +478,7 @@ Emergence from Fractal Flows
                 <div class="col-md-8 col-md-offset-2">
 
                     <div class="section-title center">
-                        <h2>Feel free to <strong>contact us</strong></h2>
+                        <h2> <strong>contact us</strong></h2>
                         <div class="line">
                             <hr>
                         </div>
