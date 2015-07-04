@@ -1,0 +1,198 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "landing.html" %}
+
+
+{% block title %}
+Take a tour
+{% endblock %}
+
+
+{% block content %}
+    <!-- Home Page
+    ==========================================-->
+    <div id="tf-home-tour" class="text-center">
+        <div class="overlay">
+            <div class="content">
+                <h1><strong>Your portal to access the networks of</h1>
+                <h1><strong>engineering and science knowledge products</h1>
+                <p class="lead"> With Emergence from Fractal Flows, you can easily search, discover, share, acquire and exchange engineering</p>
+                <p class="lead"> knowledge products. You don't need to search through endless publications and databases any longer. Easily make </p>
+                <p class="lead"> sense of data and new research. See in real time how others are using your code, data, model, equations, experiments and files. </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- take a tour story
+    ==========================================-->
+    <div id="tf-tour-story001">
+        <div class="container">
+            <h1><strong>Are you a student? Are you a researcher?</h1>
+            <h1><strong>Are you an engineer?</h1>
+            <p class="lead"> See what Emregence from Fractal Flows can do for you!</p>
+            <div class="dropdown">
+                <button class="btn-success btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">I am &#8594;
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story001">a student</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story002">a researccher</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story003">an engineer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- take a tour story
+    ==========================================-->
+    <div id="tf-tour-story001">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2><strong> <font color="#87ceeb">As a student I...</font></strong></h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="intro">bla bla bla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Take a tour story
+    ==========================================-->
+    <div id="tf-tour-story002">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2><strong>As a researcher I...</strong></h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="intro">bla bla bla.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <!-- Take a tour story
+    ==========================================-->
+    <div id="tf-tour-story003">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2><strong> <font color="black">As an engineer I...</font></strong></h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="intro">bla bla bla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <!-- Take a tour story
+    ==========================================-->
+    <div id="tf-tour-story004">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2><strong> <font color="black">Your knowledge products</font></strong></h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="intro">bla bla bla.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Take a tour use Emergence from Fractal Flows
+    ==========================================-->
+    <div id="tf-team" class="text-center">
+        <div class="overlay">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2><strong> <font color="black">Search and exchange</font></strong></h2>
+                            <p>
+                            <h2><strong> <font color="black">through networks</font></strong></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p>
+                        <p>
+                        <a class="btn btn-success btn-lg" href="taketour" role="button">Get started...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav id="footer">
+        <div class="container">
+            <div class="pull-left fnav">
+                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>
+            </div>
+            <div class="pull-right fnav">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.1.11.1.js')}}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="{{url_for('.static', filename='js/bootstrap.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/SmoothScroll.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.isotope.js')}}"></script>
+
+    <script src="{{url_for('.static', filename='js/owl.carousel.js')}}"></script>
+
+    <!-- Javascripts
+    ================================================== -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+{% endblock %}
