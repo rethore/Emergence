@@ -1,5 +1,5 @@
 {% import "bootstrap/wtf.html" as wtf %}
-{% extends "landing.html" %}
+{% extends "landing.html"%}
 
 
 {% block title %}
@@ -8,6 +8,7 @@ Take a tour
 
 
 {% block content %}
+
     <!-- Home Page
     ==========================================-->
     <div id="tf-home-tour" class="text-center">
@@ -25,29 +26,28 @@ Take a tour
 
 
 
+        <!-- Take a tour story
+    ==========================================-->
+    <div id="tf-tour-Iam">
+        <div class="container" style="height:50px;">
+                <p class="lead"> <font color=#f5f5f5><strong>Learn what Emregence from Fractal Flows can do for you!</strong></font></p>
+                <div class="dropdown">
+                    <button class="btn btn-primary btn-lg dropdown-toggle"   type="button" id="menu1" data-toggle="dropdown"><font color=#f5f5f5>I am</font> &#8594;
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story_student">a student</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story_researcher">a researccher</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story_engineer">an engineer</a></li>
+                    </ul>
+                </div>
+       </div>
+    </div>
+
+
+
     <!-- take a tour story
     ==========================================-->
-    <div id="tf-tour-story001">
-        <div class="container">
-            <h1><strong>Are you a student? Are you a researcher?</h1>
-            <h1><strong>Are you an engineer?</h1>
-            <p class="lead"> See what Emregence from Fractal Flows can do for you!</p>
-            <div class="dropdown">
-                <button class="btn-success btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">I am &#8594;
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story001">a student</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story002">a researccher</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#tf-tour-story003">an engineer</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- take a tour story
-    ==========================================-->
-    <div id="tf-tour-story001">
+    <div id="tf-tour-story_student">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -56,31 +56,44 @@ Take a tour
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h2><strong> <font color="#87ceeb">As a student I...</font></strong></h2>
+                            <h2><strong> <font color="#87ceeb">As a student I can...</font></strong></h2>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">bla bla bla.</p>
+                        <p class="intro">
+                                <li>Learn easily about the latest trends in engineering and science.</li>
+                                <li>Reformulate complicated scientific text into simpler description for people like me to understand it.</li>
+                                <li>Access knowledge for free, if I contribute.</li>
+                                <li>Easily identify the current scientific consensus.</li>
+                                <li>Get help solving theoretical problems I am having.</li>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+        <hr width="100%">
     </div>
 
 
         <!-- Take a tour story
     ==========================================-->
-    <div id="tf-tour-story002">
+    <div id="tf-tour-story_researcher">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h2><strong>As a researcher I...</strong></h2>
+                            <h2><strong> <font color="black">As a researcher I can...</font></strong></h2>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">bla bla bla.</p>
+                        <p class="intro">
+                                <li>Share my datasets with my colleagues all over the world.</li>
+                                <li>Discover where new research is needed.</li>
+                                <li>Measure how much impact my work has had.</li>
+                                <li>Get feedback on my research/data/paper very early on before any publication takes place.</li>
+                                <li>Discover new colleagues and new knowledge products where I least expect to find them.</li>
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -88,13 +101,14 @@ Take a tour
                 </div>
             </div>
         </div>
+        <hr width="100%">
     </div>
 
 
 
         <!-- Take a tour story
     ==========================================-->
-    <div id="tf-tour-story003">
+    <div id="tf-tour-story_engineer">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -103,15 +117,22 @@ Take a tour
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h2><strong> <font color="black">As an engineer I...</font></strong></h2>
+                            <h2><strong> <font color="black">As an engineer I can...</font></strong></h2>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">bla bla bla.</p>
+                        <p class="intro">
+                                <li>Find datasets that are relevant for my need, where I least expect to find such data.</li>
+                                <li>Access new simulation codes fresh from the research community.</li>
+                                <li>Ask/motivate the development teams to add new features / fix bugs.</li>
+                                <li>Access private datasets.</li>
+                                <li>Ask questions to the relevant experts.</li>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+        <hr width="100%">
     </div>
 
 
@@ -119,11 +140,11 @@ Take a tour
 
         <!-- Take a tour story
     ==========================================-->
-    <div id="tf-tour-story004">
+    <div id="tf-tour-story_KP">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                    <img src="{{url_for('.static', filename='img/12idea.184.jpg')}}" class="img-responsive">
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
@@ -132,11 +153,13 @@ Take a tour
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">bla bla bla.</p>
+                        <p class="intro"><strong>Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, publications, source code, licenses to simulation code, etc.</p>
+                        <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
                     </div>
                 </div>
             </div>
         </div>
+        <hr width="100%">
     </div>
 
 
@@ -144,7 +167,7 @@ Take a tour
 
     <!-- Take a tour use Emergence from Fractal Flows
     ==========================================-->
-    <div id="tf-team" class="text-center">
+    <div id="tf-tour-story_start" class="text-center">
         <div class="overlay">
             <div class="row">
                 <div class="col-md-6">
@@ -159,6 +182,9 @@ Take a tour
                         <p>
                         <a class="btn btn-success btn-lg" href="taketour" role="button">Get started...</a>
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{url_for('.static', filename='img/smallw-rold_network.png')}}" class="img-responsive">
                 </div>
             </div>
         </div>

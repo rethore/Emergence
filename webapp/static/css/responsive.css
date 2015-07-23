@@ -6,7 +6,7 @@
 
 @media (max-width: 603px){
 #tf-menu.navbar-default {
-	background-color: rgba(0, 0, 0, 0.79);
+	background-color: rgba(0, 0, 0, 0.79); /**/
 	}
 #tf-works li.pull-right, #tf-works li.pull-left {
     margin-top: 10px;

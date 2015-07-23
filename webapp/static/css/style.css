@@ -79,13 +79,16 @@ ul, ol{
 	webkit-padding: 0;
 	moz-padding: 0;
 }
+
+
 /* Navigation */
 #tf-menu {
 	padding: 20px;
 	transition: all 0.8s;
+	transition-duration: 0.5;
 }
 #tf-menu.navbar-default {
-	background-color: rgba(248, 248, 248, 0);
+	background-color: rgba(248, 248, 248, 0); /* */
 	border-color: rgba(231, 231, 231, 0);
 }
 #tf-menu a.navbar-brand {
@@ -94,13 +97,14 @@ font-size: 22px;
 color: #fff;
 font-weight: 900;
 }
-
 #tf-menu.navbar-default .navbar-nav > li > a {
 	text-transform: uppercase;
-	color: #FFF;
-	font-size: 12px;
+	color: gray;
+	font-size: 14px;
 	letter-spacing: 1px;
+	transition-duration: 0.25s;
 }
+
 .on {
 	background-color: #222222 !important;
 	padding: 0 !important;
@@ -111,8 +115,8 @@ font-weight: 900;
 	color: #FCAC45 !important;
 	background-color: transparent;
 	font-weight: 700;
+	transition-duration: 0.25;
 }
-
 .navbar-toggle {
 	border-radius: 0;
 	}
@@ -124,6 +128,7 @@ font-weight: 900;
 .navbar-default .navbar-toggle:hover>.icon-bar {
 	background-color: #FFF;
 	}
+
 
 
 /* Home Style */
@@ -219,6 +224,23 @@ ul.about-list li span{
 
 
 /* Tour section story*/
+
+#tf-tour-Iam{
+	background-color: #41924B;
+	padding: 80px 0;
+}
+ul.about-list{ margin: 30px 0 0 ;}
+ul.about-list li{
+	display: block;
+	font-size: 16px;
+	line-height: 30px;
+	font-family: 'Open Sans', sans-serif;
+}
+ul.about-list li span{
+	margin-right: 10px;
+}
+
+
 #tf-tour-story001{
 	background-color: white;
 	padding: 80px 0;
@@ -234,8 +256,23 @@ ul.about-list li span{
 	margin-right: 10px;
 }
 
-#tf-tour-story002{
-	background-color: lightblue;
+#tf-tour-story_student{
+	background-color: white;
+	padding: 80px 0;
+}
+ul.about-list{ margin: 30px 0 0 ;}
+ul.about-list li{
+	display: block;
+	font-size: 16px;
+	line-height: 30px;
+	font-family: 'Open Sans', sans-serif;
+}
+ul.about-list li span{
+	margin-right: 10px;
+}
+
+#tf-tour-story_researcher{
+	background-color: white;
 	padding: 80px 0;
 }
 ul.about-list{ margin: 30px 0 0 ;}
@@ -250,8 +287,8 @@ ul.about-list li span{
 }
 
 
-#tf-tour-story003{
-	background-color: lightgray;
+#tf-tour-story_engineer{
+	background-color: white;
 	padding: 80px 0;
 }
 ul.about-list{ margin: 30px 0 0 ;}
@@ -267,8 +304,25 @@ ul.about-list li span{
 
 
 
-#tf-tour-story004{
-	background-color: dodgerblue;
+#tf-tour-story_KP{
+	background-color: white;
+	padding: 80px 0;
+}
+ul.about-list{ margin: 30px 0 0 ;}
+ul.about-list li{
+	display: block;
+	font-size: 16px;
+	line-height: 30px;
+	font-family: 'Open Sans', sans-serif;
+}
+ul.about-list li span{
+	margin-right: 10px;
+}
+
+
+
+#tf-tour-story_start{
+	background-color: white;
 	padding: 80px 0;
 }
 ul.about-list{ margin: 30px 0 0 ;}
