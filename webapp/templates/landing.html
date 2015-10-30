@@ -28,7 +28,6 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript" src="{{url_for('.static', filename='js/modernizr.custom.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -51,6 +50,40 @@ $(document).ready(function(){
 });
 </script>
 
+
+<!-- javascript jquery code to make popup videos -->
+<link rel="stylesheet" href="{{url_for('.static', filename='css/colorbox.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{url_for('.static', filename='js/jquery.colorbox.js')}}"></script>
+<script>
+    $(document).ready(function(){
+	//Examples of how to assign the Colorbox event to elements
+	$(".group1").colorbox({rel:'group1'});
+	$(".group2").colorbox({rel:'group2', transition:"fade"});
+	$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+	$(".group4").colorbox({rel:'group4', slideshow:true});
+	$(".ajax").colorbox();
+	$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+	$(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+	$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+	$(".inline").colorbox({inline:true, width:"50%"});
+	$(".callbacks").colorbox({
+	    onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+		onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+		onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+		onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+		onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+		});
+		$('.non-retina').colorbox({rel:'group5', transition:'none'})
+		$('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+
+		//Example of preserving a JavaScript event for inline calls.
+		$("#click").click(function(){
+		$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+		return false;
+		});
+    });
+</script>
 
 
 {% endblock %}
@@ -78,7 +111,7 @@ Emergence from Fractal Flows
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#tf-home" class="page-scroll"><b>Home</b></a></li>
             <li><a href="#tf-about" class="page-scroll"><b>About</b></a></li>
-            <li><a href="taketour" class="page-scroll"><b>Benefits</b></a></li>
+            <li><a href="taketour" class="page-scroll"><b>How it Works</b></a></li>
             <li><a href="#tf-team" class="page-scroll"><b>Team</b></a></li><!--
             <!--<li><a href="#tf-contact" class="page-scroll">Contact</a></li>-->
             <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li>
@@ -95,12 +128,9 @@ Emergence from Fractal Flows
     <div id="tf-home" class="text-center">
         <div class="overlay">
             <div class="content">
-                <h1>Welcome to <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>
-                <p class="lead">Where <strong>engineers</strong>, <strong>researchers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information</p>
-                <p class="lead"> <strong>Search</strong>, <strong>discover</strong>, <strong>acquire</strong> and <strong>exchange</strong> engineering knowledge products</p>
-                <form action="http://www.google.com">
-                    <button type="button" class="btn btn-success btn-lg">Try it for free &#8594;</button>
-                </form>
+                <h1><strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>
+                <p class="lead"><strong>A web app to review and reproduce scientific results</strong></p>
+                 <a class="btn btn-success btn-lg" href="http://www.emergence.fractalflows.com" role="button">Try <strong>Emergence</strong> for free &#8594;</a>
             </div>
         </div>
     </div>
@@ -112,6 +142,21 @@ Emergence from Fractal Flows
             <div class="row">
                 <div class="col-md-6">
                     <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p style="padding: 10px; color: black; background-color: #FAA9C5; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 0px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> you can review a scientific article and reproduce its results.</font>
+                    </p>
+                    <p style="padding: 10px; color: black; background-color: #F8F67B; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 80px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> Others can review your article and reproduce its results making your article far more useful and impactful.</font>
+                    </p>
+                    <p style="padding: 10px; color: black; background-color: #59B2F2; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 0px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> you can easily search, discover, share, acquire and exchange knowledge products of any article.</font>
+                    </p>
+                    <p style="padding: 10px; color: black; background-color: #83DD9E; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 80px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> engineers, scientists, researchers, and students collaborate and emerge their knowledge from the chaos of scientific articles and publications.</font>
+                    </p>
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
@@ -120,10 +165,16 @@ Emergence from Fractal Flows
                             <hr>
                             <div class="clearfix"></div>
                         </div>
+                        <!--
                         <p class="intro"><strong>Emergence from Fractal Flows</strong> is an online exchange system that makes it easier for engineers, scientists, researchers and students to search, discover, collaborate, acquire and exchange engineering information, data and knowledge products. The exchange system integrates and links networks of knowledge repositories and tracks their evolution and <strong>emerge</strong> a value from the perspective of various communities.</p>
-                        <p class="intro"><strong>Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, publications, source code, licenses to simulation code, etc.</p>
-                        <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
-<!--
+    -->
+                        <p class="intro">Every year there are more than <u>2 millions</u> articles that are published in scientific peer-review journals. Unfortunately, only a small fraction of those will be reproducible. Even worst, hidden under those millions of articles there is an even greater number of results, datasets and source code (i.e. <strong>Knowledge Products</strong>) that will never see the light of day, and will slowly rote, submerged, deep inside the abyss of the authors' hard disks. Those Knowledge Products could be extremely important to assess the reproducibility of those articles, and to actually make the articles useful. But unfortunately, for multiple-reasons, the system discourage the authors to share those Knowledge Products. Those two effects combined, create a tsunamy of low quality publications, which saturates the attention of engineers, reduces the speed of scientific progress and waste an enormous amount of time and money for society.</p>
+                        <p class="intro">We, at <strong>FractalFlows</strong>, are developing a web app called <strong>Emergence</strong> that allow anyone to review and most importantly reproduce hypothesis, methodologies, simulation results, experimental results, analysis, datasets and source code featured in an article. Thus (1) making it easier for engineers, scientists, researchers and students to search, discover, collaborate, share, acquire and exchange the necessary knowledge products revolving around a given article, and (2) making the article significantly more useful!</p>
+                        <p class="intro"><strong>Emergence</strong> is integrated with two external tools: <u>Github</u> and <u>Zenodo</u> (..and more to come). <strong>Integrations</strong> let you automatically pull information and activity from outside tools into Emergence in a way that's timely, relevant, and searchable. </p>
+                        <p class="intro"><strong>What we consider as Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, source code, licenses to simulation code, etc.</p>
+<!--                        <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
+                        <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub and Zenodo.</p>
+
                         <ul class="about-list">
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>

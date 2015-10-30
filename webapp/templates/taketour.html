@@ -2,6 +2,8 @@
 {% extends "landing.html"%}
 
 
+
+
 {% block title %}
 Take a tour
 {% endblock %}
@@ -11,14 +13,25 @@ Take a tour
 
     <!-- Home Page
     ==========================================-->
-    <div id="tf-home-tour" class="text-center">
+    <div id="tf-home-tour" class="text-center" xmlns="http://www.w3.org/1999/html">
         <div class="overlay">
             <div class="content">
-                <h1><strong>Your portal to access the networks of</h1>
-                <h1><strong>engineering and science knowledge products</h1>
-                <p class="lead"> With Emergence from Fractal Flows, you can easily search, discover, share, acquire and exchange engineering</p>
-                <p class="lead"> knowledge products. You don't need to search through endless publications and databases any longer. Easily make </p>
-                <p class="lead"> sense of data and new research. See in real time how others are using your code, data, model, equations, experiments and files. </p>
+                <h1><strong>Your portal to review and reproduce</h1>
+                <h1><strong>results in scientific publications</h1>
+                <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: 400px; border: black 2px solid">
+                    <span>Let's get started with <b><i>Emergence</i></b>. Watch the following video to learn how it works!</span>
+                    <a class='youtube' href='https://www.youtube.com/watch?v=B6zVzWU95Sw'>
+                        <button type="button" class="btn btn-success btn-lg">Watch the Video &#8594</button>
+                    </a>
+                    <script>
+                        $('.youtube').colorbox({iframe: true, width: 1040, height: 690, href:function(){
+                            var videoId = new RegExp('[\\?&]v=([^&#]*)').exec(this.href);
+                            if (videoId && videoId[1]) {
+                                return 'http://youtube.com/embed/'+videoId[1]+'?rel=0&wmode=transparent';
+                            }
+                        }});
+                    </script>
+                </p>
             </div>
         </div>
     </div>
@@ -51,7 +64,13 @@ Take a tour
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                    <!--
+                    <video width="525" height="384" controls>
+                        <source src="{{url_for('.static', filename='img/StudentVideo.mp4')}}" type="video/mp4">
+                        <source src="{{url_for('.static', filename='img/StudentVideo.webm')}}" type="video/webm">
+                        <source src="{{url_for('.static', filename='img/StudentVideo.ogg')}}" type="video/ogg">
+                    </video>
+                    -->
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
@@ -60,13 +79,16 @@ Take a tour
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">
-                                <li>Learn easily about the latest trends in engineering and science.</li>
+                        <font size="3">
+                                <li>Reproduce the results in an article.</li>
+                                <li>Request others to reproduce the results in my article.</li>
+                                <li>Share my knowledge products with my colleagues all over the world.</li>
+                                <li>Access knowledge products for free.</li>
+                                <li>Learn easily about the latest trends in engineering and science research.</li>
                                 <li>Reformulate complicated scientific text into simpler description for people like me to understand it.</li>
-                                <li>Access knowledge for free, if I contribute.</li>
                                 <li>Easily identify the current scientific consensus.</li>
                                 <li>Get help solving theoretical problems I am having.</li>
-                        </p>
+                        </font>
                     </div>
                 </div>
             </div>
@@ -87,17 +109,23 @@ Take a tour
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">
-                                <li>Share my datasets with my colleagues all over the world.</li>
-                                <li>Discover where new research is needed.</li>
-                                <li>Measure how much impact my work has had.</li>
-                                <li>Get feedback on my research/data/paper very early on before any publication takes place.</li>
+                        <font size="3">
+                                <li>Reproduce the results in an article.</li>
+                                <li>Make my article significantly more impactful by requesting others to reproduce the results in my article.</li>
+                                <li>Share my knowledge products with my colleagues all over the world.</li>
+                                <li>Discover new knowledge products related to my field of research.</li>
+                                <!-- <li>Discover where new research is needed.</li>
+                                <li>Measure how much impact my work has had.</li> -->
+                                <li>Get feedback on my research/data/code/experiment/results/article/etc. in the very early stages of my article publication.</li>
                                 <li>Discover new colleagues and new knowledge products where I least expect to find them.</li>
-                        </p>
+                        </font>
                     </div>
                 </div>
                 <div class="col-md-6">
+                <!--
                     <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                 -->
+
                 </div>
             </div>
         </div>
@@ -112,7 +140,9 @@ Take a tour
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
+                <!--
                     <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                -->
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
@@ -121,13 +151,14 @@ Take a tour
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro">
-                                <li>Find datasets that are relevant for my need, where I least expect to find such data.</li>
-                                <li>Access new simulation codes fresh from the research community.</li>
-                                <li>Ask/motivate the development teams to add new features / fix bugs.</li>
+                        <font size="3">
+                                <li>Access new knowledge products fresh from the research community to solve an engineering problem at hand.</li>
+                                <li>Quickly access to the scientific consensus about a hypothesis/theory/data/code/result presented in a given article.</li>
+                                <li>Easily make sense of new research, I don't need to search through endless publications any longer. </li>
+                              <!--  <li>Ask/motivate the development teams to add new features / fix bugs.</li>
                                 <li>Access private datasets.</li>
-                                <li>Ask questions to the relevant experts.</li>
-                        </p>
+                                <li>Ask questions to the relevant experts.</li>-->
+                        </font>
                     </div>
                 </div>
             </div>
@@ -144,7 +175,7 @@ Take a tour
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{url_for('.static', filename='img/12idea.184.jpg')}}" class="img-responsive">
+                    <img src="{{url_for('.static', filename='img/Big-Data.jpg')}}" class="img-responsive">
                 </div>
                 <div class="col-md-6">
                     <div class="about-text">
@@ -153,8 +184,10 @@ Take a tour
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro"><strong>Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, publications, source code, licenses to simulation code, etc.</p>
+                        <font size="4">Knowledge products are what makes the backbone of any scientific publication. Knowledge products could include: experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, source code, licenses to simulation code, etc.</font>
+                        <!--
                         <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
+                        -->
                     </div>
                 </div>
             </div>
@@ -173,14 +206,12 @@ Take a tour
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h2><strong> <font color="black">Search and exchange</font></strong></h2>
-                            <p>
-                            <h2><strong> <font color="black">through networks</font></strong></h2>
+                            <h2><strong> <font color="black">Ready to give it a try?</font></strong></h2>
                             <div class="clearfix"></div>
                         </div>
                         <p>
                         <p>
-                        <a class="btn btn-success btn-lg" href="taketour" role="button">Get started...</a>
+                        <a class="btn btn-success btn-lg" href="http://www.emergence.fractalflows.com" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
                     </div>
                 </div>
                 <div class="col-md-6">
