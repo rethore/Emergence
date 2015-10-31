@@ -8,6 +8,35 @@
 Take a tour
 {% endblock %}
 
+{% block navbar %}
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://127.0.0.1:5000"><strong><span class="color">Fractal Flows</span></strong></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://127.0.0.1:5000/#tf-home" class="page-scroll"><b>Home</b></a></li>
+            <li><a href="http://127.0.0.1:5000/#tf-about" class="page-scroll"><b>About</b></a></li>
+            <li><a href="http://127.0.0.1:5000/taketour" class="page-scroll"><b>How it Works</b></a></li>
+            <li><a href="http://127.0.0.1:5000/#tf-team" class="page-scroll"><b>Team</b></a></li><!--
+            <!--<li><a href="#tf-contact" class="page-scroll">Contact</a></li>-->
+            <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
 
 {% block content %}
 
