@@ -1,6 +1,23 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
+  Session.setDefault("stuff", 0);
+
+  var stuffs = [
+    'scientific work', 'source codes', 'datasets', 'simulation results',
+    'experimental results', 'analysis', 'observations',
+    'mathematical formulations', 'scripts', 'hypothesis', 'methods',
+  ];
+
+  Template.Landing.helpers({
+    stuff: () => stuffs[Session.get('stuff')],
+  });
+
+  Meteor.setInterval( function () {
+        Session.set("stuff", (Session.get("stuff") + 1)%stuffs.length);
+        console.log(Session.get("dateval"));
+    }, 2000 );
+
 
   Template.Team.helpers({
     members: () => [{
