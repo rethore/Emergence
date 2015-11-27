@@ -1,0 +1,277 @@
+<head>
+  <title>Emergence from Fractal Flows</title>
+</head>
+
+<body>
+  {{> Navbar }}
+  {{> Landing }}
+  {{> About }}
+  {{> Why }}
+  {{> How }}
+  {{> Features }}
+  {{> FAQ }}
+  {{> Team }}
+  {{> Organization }}
+  {{> Contact }}
+  {{> Footer }}
+</body>
+
+<template name="Navbar">
+  <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><strong><span class="color">Fractal Flows</span></strong></a>
+      </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#tf-home" class="page-scroll"><b>Home</b></a></li>
+        <li><a href="#tf-about" class="page-scroll"><b>About</b></a></li>
+        <li><a href="taketour" class="page-scroll"><b>How it Works</b></a></li>
+        <li><a href="#tf-team" class="page-scroll"><b>Team</b></a></li>
+        <!-- <li><a href="#tf-contact" class="page-scroll">Contact</a></li>-->
+        <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+</template>
+
+<!-- Landing text + button ================================================== -->
+<template name="Landing">
+  <div id="tf-home" class="text-center">
+    <div class="overlay">
+      <div class="content">
+        <h1><span class="emph">Emergence</span> from <strong>Fractal Flows</strong></h1>
+        <p class="lead">
+          Expose and Discover Scientific Work that Matters
+        </p>
+        <a class="btn btn-success btn-lg" role="button"
+           href="http://emergence.fractalflows.com" >
+          Try <strong>Emergence</strong> for free &#8594;
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- About The product ====================================================== -->
+<template name="About">
+  <div id="tf-about" class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box yellow-box" style="">
+          <span style="font-size: x-large">&#x1f4a1;</span>
+            <span style="color: #8b0000; font-weight: bold">knowledge bits</span>
+            are numerical bits, files,
+            containing simulation results, experimental results, analysis,
+            datasets, detailed mathematical formulations, scripts, source code,
+            etc. They could also be files containing statement of assumptions,
+            hypothesis and methodologies. Knowledge bits are essentially the atomic
+            particules composing a scientific work, while the associated scientific
+            publication is merely its projection on a piece of (digital) paper.
+        </div>
+        <div class="box pink-box">
+            On <strong>Emergence</strong> you can expose and discover scientific
+            work - knowledge bits - that matter to you.
+            You can create meaningful relationships between knowledge bits accessible
+            on external web services (e.g. github, zenodo, dropbox, by email).
+        </div>
+        <div class="box blue-box">
+            On <strong>Emergence</strong> You can create meaningful relationship
+            between existing knowledge bits accessible on other external web services
+            (e.g. github, zenodo, dropbox, by email).
+        </div>
+        <div class="box green-box">
+            On <strong>Emergence</strong> you can see all the external activity
+            surrounding a scientific work, even after its publication.
+            <ul style="margin-left: 20px;">
+              <li>Has the work been used for anything meaningful? </li>
+              <li>What are the other experts saying about this work?</li>
+              <li>Is the dataset or source code available somewhere?</li>
+              <li>As this work been reproduced sucessfully?</li>
+            </ul>
+        </div>
+        <div class="box yellow-box">
+            On <strong>Emergence</strong> engineers, scientists, researchers,
+            and students collaborate and emerge their knowledge from the chaos
+            of scientific articles and publications.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="about-text">
+          <div class="section-title">
+            <h2>The problem</h2>
+            <hr>
+          <div class="clearfix"></div>
+        </div>
+        <p class="intro">
+          Every year there are more than <u>2 million</u> articles that are
+          published in scientific peer-review journals. Unfortunately, only a
+          small fraction of those will be reproducible. Even worst, hidden under
+          those millions of articles there is an even greater number of hypothesis,
+          methodologies, simulation results, experimental results, analysis, datasets,
+          mathematical formulations, assumptions, scripts, source code, etc.
+          <strong><u>(a.k.a knowledge bits)</u></strong> that will never see the
+          light of day, and will slowly rote, submerged, deep inside the abyss of
+          the authors' brains or hard disks. These knowledge bits could be extremely
+          important to assess the reproducibility of the articles, and to actually
+          make the articles more useful for others. But unfortunately, for
+          multiple-reasons, the system discourage the authors to share those
+          knowledge bits. As a result we see a Tsunamy of low quality publications,
+          which saturates the attention of engineers, reduces the speed of scientific
+          progress and waste an enormous amount of time and money for society.
+        </p>
+        <div class="space"></div>
+        <div class="section-title">
+          <h2>The solution</h2>
+          <hr>
+        <div class="clearfix"></div>
+      </div>
+        <p class="intro">We, at <strong>FractalFlows</strong>, are developing a
+          web app called <strong>Emergence</strong> that allows anyone to create
+          meaningful relationship between articles and its associated knowledge
+          bits spread over the deep web. This empowers scientist, engineers and
+          students to quickly discover the relevant scientific activities of
+          an article. More importantly, it allows them to see if an article is
+          worth their time, if it has been useful in their field, if it has been reproduced.
+          Is the data and source code featured in an article available somewhere?
+          Thus (1) making it easier for to search, discover,
+          collaborate, share, acquire and exchange the necessary knowledge bits
+          revolving around a given article, and (2) making the article significantly
+          more useful and impactful!
+        </p>
+        <p class="intro">
+          <strong>Emergence</strong> is integrated with <u>Github</u> and the
+          <u>DOI</u> network (..and more to come). <strong>Integrations</strong>
+          with external tools let you quickly see the activity happening on external
+          webservices from Emergence in a way that's timely, relevant, and searchable.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+
+<!-- <hr width="100%"> -->
+<!--
+<p class="intro"><strong>Emergence from Fractal Flows</strong> is an online exchange system that makes it easier for engineers, scientists, researchers and students to search, discover, collaborate, acquire and exchange engineering information, data and knowledge products. The exchange system integrates and links networks of knowledge repositories and tracks their evolution and <strong>emerge</strong> a value from the perspective of various communities.</p>
+-->
+
+<!--                        <p class="intro"><strong>What we consider as Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, source code, licenses to simulation code, etc.</p>
+                  <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
+                  <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub and Zenodo.</p>
+
+                  <ul class="about-list">
+                      <li>
+                          <span class="fa fa-dot-circle-o"></span>
+                          <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
+                      </li>
+                      <li>
+                          <span class="fa fa-dot-circle-o"></span>
+                          <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
+                      </li>
+                      <li>
+                          <span class="fa fa-dot-circle-o"></span>
+                          <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
+                      </li>
+                  </ul>
+-->
+
+
+<template name="Why">
+</template>
+
+<template name="How">
+</template>
+
+<template name="Features">
+</template>
+
+<template name="FAQ">
+</template>
+
+<template name="Organization">
+</template>
+
+<template name="Benefits">
+  <!-- Tour the benefits Section
+  ==========================================
+  -->
+  <div id="tf-benefits" class="text-center">
+    <div class="overlay">
+      <div class="section-title center">
+        <h2><strong>Benefits</strong></h2>
+        <div class="line"><hr></div>
+        <div class="clearfix"></div>
+        <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: 400px; border: black 2px solid">
+        <span>Check out how it works! Learn what Emergence from Fractal Flows can do for you.</span>
+        <a class="btn btn-success btn-lg" href="taketour" role="button">Take a tour &#8594;</a>
+        </p>
+      </div>
+      <div class="space"></div>
+    </div>
+  </div>
+</template>
+
+
+<template name="Team">
+  <div id="tf-team" class="text-center">
+    <div class="overlay">
+      <div class="container">
+        <div class="section-title center">
+          <h2><strong>The team</strong></h2>
+          <div class="line"><hr></div>
+        </div>
+        <div id="team" class="row">
+          {{#each members}}
+            <div class="col-sm-6 thumbnail">
+              <img src="img/{{img}}" alt="..." class="img-circle team-img">
+              <div class="caption">
+                <h3>{{ name }}</h3>
+                <p>{{ title }}</p>
+                <!-- Note: 3{} instead of 2{} renders the html passed through the variable -->
+                <p>{{{ experience }}}</p>
+                <p>
+                  {{#each meta }}
+                    <a href="{{ url }}"><i class="fa {{ icon }}"></i></a>
+                  {{/each}}
+                </p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="Contact">
+</template>
+
+
+<template name="Footer">
+  <nav id="footer">
+        <div class="container">
+            <div class="pull-left fnav">
+                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>
+            </div>
+            <div class="pull-right fnav">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</template>
