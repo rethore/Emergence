@@ -24,7 +24,7 @@ if (Meteor.isClient) {
         'name': 'Imad Abdallah',
         'title': 'CEO - Founder',
         'experience': 'MSc & PhD wind energy.<br>Senior mechanical engineer in wind energy.',
-        'img': '/team/01.jpg',
+        'img': 'team/01.jpg',
         'meta':[
           { 'url': 'https://dk.linkedin.com/in/imadabdallah',
             'icon': 'fa-linkedin-square'},
@@ -34,7 +34,7 @@ if (Meteor.isClient) {
         'name': 'Pierre-Elouan Rethore',
         'title': 'CTO - Founder',
         'experience': 'MSc Comp.Sc. MSc & PhD Wind Energy.<br>Senior researcher in wind energy and computer science.',
-        'img': '/team/02.jpg',
+        'img': 'team/02.jpg',
         'meta': [{
           'url':'https://dk.linkedin.com/in/rethore',
           'icon': 'fa-linkedin-square' },{
