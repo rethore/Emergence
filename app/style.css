@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+<@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400);
 
 body, html{
@@ -160,13 +160,17 @@ font-weight: 900;
 .emph {
   font-weight: bold;
   color: #FCAC45;
+  font-size: xx-large
 }
-
+.emph2 {
+  font-weight: bold;
+  color: white;
+  font-size: xx-large
+}
 
 /* Home Style of the tour page*/
 #tf-home-tour{
-	/*background: url(../img/Pomeroy-Kirpich-Wave-of-the-Future.jpg);*/
-	background: url('img/Emergence.jpg');
+	background: url('../img/Emergence.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;

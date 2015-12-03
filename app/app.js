@@ -1,12 +1,16 @@
+Router.configure({
+    layoutTemplate: 'main' // this is the main template
+});
+
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
   Session.setDefault("stuff", 0);
 
   var stuffs = [
-    'scientific work', 'source codes', 'datasets', 'simulation results',
-    'experimental results', 'analysis', 'observations',
-    'mathematical formulations', 'scripts', 'hypothesis', 'methods',
+    'datasets, source code & results', 'simulation & experimental results',
+    'mathematical formulations', 'analysis, methods & observations', 'assumptions, hypothesis & methodologies',
   ];
 
   Template.Landing.helpers({
@@ -14,7 +18,7 @@ if (Meteor.isClient) {
   });
 
   Meteor.setInterval( function () {
-        Session.set("stuff", (Session.get("stuff") + 1)%stuffs.length);
+        Session.set("stuff", (Session.get("stuff") + 4)%stuffs.length);
         console.log(Session.get("dateval"));
     }, 2000 );
 
@@ -47,8 +51,8 @@ if (Meteor.isClient) {
   });
 
 
-
-  //
+// THIS IS NOT WORKING...
+    //javascript jquery code to make navigation bar turn white background when scrolling starts
   $(document).ready(function(){
      var scroll_start = 0;
      var startchange = $('.nav');
@@ -61,9 +65,11 @@ if (Meteor.isClient) {
          } else {
             $('.navbar-default').css('background-color', 'transparent');
             $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
-         }
+        }
      });
   });
+
+
   //
   // $(document).ready(function(){
   // //Examples of how to assign the Colorbox event to elements
@@ -99,3 +105,11 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+
+Router.route('/', {
+    name: 'home',
+    template: 'home'
+});
+Router.route('/about');
+Router.route('/HowItWorks');
