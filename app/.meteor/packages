@@ -22,3 +22,4 @@ twbs:bootstrap
 fortawesome:fontawesome
 miro:mailchimp
 reactive-var
+iron:router
