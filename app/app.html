@@ -54,6 +54,25 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <script>
+    // THIS IS NOW WORKING...
+    //javascript jquery code to make navigation bar turn white background when scrolling starts
+      $(document).ready(function(){
+         var scroll_start = 0;
+         var startchange = $('.nav');
+         var offset = startchange.offset();
+         $(document).scroll(function() {
+            scroll_start = $(this).scrollTop();
+            if(scroll_start > offset.top) {
+                $('.navbar-default').css('background-color', 'rgb(255,255,255)');
+                $('.navbar-default').css('border-color', 'rgb(231,76,60)');
+             } else {
+                $('.navbar-default').css('background-color', 'transparent');
+                $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
+            }
+         });
+      });
+  </script>
 </template>
 
 <!-- Landing text + button ================================================== -->
@@ -69,7 +88,6 @@
             <br>
             <span> detailed mathematical formulations, detailed analysis, background assumptions, hypothesis & methodologies, etc.</span>
         </h3>
-          <!-- Landing text + button           <span class="emph2"><i>{{stuff}}</i></span> -->
         <br>
         <br>
         <br>
@@ -568,4 +586,3 @@
       <hr width="100%">
     </div>
 </template>
-
