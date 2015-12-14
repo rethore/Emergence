@@ -81,6 +81,23 @@ ul, ol{
 }
 
 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 400px;
+    height: 250px;
+    background-color: lightgrey;
+}
+
+.flex-item {
+    background-color: cornflowerblue;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+
+
 /* Navigation */
 #tf-menu {
 	padding: 20px;
@@ -131,9 +148,9 @@ font-weight: 900;
 
 
 
-/* Home Style */
+/* Home Style*/
 #tf-home{
-	background: url(../img/chaos.gif);
+	background: url('../img/Picture1.png');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -164,7 +181,6 @@ font-weight: 900;
 }
 .emph2 {
   font-weight: bold;
-  color: white;
   font-size: xx-large
 }
 
@@ -219,7 +235,7 @@ a.fa.fa-angle-down:hover{
 }
 
 /* About Section */
-#tf-about{
+#tf-ProblemDef{
 	padding: 80px 0;
 }
 ul.about-list{ margin: 30px 0 0 ;}
@@ -745,11 +761,11 @@ nav#footer p{
 }
 
 
-/* Colorful boxes style defintions */
+/* Colorful boxes style definitions */
 div.box  {
 	color: black;
 	padding: 10px;
-	width: 400px;
+	width: 300px;
 	border-radius: 20px;
 	text-align: left;
 	border: black 2px solid;
@@ -775,4 +791,25 @@ div.blue-box {
 div.green-box {
 	background-color: #83DD9E;
 	margin-left: 80px;
+}
+
+
+div.box_frame{
+	height: 205px;
+    width: 300px;
+	display:block;
+    float: left;
+    background-color: white; /* standard background color */
+    border: 1px solid #898989;
+    border-radius: 11px;
+    padding: 2px;
+    margin-left:12%;
+    text-align: center;
+    /* change border to be inside the box */
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+div.box_frame:first-child{
+    margin-left: 0;
 }

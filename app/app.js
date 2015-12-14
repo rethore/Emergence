@@ -9,8 +9,8 @@ if (Meteor.isClient) {
   Session.setDefault("stuff", 0);
 
   var stuffs = [
-    'datasets, source code & results', 'simulation & experimental results',
-    'mathematical formulations', 'analysis, methods & observations', 'assumptions, hypothesis & methodologies',
+    'datasets', 'scripts & source code', 'simulation results', 'experimental results',
+    'detailed mathematical formulations', 'detailed analysis', 'assumptions, hypothesis & methodologies',
   ];
 
   Template.Landing.helpers({
@@ -52,7 +52,7 @@ if (Meteor.isClient) {
 
 
 // THIS IS NOT WORKING...
-    //javascript jquery code to make navigation bar turn white background when scrolling starts
+//javascript jquery code to make navigation bar turn white background when scrolling starts
   $(document).ready(function(){
      var scroll_start = 0;
      var startchange = $('.nav');

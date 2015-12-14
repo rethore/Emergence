@@ -12,15 +12,15 @@
 
 <!-- This is the About page================================================== -->
 <template name="about">
-    {{> About}}
+    {{> Problemdef}}
+    {{> tf_tour_story_start}}
+    {{> Mailing2}}
 </template>
 
 <!-- This is the how it works page================================================== -->
 <template name="HowItWorks">
     {{> tf_home_tour}}
-    {{> tf_tour_story_student}}
-    {{> tf_tour_story_researcher}}
-    {{> tf_tour_story_engineer}}
+    {{> tf_tour_whattodo}}
     {{> tf_tour_story_start}}
     {{> Mailing}}
 </template>
@@ -47,8 +47,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="about" class="page-scroll"><b>About</b></a></li>
-            <li><a href="HowItWorks" class="page-scroll"><b>How it Works</b></a></li>
+            <li><a href="about" class="page-scroll"><b>Learn more</b></a></li>
+            <li><a href="HowItWorks" class="page-scroll"><b>Features</b></a></li>
             <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -61,14 +61,16 @@
   <div id="tf-home" class="text-center">
     <div class="overlay">
       <div class="content">
-        <h1><strong><span class="emph">Emergence</span> from Fractal Flows</strong></h1>
+        <h1 class="emph"><strong>Emergence from Fractal Flows</strong></h1>
         <br>
+        <span class="emph2">An app to expose and discover the hidden work behind scientific publications</span>
+        <h3>
+            <span> Expose and discover files containing datasets, scripts, source code, simulation results, experimental results,</span>
+            <br>
+            <span> detailed mathematical formulations, detailed analysis, background assumptions, hypothesis & methodologies, etc.</span>
+        </h3>
+          <!-- Landing text + button           <span class="emph2"><i>{{stuff}}</i></span> -->
         <br>
-        <span class="emph2">A web app to expose and discover the hidden...</span>
-        <br>
-        <span class="emph2"><i>{{stuff}}</i></span>
-        <br>
-        <span class="emph2">behind scientific and engineering publications</span>
         <br>
         <br>
         <a class="btn btn-success btn-lg" role="button"
@@ -81,21 +83,23 @@
 </template>
 
 <!-- About The product ====================================================== -->
-<template name="About">
-  <div id="tf-about" class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box yellow-box" style="">
+<template name="Problemdef">
+  <div id="tf-Problemdef">
+      <br><br><br><br><br>
+    <div class="container">
+      <div class="col-md-4">
+          <div class="box yellow-box" style="">
           <span style="font-size: x-large">&#x1f4a1;</span>
             <span style="color: #8b0000; font-weight: bold">knowledge bits</span>
             are numerical bits, files,
             containing simulation results, experimental results, analysis,
             datasets, detailed mathematical formulations, scripts, source code,
             etc. They could also be files containing statement of assumptions,
-            hypothesis and methodologies. Knowledge bits are essentially the atomic
-            particules composing a scientific work, while the associated scientific
+            hypothesis and methodologies. Knowledge bits are the hidden backbone, essentially the atomic
+            particles composing a scientific work, while the associated scientific
             publication is merely its projection on a piece of (digital) paper.
         </div>
+          <!-- About The product ======================================================
         <div class="box pink-box">
             On <strong>Emergence</strong> you can expose and discover scientific
             work - knowledge bits - that matter to you.
@@ -122,90 +126,103 @@
             and students collaborate and emerge their knowledge from the chaos
             of scientific articles and publications.
         </div>
+      -->
+
       </div>
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="about-text">
           <div class="section-title">
             <h2>The problem</h2>
              <hr>
             <div class="clearfix"></div>
           </div>
-        <p class="intro">
-          Every year there are more than <u>2 million</u> articles that are
-          published in scientific peer-review journals. Unfortunately, only a
-          small fraction of those will be reproducible. Even worst, hidden under
-          those millions of articles there is an even greater number of hypothesis,
-          methodologies, simulation results, experimental results, analysis, datasets,
-          mathematical formulations, assumptions, scripts, source code, etc.
-          <strong><u>(a.k.a knowledge bits)</u></strong> that will never see the
-          light of day, and will slowly rote, submerged, deep inside the abyss of
-          the authors' brains or hard disks. These knowledge bits could be extremely
-          important to assess the reproducibility of the articles, and to actually
-          make the articles more useful for others. But unfortunately, for
-          multiple-reasons, the system discourage the authors to share those
-          knowledge bits. As a result we see a Tsunamy of low quality publications,
-          which saturates the attention of engineers, reduces the speed of scientific
-          progress and waste an enormous amount of time and money for society.
-        </p>
-        <div class="space"></div>
-        <div class="section-title">
-          <h2>The solution</h2>
-          <hr>
-          <div class="clearfix"></div>
+            <p class="intro">
+              Every year there are over <u>2 million</u> articles that are
+              published in scientific peer-review journals. Unfortunately, only a
+              small fraction of those will be reproducible. Even worst, hidden under
+              the millions of articles there is an even greater number of simulation results, experimental results, detailed analysis, datasets,
+              detailed mathematical formulations, description of assumptions, hypothesis and methodologies, scripts, source code, etc.
+              <strong><u>(a.k.a knowledge bits)</u></strong> that will never see the
+              light of day, and will slowly rote, submerged, deep inside the abyss of
+              the authors' brains or hard disks. These knowledge bits could be extremely
+              important to assess the reproducibility of articles, and to actually
+              make the articles more useful for others. Unfortunately, for
+              multiple-reasons, the system does not offer incentives (even discourages) the authors to share those
+              knowledge bits. As a result we see a Tsunamy of low quality publications
+              which saturates the attention of engineers, reduces the speed of scientific
+              progress and waste an enormous amount of time and money for society.
+            </p>
+            <div class="space"></div>
+            <div class="section-title">
+              <h2>The solution</h2>
+              <hr>
+              <div class="clearfix"></div>
+            </div>
+            <p class="intro">We, at <strong>FractalFlows</strong>, are developing an
+              app called <strong>Emergence</strong> that allows anyone to create
+              relationships between articles and their associated knowledge
+              bits on the web. This empowers scientist, researchers, engineers and students to quickly discover
+              the relevant scientific activities behind an article. Emergence allows anyone to expose (register) knowledge bits related to an article.
+              Emergence allows anyone to search and access the knowledge bits featured in an article.
+              Emergence allows anyone to register a reproduction of the results in an article, and by doing so, one will
+              have to register the associated new knowledge bits. Thus (1) making it easier to search, discover,
+              collaborate, share, acquire and exchange the necessary knowledge bits revolving around a given article, and
+              (2) making an article significantly more useful and impactful!
+            </p>
+          </div>
         </div>
-        <p class="intro">We, at <strong>FractalFlows</strong>, are developing a
-          web app called <strong>Emergence</strong> that allows anyone to create
-          meaningful relationship between articles and its associated knowledge
-          bits spread over the deep web. This empowers scientist, engineers and
-          students to quickly discover the relevant scientific activities of
-          an article. More importantly, it allows them to see if an article is
-          worth their time, if it has been useful in their field, if it has been reproduced.
-          Is the data and source code featured in an article available somewhere?
-          Thus (1) making it easier for to search, discover,
-          collaborate, share, acquire and exchange the necessary knowledge bits
-          revolving around a given article, and (2) making the article significantly
-          more useful and impactful!
-        </p>
-        <div class="space"></div>
-        <div class="section-title">
-          <h2>Features</h2>
-          <hr>
-          <div class="clearfix"></div>
-        </div>
-        <p class="intro">
-          <strong>Emergence</strong> is integrated with <u>Github</u> and the
-          <u>DOI</u> network (..and more to come). <strong>Integrations</strong>
-          with external tools let you quickly see the activity happening on external
-          webservices from Emergence in a way that's timely, relevant, and searchable.
-        </p>
-      </div>
     </div>
+        <hr width="100%">
   </div>
-</div>
 </template>
+
+
 
 <template name="Mailing">
   <div id="Mailing" class="text-center">
-  <div class="overlay">
-    <div class="section-title center">
-      <h2><strong>Do you want to be kept in the loop?</strong></h2>
-      <div class="line"><hr></div>
-      <div class="clearfix"></div>
-    <p>
-      We are soon going to send invitations. Are you interested
-      to be one of the firsts to test Emergence?
-    </p>
-    <form id="mailing-list" class="form-inline">
-      <div class="form-group">
-        <label hidden for="emailAddress">Email</label>
-        <input type="email" name="emailAddress" class="form-control"
-               id="emailAddress" placeholder="your.email@gmail.com">
+      <div class="overlay">
+        <div class="section-title center">
+          <h2><strong>Do you want to be kept in the loop?</strong></h2>
+          <div class="line"><hr></div>
+          <div class="clearfix"></div>
+        <p>
+          We are soon going to send invitations. Are you interested
+          to be one of the firsts to test Emergence?
+        </p>
+        <form id="mailing-list" class="form-inline">
+          <div class="form-group">
+            <label hidden for="emailAddress">Email</label>
+            <input type="email" name="emailAddress" class="form-control"
+                   id="emailAddress" placeholder="your.email@gmail.com">
+          </div>
+          <button type="submit" class="btn btn-success">Sign Me Up!</button>
+          <label class="error-message"></label>
+        </form>
+        </div>
       </div>
-      <button type="submit" class="btn btn-success">Sign Me Up!</button>
-      <label class="error-message"></label>
-    </form>
-    </div>
   </div>
+</template>
+
+
+
+<template name="Mailing2">
+  <div id="Mailing" class="text-center">
+      <div class="overlay">
+        <div class="section-title center">
+          <h2><strong>Interested in what we’re doing? Get in touch with us.</strong></h2>
+          <div class="line"><hr></div>
+          <div class="clearfix"></div>
+        <form id="mailing-list" class="form-inline">
+          <div class="form-group">
+            <label hidden for="emailAddress">Email</label>
+            <input type="email" name="emailAddress" class="form-control"
+                   id="emailAddress" placeholder="your.email@gmail.com">
+          </div>
+          <button type="submit" class="btn btn-success">Sign Me Up!</button>
+          <label class="error-message"></label>
+        </form>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -337,7 +354,7 @@
     <div id="tf-home-tour" class="text-center">
         <div class="overlay">
             <div class="content">
-                <h1><span class="emph2"><strong>Your portal to expose and discover</strong></span></h1>
+                <h1><span class="emph2"><strong>Your portal to expose and discover the hidden</strong></span></h1>
                 <h1><span class="emph2"><strong>knowledge bits behind scientific publications</strong></span></h1>
                 <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: 400px; border: black 2px solid">
                     <span>Let's get started with <b><i>Emergence</i></b>. Watch the following video to learn how it works!</span>
@@ -381,37 +398,94 @@
 
 -->
 
-<!-- take a tour story     ==========================================-->
+
+<!-- take a tour story     ==========================================
 <template name="tf_tour_story_student">
     <div id="tf-tour-story_student">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                <!--
-                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
-                 -->
                 </div>
                 <div class="col-md-6">
-                    <div class="about-text">
-                        <div class="section-title">
                         <div class="section-title">
                             <h2><strong> As a student I can...</strong></h2>
                             <hr>
                             <div class="clearfix"></div>
                         </div>
-                                <li>Reproduce the results in an article.</li>
-                                <li>Request others to reproduce the results in my article.</li>
-                                <li>Share my knowledge products with my colleagues all over the world.</li>
-                                <li>Access knowledge products for free.</li>
-                                <li>Learn easily about the latest trends in engineering and science research.</li>
-                                <li>Reformulate complicated scientific text into simpler description for people like me to understand it.</li>
-                                <li>Easily identify the current scientific consensus.</li>
-                                <li>Get help solving theoretical problems I am having.</li>
-                        </div>
+                         <li>Reproduce the results in an article.</li>
+                         <li>Request others to reproduce the results in my article.</li>
+                         <li>Share my knowledge products with my colleagues all over the world.</li>
+                         <li>Access knowledge products for free.</li>
+                         <li>Learn easily about the latest trends in engineering and science research.</li>
+                         <li>Reformulate complicated scientific text into simpler description for people like me to understand it.</li>
+                         <li>Easily identify the current scientific consensus.</li>
+                         <li>Get help solving theoretical problems I am having.</li>
+                </div>
+            </div>
+        </div>
+        <hr width="100%">
+    </div>
+</template> -->
+
+
+<!-- take a tour story     ==========================================-->
+<template name="tf_tour_whattodo">
+    <div id="tf-tour-tf_tour_whattodo">
+        <br><br><br><br><br>
+        <div class="text-center">
+            <h2><strong> WHAT CAN I DO WITH EMERGENCE?</strong></h2>
+            <h3>We simply want you to spend less time looking and more time making</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="box box_frame">
+                        <h3>Register knowledge bits</h3>
+                        <p>Register the knowledge bits used in an article OR register any related knowledge bits which could potentially be useful for that same article.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box box_frame">
+                        <h3>Access knowledge bits</h3>
+                        <p>Search for an article by title, keyword or DOI number and access its registered knowledge bits, for free.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box box_frame">
+                        <h3>Raise issues & requests</h3>
+                        <p>If knowledge bits related to an article are not available, one can raise a request for others to register related knowledge bits.
+                        One can also raise issues about existing knowledge bits.</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="box box_frame">
+                        <h3>External integrations</h3>
+                        <p>Emergence is integrated with <u>Github</u> and the
+                        <u>DOI</u> network (..and more to come). Integrations with external tools let you quickly see the activities happening on external
+                        webservices from Emergence.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box box_frame">
+                        <h3>Register reproductions</h3>
+                        <p>Make an article significantly more impactful by reproducing or requesting others to reproduce the results in it. By doing so, one will have to show how they
+                        reproduced the results by registering their new knowledge bits.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="box box_frame">
+                        <h3>Knowledge bits networks</h3>
+                        <p>Share knowledge bits related to an article with colleagues from all over the world, and create meaningful relationships between existing
+                        knowledge bits accessible on other external web services (e.g. github, zenodo, dropbox, email, etc.)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
         <hr width="100%">
     </div>
 </template>
@@ -423,7 +497,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="about-text">
                         <div class="section-title">
                             <h2><strong> As a researcher I can...</strong></h2>
                             <hr>
@@ -437,7 +510,6 @@
                                 <li>Measure how much impact my work has had.</li> -->
                                 <li>Get feedback on my research/data/code/experiment/results/article/etc. in the very early stages of my article publication.</li>
                                 <li>Discover new colleagues and new knowledge products where I least expect to find them.</li>
-                    </div>
                 </div>
                 <div class="col-md-6">
                 <!--
@@ -464,7 +536,6 @@
                 -->
                 </div>
                 <div class="col-md-6">
-                    <div class="about-text">
                         <div class="section-title">
                             <h2><strong> As an engineer I can...</strong></h2>
                             <hr>
@@ -476,7 +547,6 @@
                               <!--  <li>Ask/motivate the development teams to add new features / fix bugs.</li>
                                 <li>Access private datasets.</li>
                                 <li>Ask questions to the relevant experts.</li>-->
-                    </div>
                 </div>
             </div>
         </div>
@@ -489,20 +559,13 @@
 <!-- Use Emergence from Fractal Flows    ==========================================-->
 <template name="tf_tour_story_start">
     <div id="tf-tour-story_start" class="text-center">
-        <div class="overlay">
-            <div class="section-title center">
-                        <div class="section-title">
-                            <h2><strong> Ready to give it a try?</strong></h2>
-                            <div class="clearfix"></div>
-                        </div>
-                        <p></p>
-                        <p></p>
-                        <a class="btn btn-success btn-lg" href="http://emergence.fractalflows.com" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
-            </div>
-        </div>
-        <hr width="100%">
+        <div class="section-title center">
+            <h2><strong> Ready to give it a try? let´s go.</strong></h2>
+            <div class="line"><hr></div>
+            <div class="clearfix"></div>
+            <a class="btn btn-success btn-lg" href="http://emergence.fractalflows.com" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
+      </div>
+      <hr width="100%">
     </div>
 </template>
-
-
 
