@@ -51,23 +51,27 @@ if (Meteor.isClient) {
   });
 
 
-// THIS IS NOT WORKING...
-    //javascript jquery code to make navigation bar turn white background when scrolling starts
-  $(document).ready(function(){
-     var scroll_start = 0;
-     var startchange = $('.nav');
-     var offset = startchange.offset();
-     $(document).scroll(function() {
-        scroll_start = $(this).scrollTop();
-        if(scroll_start > offset.top) {
-            $('.navbar-default').css('background-color', 'rgb(255,255,255)');
-            $('.navbar-default').css('border-color', 'rgb(231,76,60)');
-         } else {
-            $('.navbar-default').css('background-color', 'transparent');
-            $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
-        }
-     });
-  });
+Template.Navbar.helpers({
+  rendered: function(){
+    // THIS IS NOT WORKING...
+        //javascript jquery code to make navigation bar turn white background when scrolling starts
+      $(document).ready(function(){
+         var scroll_start = 0;
+         var startchange = $('.nav');
+         var offset = startchange.offset();
+         $(document).scroll(function() {
+            scroll_start = $(this).scrollTop();
+            if(scroll_start > offset.top) {
+                $('.navbar-default').css('background-color', 'rgb(255,255,255)');
+                $('.navbar-default').css('border-color', 'rgb(231,76,60)');
+             } else {
+                $('.navbar-default').css('background-color', 'transparent');
+                $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
+            }
+         });
+      });
+  },
+});
 
 
   //
@@ -113,3 +117,7 @@ Router.route('/', {
 });
 Router.route('/about');
 Router.route('/HowItWorks');
+Router.route('/emergence/doi/:_doi', function() {
+    this.render('DOI', {data: {doi: this.params._doi}})
+      //() => URI.findOne({doi: this.params._doi});})
+});
