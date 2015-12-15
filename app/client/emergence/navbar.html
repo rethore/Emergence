@@ -1,0 +1,82 @@
+<template name="DOI_Navbar">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        {{> DOI_Title publication}}
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        {{> DOI_Menubar }}
+      </div>
+    </div>
+  </nav>
+</template>
+
+
+<template name="DOI_Title">
+  <div class="container">
+    <h2 id="title_article">{{ title }}.</h2>
+    <div id="authors">
+        by
+        {{#each author}}
+            {{ last }}, {{ first }};
+        {{/each}}
+    </div>
+    <span id="journal">
+        {{ journal }}.
+    </span>
+    <span id="year">
+        {{ year }}.
+    </span>
+    <a id="link" href="{{ publi.url }}">{{ doi }}</a>
+  </div>
+</template>
+
+
+<template name="DOI_Menubar">
+  <ul class="nav navbar-nav navbar-left">
+    {{#each item }}
+      {{#if href }}
+        <li>
+            <a href="{{ href }}">
+                {{#if icon }}<i class="fa {{ item.icon }}"></i> {{/if}}
+                {{ text }}
+            </a>
+        </li>
+      {{else}}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+             role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa {{ item.icon }}"></i>
+            {{ text }}
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {{#each items }}
+                {{#if separator }}
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">{{ text }}</li>
+                {{else}}
+                  <li>
+                    {{#if modal}}
+                        <a href="#" data-toggle="modal" data-target="#{{ item2.modal.id }}">
+                          {{#if icon }}<i class="fa {{ item2.icon }}"></i> {{/if}}
+                          {{ text }}
+                        </a>
+                    {{else}}
+                      <a href="{{ href }}">
+                        {{#if icon }}<i class="fa {{ item2.icon }}"></i> {{/if}}
+                        {{ text }}
+                      </a>
+                    {{/if}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+
+<!-- Align right -->
+  <ul class="nav navbar-nav navbar-right">
+  </ul>
+</template>
