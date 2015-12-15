@@ -4,16 +4,27 @@ UI.registerHelper("there_is", function(value){
 });
 
 Template.DOI_Navbar.helpers({
-  publication: {
-    title: 'Emergence from Fractal Flows',
-    journal: 'Emergence Science',
-    year: 2015,
-    author: [
-      {first: 'Imad', last: 'Abdallah'},
-      {first: 'Pierre-Elouan', last: 'Rethore'},
-    ],
-    url: "http://google.com"
-},
+  publication: function(){
+    let publi = URI.findOne({doi: this.doi});
+    if ( typeof publi == "undefined" ) {
+      Meteor.call('register', doi=this.doi);
+      return {
+          title: 'loading ...',
+      }
+    } else {
+      return publi;
+    }},
+
+//   {
+//     title: 'Emergence from Fractal Flows',
+//     journal: 'Emergence Science',
+//     year: 2015,
+//     author: [
+//       {first: 'Imad', last: 'Abdallah'},
+//       {first: 'Pierre-Elouan', last: 'Rethore'},
+//     ],
+//     url: "http://google.com"
+// },
 });
 
 Template.DOI_Menubar.helpers({

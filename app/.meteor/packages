@@ -25,3 +25,7 @@ iron:router
 http
 bruz:github-api
 momentjs:moment
+meteorhacks:npm
+
+
+npm-container

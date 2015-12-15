@@ -39,7 +39,10 @@ Template.DOI_Related.helpers({
 
 Template.DOI_Related.events({
   "click .rest-call": function(event, template){
+      Meteor.call('google', 'what');
+      console.log('hello');
       Meteor.call('github', 'rethore', 'waketor', this.doi);
+
 
     // NOT REACTIVE ENOUGH!?!
     //   HTTP.get(url, function(err, res) {
