@@ -2,10 +2,10 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        {{> DOI_Title publication}}
+        {{> DOI_Title publication }}
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        {{> DOI_Menubar }}
+        {{> DOI_Menubar publication }}
       </div>
     </div>
   </nav>
@@ -35,10 +35,10 @@
 <template name="DOI_Menubar">
   <ul class="nav navbar-nav navbar-left">
     {{#each item }}
-      {{#if href }}
+      {{#if there_is "href" }}
         <li>
             <a href="{{ href }}">
-                {{#if icon }}<i class="fa {{ item.icon }}"></i> {{/if}}
+                {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                 {{ text }}
             </a>
         </li>
@@ -46,7 +46,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
              role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fa {{ item.icon }}"></i>
+            <i class="fa {{ icon }}"></i>
             {{ text }}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -58,12 +58,12 @@
                   <li>
                     {{#if modal}}
                         <a href="#" data-toggle="modal" data-target="#{{ item2.modal.id }}">
-                          {{#if icon }}<i class="fa {{ item2.icon }}"></i> {{/if}}
+                          {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                           {{ text }}
                         </a>
                     {{else}}
                       <a href="{{ href }}">
-                        {{#if icon }}<i class="fa {{ item2.icon }}"></i> {{/if}}
+                        {{#if icon }}<i class="fa {{ icon }}"></i> {{/if}}
                         {{ text }}
                       </a>
                     {{/if}}
