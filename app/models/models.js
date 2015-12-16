@@ -1,4 +1,5 @@
 URI = new Mongo.Collection("uri");
+Relationships = new Mongo.Collection("relationships"); 
 
 Events = new Mongo.Collection("events");
 Events.allow({

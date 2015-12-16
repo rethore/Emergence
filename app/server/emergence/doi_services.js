@@ -1,5 +1,6 @@
 Meteor.publish("uri", () => URI.find());
 Meteor.publish("events", () => Events.find());
+Meteor.publish("relationships", () => Relationships.find());
 
 var github = new GitHub({
     version: "3.0.0", // required
@@ -37,6 +38,18 @@ var X_Ray = Meteor.npmRequire("x-ray");
 var xray = new X_Ray();
 
 Meteor.methods({
+  populate: function(doi) {
+    Relationships.find({doi: doi, type: "github"})
+      .forEach(function(c1) {
+        github.events.getFromRepo({user:c1.user, repo:c1.repo})
+          .forEach(function(c2) {
+            // Check that the event isn't already in the db
+            let item = Events.findOne({doi:doi, id:c2.id});
+            if (typeof item === 'undefined') {
+              // Add the event, with the doi and the origine
+              Events.insert(Object.assign(c2, {doi:doi, origine:{user:c1.user, repo:c1.repo}}));
+    }})})},
+
   /*
    * Get all the events from a repo and record the new ones in the event db
    */
@@ -97,5 +110,12 @@ Meteor.methods({
       console.log('res', result);
       URI.update({doi: doi}, {$set: {pdf_src: result}});
     }
-},
+  },
+
+  register_relationship: function(item) {
+    console.log("in the server", item);
+    Relationships.insert(item);
+    // Now update
+    Meteor.call("populate", item.doi);
+  },
 });

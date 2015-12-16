@@ -1,5 +1,6 @@
 Meteor.subscribe("uri");
 Meteor.subscribe("events");
+Meteor.subscribe("relationships");
 
 Session.setDefault("events", []);
 Session.setDefault("modalcontext", undefined);
@@ -20,22 +21,12 @@ UI.registerHelper('shortSHA', function(sha){
 });
 
 UI.registerHelper("not_undefined", function(val) {
-  return (typeof val == "undefined")
+  return (!typeof val == "undefined")
 })
 
-
-Template.ModalContext.helpers({
-  show_modal: () => (! typeof Session.get('modalcontext') === 'undefined'),
-  modalcontext: () => Session.get('modalcontext'),
-});
-
-// function() { return {
-//   title: "Register a relevant github repository",
-//   body: "body",
-//   id: "github",
-//   callback: "github_callback",
-//   helps: "here is some help",
-// }}
+UI.registerHelper("undefined", function(val) {
+  return (typeof val == "undefined")
+})
 
 
 Template.DOI_Summary.helpers({
@@ -60,7 +51,8 @@ Template.DOI_Related.helpers({
 
 Template.DOI_Related.events({
   "click .rest-call": function(event, template){
-      Meteor.call('github', 'rethore', 'waketor', this.doi);
+      Meteor.call('populate', this.doi);
+      //Meteor.call('github', 'rethore', 'waketor', this.doi);
 
 
     // NOT REACTIVE ENOUGH!?!

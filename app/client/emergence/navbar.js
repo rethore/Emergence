@@ -8,23 +8,8 @@ Template.DOI_Navbar.helpers({
     let publi = URI.findOne({doi: this.doi});
     if ( typeof publi == "undefined" ) {
       Meteor.call('register', doi=this.doi);
-      return {
-          title: 'loading ...',
-      }
-    } else {
-      return publi;
-    }},
-
-//   {
-//     title: 'Emergence from Fractal Flows',
-//     journal: 'Emergence Science',
-//     year: 2015,
-//     author: [
-//       {first: 'Imad', last: 'Abdallah'},
-//       {first: 'Pierre-Elouan', last: 'Rethore'},
-//     ],
-//     url: "http://google.com"
-// },
+      return {title: 'loading ...'}
+    } else {return publi}},
 });
 
 var menu = [
@@ -42,17 +27,14 @@ var menu = [
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
   {text: "Register", items: [
-    {text: "Author", icon: "fa-user",
-      modal: {
-        model: "Author",
-        title: "Register a new Author",
-        id: "authorModal",
-        address: "/author"
-      }},
-    {text: "Hypothesis", icon: "fa-question-circle",
+    {text: "Question", icon: "fa-question-circle",
       modal: {id: "hypothesisModal"}},
-    {text: "Method", icon: "fa-cogs",
+    {text: "Hypothesis / Method", icon: "fa-question-circle",
+      modal: {id: "hypothesisModal"}},
+    {text: "Experiment", icon: "fa-cogs",
       modal: {id: "methodModal"}},
+    {text: "Observation", icon: "fa-star-o",
+        modal: {id: "resultModal"}},
     {text: "Result", icon: "fa-star-o",
       modal: {id: "resultModal"}},
     {text: "Dataset", icon: "fa-database",
@@ -63,31 +45,19 @@ var menu = [
       modal: {id: "versionModal"}}]},
   {text: "Integrate", items: [
     {text: "Workspaces", separator: false},
-    {text: "Open Science Framework", icon: "fa-sun-o"},
-    {text: "Sharepoint", icon: "fa-windows"},
+    Meteor.elements.osf,
+    Meteor.elements.sharepoint,
+
     {text: "Repositories", separator: true},
-    {text: "Github,", icon: "fa-github-square",
-      modal: {id: "githubModal"}},
-    {text: "Gitlab", icon: "fa-git",
-      modal: {
-        model: "GitHub",
-        title: "Register a new gitlab repository",
-        id: "gitlabModal",
-        address: "/gitlab"
-      }},
-    {text: "Bitbucket", icon: "fa-bitbucket-square",
-      modal: {
-        model: "GitHub",
-        title: "Register a new bitbucket repository",
-        id: "bitbucketModal",
-        address: "/bitbucket"
-      }},
+    Meteor.elements.github,
+    Meteor.elements.gitlab,
+    Meteor.elements.bitbucket,
 
     {text: "Files", separator: true},
-    {text: "Dropbox", icon: "fa-dropbox"},
-    {text: "Box", icon: "fa-cube"},
-    {text: "Google Drive", icon: "fa-google"},
-    {text: "OwnCloud", icon: "fa-cloud"},
+    Meteor.elements.dropbox,
+    Meteor.elements.box,
+    Meteor.elements.googledrive,
+    Meteor.elements.owncloud,
 
     {text: "Open Access Publications", separator: true},
     {text: "Zenodo", icon: "fa-file-text-o"},
@@ -132,6 +102,22 @@ var menu = menu.map(function(obj1){
 });
 
 
+/*
+ * Get the corresponding item in the menu list (I know it's ugly, sorry)
+ * The .filter((e)=>e) is used to remove the empty/undefined elements in the
+ * arrays
+ */
+var find_in_menu = function(id) {
+  var item = menu.map(function(e){
+    if (e.id == id) return e;
+    if (e.hasOwnProperty('items')) {
+      // We do the same for the nested items
+      return e.items.map(function(e2){
+        if (e2.id == id) return e2}).filter((e3)=>e3)[0]}
+      }).filter((e)=>e)[0];
+  return item
+}
+
 Template.DOI_Menubar.helpers({
   item: () => menu,
 });
@@ -139,27 +125,33 @@ Template.DOI_Menubar.helpers({
 
 Template.DOI_Menubar.events({
   "click .navbar_link": function(event, template){
-      let id = event.target.id;
-
-      // Get the corresponding item in the menu list (I know it's ugly, sorry)
-      // The .filter((e)=>e) is used to remove the empty/undefined elements in the
-      // arrays
-      let item = menu.map(function(e){
-        if (e.id == id) return e;
-        if (e.hasOwnProperty('items')) {
-          // We do the same for the nested items
-          return e.items.map(function(e2){
-            if (e2.id == id) return e2}).filter((e3)=>e3)[0]}
-      }).filter((e)=>e)[0];
-
-      console.log(id, item);
-      Session.set('modalcontext', {
-          title: event.target.text,
-          body: "body",
-          callback: "github_callback",
-          helps: "here is some help",
-      });
+      // Get the corresponding item in the menu array
+      let item = find_in_menu(event.target.id);
+      item.doi = template.data.doi;
+      // Update the modal with its content
+      Session.set('modalcontext', item);
+      // Show the modal
       $('#modal').modal('show');
-      //console.log('click', event, template);
+  }
+});
+
+
+Template.ModalContext.helpers({
+  show_modal: () => (! typeof Session.get('modalcontext') === 'undefined'),
+  modalcontext: () => Session.get('modalcontext'),
+});
+
+
+Template.MainModal.events({
+  "submit .process": function(event, template){
+    event.preventDefault();
+    console.log("in submit", event, template)
+    // Get the corresponding item in the menu array
+    let item = find_in_menu(event.target.id);
+    // Call the function defined in the menu
+    var relationship = item.modal.callback(event, template);
+    console.log('registering the following relationship: ', relationship);
+    Meteor.call("register_relationship", relationship);
+    $('#modal').modal('hide');
   }
 });
