@@ -14,7 +14,7 @@
 
 <template name="DOI_Title">
   <div class="container">
-    <h2 id="title_article">{{ title }}.</h2>
+    <h3 id="title_article">{{ title }}.</h3>
     <div id="authors">
         by
         {{#each author}}
@@ -56,14 +56,14 @@
                   <li class="dropdown-header">{{ text }}</li>
                 {{else}}
                   <li>
-                    {{#if modal}}
-                        <a href="#" data-toggle="modal" data-target="#{{ item2.modal.id }}">
+                    {{#if there_is modal}}
+                        <a class="navbar_link" id="{{ id }}" href="#" data-toggle="modal" data-target="#{{ item2.modal.id }}">
                           {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                           {{ text }}
                         </a>
                     {{else}}
-                      <a href="{{ href }}">
-                        {{#if icon }}<i class="fa {{ icon }}"></i> {{/if}}
+                      <a class="navbar_link" id="{{ id }}" href="{{ href }}">
+                        {{#if there_is icon }}<i class="fa {{ icon }}"></i> {{/if}}
                         {{ text }}
                       </a>
                     {{/if}}

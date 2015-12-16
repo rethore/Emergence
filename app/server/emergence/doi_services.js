@@ -49,32 +49,53 @@ Meteor.methods({
           // Add the event, with the doi and the origine
           Events.insert(Object.assign(curr, {doi, origine:{user, repo}}));
   }})},
+
+  /*
+   * register is registering the URI in the database by calling several online
+   * services
+   */
   register: function(doi) {
     if (typeof URI.findOne({doi}) == "undefined") {
       crossref(doi);
     }
   },
-  google: function(query) {
-    console.log('in google', query);
 
-    // xray('http://reddit.com', '.content')(function(err, title) {
-    //   if (err) {
-    //     console.log('danm', err);
-    //   } else {
-    //   console.log('in xray', title); // Google
-    // }});
+  /*
+   * Sci-Hub is providing a link to the full text pdf.
+   *
+   * x-ray is crashing if sci-hub is crashing, so it's not very stable.
+   * There must be a way to catch the error of xray in order to avoid that,
+   * but I haven't fount it yet
+   * UNTIL THEN DO NOT USE.
+   *
+   * TODO: detect when the url is not responding before doing a query on xray
+   */
+  scihub: function(doi) {
+    console.log('in scihub', doi);
 
-    let res = Async.runSync(function(done) {
-      console.log('in Async');
-      xray('http://google.com', 'title')(function(err, title) {
-        if (err) {
-          console.log('danm', err);
-          done(err, null);
-        } else {
-        console.log('in xray', title); // Google
-        done(null, title);
+    let {result, error} = Async.runSync(function(done) {
+      url = 'http://sci-hub.io/' + doi;
+      console.log('in Async', url);
+      try { // <= TODO: fix this
+        xray(url, "body div#content iframe@src")(function(err, embed_src) {
+          if (err) {
+            console.log('danm', err);
+          } else {
+          console.log('in xray', embed_src);
+          done(err, embed_src);
+          }
+        })
+      } catch (e) {
+        console.log(e);
+        done(e, null);
       }
-    })})
-    console.log('res', res);
+
+    })
+    if (error) {
+      console.log('error', error)
+    } else {
+      console.log('res', result);
+      URI.update({doi: doi}, {$set: {pdf_src: result}});
+    }
 },
 });

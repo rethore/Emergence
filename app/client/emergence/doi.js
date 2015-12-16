@@ -2,6 +2,8 @@ Meteor.subscribe("uri");
 Meteor.subscribe("events");
 
 Session.setDefault("events", []);
+Session.setDefault("modalcontext", undefined);
+
 
 
 // Used for switch-case scenario in the templates
@@ -16,6 +18,25 @@ UI.registerHelper('formatTime', function(context, options) {
 UI.registerHelper('shortSHA', function(sha){
   return sha.slice(0, 5)
 });
+
+UI.registerHelper("not_undefined", function(val) {
+  return (typeof val == "undefined")
+})
+
+
+Template.ModalContext.helpers({
+  show_modal: () => (! typeof Session.get('modalcontext') === 'undefined'),
+  modalcontext: () => Session.get('modalcontext'),
+});
+
+// function() { return {
+//   title: "Register a relevant github repository",
+//   body: "body",
+//   id: "github",
+//   callback: "github_callback",
+//   helps: "here is some help",
+// }}
+
 
 Template.DOI_Summary.helpers({
   summary: function() { return "Summary of " + this.doi },
@@ -39,8 +60,6 @@ Template.DOI_Related.helpers({
 
 Template.DOI_Related.events({
   "click .rest-call": function(event, template){
-      Meteor.call('google', 'what');
-      console.log('hello');
       Meteor.call('github', 'rethore', 'waketor', this.doi);
 
 
@@ -57,5 +76,27 @@ Template.DOI_Related.events({
     //     }
     //   }
     // });
+  },
+});
+
+Template.DOI_pdf.helpers({
+  src: function() {
+    let uri = URI.findOne({doi: this.doi})
+    if ( typeof uri == "undefined" ) {
+      return ""
+    } else {
+      if ( uri.hasOwnProperty('pdf_src') ) {
+        return uri.pdf_src
+      } else {
+        return ""
+      }
+    }
+  },
+});
+
+Template.DOI_pdf.events({
+  "click .get_pdf": function(event, template){
+    console.log('in DOIpdf client');
+      Meteor.call('scihub', this.doi);
   },
 });
