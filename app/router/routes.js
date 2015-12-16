@@ -14,3 +14,8 @@ Router.route('/HowItWorks');
 Router.route('/emergence/doi/:doi*', function() {
     this.render('DOI', {data: {doi: this.params.doi}})
 });
+
+Router.route("/emergence", {
+  name:"emergence",
+  template:"emergence_main",
+});
