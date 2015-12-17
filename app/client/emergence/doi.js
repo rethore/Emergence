@@ -5,28 +5,11 @@ Meteor.subscribe("relationships");
 Session.setDefault("events", []);
 Session.setDefault("modalcontext", undefined);
 
-
-
-// Used for switch-case scenario in the templates
-UI.registerHelper("equals", function (a, b) {
-  return (a == b);
-});
-UI.registerHelper('formatTime', function(context, options) {
-  if(context)
-    return moment(context).format('MM/DD/YYYY, hh:mm');
-});
-
-UI.registerHelper('shortSHA', function(sha){
-  return sha.slice(0, 5)
-});
-
-UI.registerHelper("not_undefined", function(val) {
-  return (!typeof val == "undefined")
-})
-
-UI.registerHelper("undefined", function(val) {
-  return (typeof val == "undefined")
-})
+UI.registerHelper("equals", (a, b) => (a == b));
+UI.registerHelper('formatTime', c =>  moment(c).format('MM/DD/YYYY, hh:mm'));
+UI.registerHelper('shortSHA', sha => sha.slice(0, 5));
+UI.registerHelper("not_undefined", val => !val);
+UI.registerHelper("undefined", val => !!val);
 
 
 Template.DOI_Summary.helpers({
@@ -46,43 +29,19 @@ Template.DOI_CitedBy.helpers({
 
 Template.DOI_Related.helpers({
   event: function() {
-    return Events.find({doi: this.doi})},
+    return Events.find({doi: this.doi}, {sort:{created_at:-1}})},
 });
 
 Template.DOI_Related.events({
   "click .rest-call": function(event, template){
       Meteor.call('populate', this.doi);
-      //Meteor.call('github', 'rethore', 'waketor', this.doi);
-
-
-    // NOT REACTIVE ENOUGH!?!
-    //   HTTP.get(url, function(err, res) {
-    //     if (err) {
-    //       console.log('damn', err);
-    //     } else {
-    //       if (res.statusCode === 200) {
-    //         var new_res = res.data.slice();
-    //         Session.set('events', new_res);
-    //         Tracker.autorun();
-    //         console.log('success!', res);
-    //     }
-    //   }
-    // });
   },
 });
 
 Template.DOI_pdf.helpers({
   src: function() {
     let uri = URI.findOne({doi: this.doi})
-    if ( typeof uri == "undefined" ) {
-      return ""
-    } else {
-      if ( uri.hasOwnProperty('pdf_src') ) {
-        return uri.pdf_src
-      } else {
-        return ""
-      }
-    }
+    return !uri? "" : uri.hasOwnProperty('pdf_src')? uri.pdf_src: ""
   },
 });
 

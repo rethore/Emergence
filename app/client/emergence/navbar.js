@@ -137,7 +137,7 @@ Template.DOI_Menubar.events({
 
 
 Template.ModalContext.helpers({
-  show_modal: () => (! typeof Session.get('modalcontext') === 'undefined'),
+  show_modal: () => (!Session.get('modalcontext')), // not undefined
   modalcontext: () => Session.get('modalcontext'),
 });
 

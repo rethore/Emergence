@@ -7,6 +7,16 @@ var github = new GitHub({
     timeout: 5000     // optional
 });
 
+var fs = Npm.require('fs');
+github_creds = YAML.safeLoad(fs.readFileSync(process.env.PWD + '/.github', 'utf8'));
+console.log('path to github creds:',process.env.PWD + '/.github');
+// OAuth2 Key/Secret
+github.authenticate({
+    type: "oauth",
+    key: github_creds.GITHUB_ID,
+    secret: github_creds.GITHUB_SECRET
+})
+
 var crossref = function(doi) {
   let url = 'http://api.crossref.org/works/' + doi;
   HTTP.get(url, function(err, res) {
@@ -14,21 +24,22 @@ var crossref = function(doi) {
       console.log(err);
     } else {
       console.log(res);
+      let msg = res.data.message;
 
       URI.insert({doi,
-        url: res.data.message.URL,
-        title: res.data.message.title,
-        author: res.data.message.author.map( function(curr, i, arr) { return {
-          first: curr.given,
-          last: curr.family,
-          affiliation: curr.affiliation,
-        }}),
-        issn: res.data.message.issn,
-        issue: res.data.message.issue,
-        date: res.data.message.issued["date-parts"][0],
-        journal: res.data.message["container-title"][res.data.message["container-title"].length-1],
-        publisher: res.data.message.publisher,
-        year: res.data.message.issued["date-parts"][0][0],
+        url: msg.URL,
+        title: msg.title,
+        author: msg.author.map(o => ({
+          first: o.given,
+          last: o.family,
+          affiliation: o.affiliation,
+        })),
+        issn: msg.issn,
+        issue: msg.issue,
+        date: msg.issued["date-parts"][0],
+        journal: msg["container-title"][msg["container-title"].length-1],
+        publisher: msg.publisher,
+        year: msg.issued["date-parts"][0][0],
       });
     }
   })
@@ -37,40 +48,130 @@ var crossref = function(doi) {
 var X_Ray = Meteor.npmRequire("x-ray");
 var xray = new X_Ray();
 
+function computeCommits (user, repo) {
+  return new Promise(function(resolve, reject) {
+    github.repos.getCommits({user, repo, per_page:100}, promoteError(reject, function(res) {
+      followPages(resolve, reject, 0, res);
+    }));
+  });
+}
+
+function followPages (resolve, reject, result, res) {
+  result = result + res.length;
+  if (github.hasNextPage(res)) {
+    github.getNextPage(res, promoteError(reject, function(res) {
+      followPages(resolve, reject, result, res);
+    }));
+  }
+  else {
+    resolve(result);
+  }
+}
+
+function promoteError (reject, resolve) {
+  return function(err, res) {
+    if (err) {
+      if (err.hasOwnProperty("message") && /rate limit exceeded/.test(err.message)) {
+        rateLimitExceeded = true;
+      }
+
+      console.error("caught error: %s", err);
+      reject(err);
+    }
+    else {
+      resolve(res);
+    }
+  };
+}
+
+// var gitcommits = new Promise((resolve) => {
+//   github.repos.getCommits({user, repo, per_page:1}, (err, res)=>{
+//    console.log('stats1', err, res);
+//    github.getNextPage(res, (err, res) => {
+//      console.log('stats2', err, res);
+//    })
+//     }
+//   })
+// });
+
 Meteor.methods({
+  /*
+   * Populate the Event db using the registered relationships
+   */
   populate: function(doi) {
-    Relationships.find({doi: doi, type: "github"})
-      .forEach(function(c1) {
-        github.events.getFromRepo({user:c1.user, repo:c1.repo})
-          .forEach(function(c2) {
-            // Check that the event isn't already in the db
-            let item = Events.findOne({doi:doi, id:c2.id});
-            if (typeof item === 'undefined') {
+    let github_stats = Relationships.find({doi: doi, type: "github"})
+      .map(({user, repo}) => {
+        console.log('in populate', user, repo)
+        if (!URI.findOne({user, repo, type: "github"})) URI.insert({user, repo, type: "github"})
+        github.events.getFromRepo({user, repo, per_page:100})
+          .forEach((c2) => {
+            if (!Events.findOne({doi, id:c2.id})) {
               // Add the event, with the doi and the origine
-              Events.insert(Object.assign(c2, {doi:doi, origine:{user:c1.user, repo:c1.repo}}));
-    }})})},
+              Events.insert(Object.assign(c2, {doi:doi, origine:{user, repo}}));
+            }});
+        console.log('next page?',github.hasNextPage())
+        // TODO: Figure out the next page thing
+        github_stats = Meteor.call("github_stats", user, repo);
+        github_stats.n_commits = Meteor.call("github_commits", user, repo);
+        return github_stats
+      }).reduce((s1, s2)=> {  // Now lets add those github_stats together
+        for( var el in s1 ) {
+          if( s2.hasOwnProperty( el ) ) {
+            s1[el] = s1[el] + s2[el];
+          }
+        }
+        return s1;
+      });
+      console.log('finally', github_stats);
+      URI.update({doi}, {$set: {stats:{github:github_stats}}});
+  },
 
   /*
    * Get all the events from a repo and record the new ones in the event db
+   *
    */
   github: function(user, repo, doi) {
-    github.events.getFromRepo({user, repo})
-      .forEach(function(curr, i, arr){
+    if (!URI.find({user, repo, type: "github"})) URI.insert({user, repo, type: "github"})
+    github.events.getFromRepo({user, repo, per_page:100})
+      .forEach((c) => {
         // Check that the event isn't already in the db
-        let item = Events.findOne({doi:doi, id:curr.id});
-        if (typeof item == 'undefined') {
+        if (!Events.findOne({doi:doi, id:c.id})) {
           // Add the event, with the doi and the origine
-          Events.insert(Object.assign(curr, {doi, origine:{user, repo}}));
+          Events.insert(Object.assign(c, {doi, origine:{user, repo}}));
   }})},
+
+
+  /*
+   * Get the stats from github
+   */
+   github_stats: function(user, repo) {
+     console.log('inside github stats', user, repo);
+     let rep_data = github.repos.get({user, repo})
+     let github_stats = {
+        n_forks: rep_data.forks_count,
+        n_stars: rep_data.stargazers_count,
+        n_open_issues: rep_data.open_issues_count,
+        n_subscribers: rep_data.subscribers_count,
+      };
+     URI.update({type:"github", user, repo}, {$set:github_stats});
+     return github_stats;
+    },
+
+    github_commits: function(user, repo) {
+    // TODO: This is very slow for large repos!
+    let n_commits_promise = computeCommits(user, repo);
+    let n_commits = Promise.await(n_commits_promise);
+    URI.update({type:"github", user, repo}, {$set:{n_commits}});
+    console.log('n_commits', n_commits);
+    return n_commits;
+   },
 
   /*
    * register is registering the URI in the database by calling several online
    * services
    */
   register: function(doi) {
-    if (typeof URI.findOne({doi}) == "undefined") {
-      crossref(doi);
-    }
+    if (!URI.findOne({doi})) crossref(doi)
   },
 
   /*

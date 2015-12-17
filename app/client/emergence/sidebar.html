@@ -16,16 +16,25 @@
         <strong>Reproducibility:</strong> This work hasn't been reproduced yet
         </a>
       <a href="#" class="list-group-item">
-        <strong>Number of commits:</strong> 10
+        <strong>Number of commits:</strong> {{ github_stats.n_commits }}
       </a>
       <a href="#" class="list-group-item">
-        <strong>Number of forks:</strong> 3
+        <strong>Number of forks:</strong> {{ github_stats.n_forks }}
       </a>
       <a href="#" class="list-group-item">
-        <strong>Reviews passed:</strong> 3 / 4
+        <strong>Number of issues open/closed:</strong> {{ github_stats.n_open_issues }} / {{ github_stats.n_closed_issues }}
       </a>
       <a href="#" class="list-group-item">
-        <strong>Comments:</strong> 30
+        <strong>Number of github stars:</strong> {{ github_stats.n_stars }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Number of github suscribers:</strong> {{ github_stats.n_subscribers }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Reviews passed:</strong> 0
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Comments:</strong> 0
       </a>
       <a href="#" class="list-group-item">
         <strong>Rating:</strong> 9.3 / 10
