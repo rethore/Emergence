@@ -113,8 +113,10 @@ Meteor.methods({
         // TODO: Figure out the next page thing
         github_stats = Meteor.call("github_stats", user, repo);
         github_stats.n_commits = Meteor.call("github_commits", user, repo);
+        github_stats.n_closed_issues = Meteor.call("github_closed_issues", user, repo)
         return github_stats
-      }).reduce((s1, s2)=> {  // Now lets add those github_stats together
+      }) //map
+      .reduce((s1, s2)=> {  // Now lets add those github_stats together
         for( var el in s1 ) {
           if( s2.hasOwnProperty( el ) ) {
             s1[el] = s1[el] + s2[el];
@@ -150,11 +152,17 @@ Meteor.methods({
      let github_stats = {
         n_forks: rep_data.forks_count,
         n_stars: rep_data.stargazers_count,
-        n_open_issues: rep_data.open_issues_count,
+        n_open_issues: rep_data.open_issues,
         n_subscribers: rep_data.subscribers_count,
       };
      URI.update({type:"github", user, repo}, {$set:github_stats});
      return github_stats;
+    },
+
+    github_closed_issues: function(user, repo) {
+      var issues = github.issues.repoIssues({user, repo, state:"closed"});
+      console.log('issues', issues.length);
+      return issues.length
     },
 
     github_commits: function(user, repo) {

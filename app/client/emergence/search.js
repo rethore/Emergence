@@ -19,3 +19,16 @@ Session.setDefault("result", null);
 //
 //   }
 // });
+
+Template.Search.events({
+  "submit #id_search": function(event, template) {
+    event.preventDefault();
+    console.log('new key pressed', event.target.item_text.value);
+    var key = event.target.item_text.value.replace(/ /g, '+');
+    HTTP.get("http://api.crossref.org/works?query="+key, (err, res) => {
+      if (err) console.log('ERROR:',err);
+      console.log("http://api.crossref.org/works?query="+key, err, res);
+      Router.render('Search', {data: {keys: key, search:res.data.message.items}})
+    })
+  }
+})
