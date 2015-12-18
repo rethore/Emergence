@@ -17,6 +17,7 @@ github.authenticate({
     secret: github_creds.GITHUB_SECRET
 })
 
+
 var crossref = function(doi) {
   let url = 'http://api.crossref.org/works/' + doi;
   HTTP.get(url, function(err, res) {
