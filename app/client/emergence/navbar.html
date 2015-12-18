@@ -56,13 +56,13 @@
                   <li class="dropdown-header">{{ text }}</li>
                 {{else}}
                   <li>
-                    {{#if there_is modal}}
+                    {{#if modal}}
                         <a class="navbar_link" id="{{ id }}" href="#" data-toggle="modal" data-target="#{{ item2.modal.id }}">
                           {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                           {{ text }}
                         </a>
                     {{else}}
-                      <a class="navbar_link" id="{{ id }}" href="{{ href }}">
+                      <a class="navbar_link" id="{{ id }}" href="{{ href }}" style="color:red">
                         {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                         {{ text }}
                       </a>
@@ -98,7 +98,11 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel" >
-                {{ modal.title }}
+                {{#if undefined modal.template }}
+                  Feature not implemented yet
+                {{else}}
+                  {{ modal.title }}
+                {{/if}}
             </h4>
           </div>
           <div class="modal-body">
