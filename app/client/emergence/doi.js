@@ -9,7 +9,7 @@ UI.registerHelper("equals", (a, b) => (a == b));
 UI.registerHelper('formatTime', c =>  moment(c).format('MM/DD/YYYY, hh:mm'));
 UI.registerHelper('shortSHA', sha => sha.slice(0, 5));
 UI.registerHelper("not_undefined", val => !val);
-UI.registerHelper("undefined", val => !!val);
+UI.registerHelper("undefined", val => (typeof val === "undefined"));
 
 
 Template.DOI_Summary.helpers({

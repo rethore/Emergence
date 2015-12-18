@@ -158,12 +158,12 @@ Meteor.methods({
     },
 
     github_commits: function(user, repo) {
-    // TODO: This is very slow for large repos!
-    let n_commits_promise = computeCommits(user, repo);
-    let n_commits = Promise.await(n_commits_promise);
-    URI.update({type:"github", user, repo}, {$set:{n_commits}});
-    console.log('n_commits', n_commits);
-    return n_commits;
+      // TODO: This is very slow for large repos!
+      let n_commits_promise = computeCommits(user, repo);
+      let n_commits = Promise.await(n_commits_promise);
+      URI.update({type:"github", user, repo}, {$set:{n_commits}});
+      console.log('n_commits', n_commits);
+      return n_commits;
    },
 
   /*

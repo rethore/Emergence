@@ -46,7 +46,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
              role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fa {{ icon }}"></i>
+            {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
             {{ text }}
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -63,7 +63,7 @@
                         </a>
                     {{else}}
                       <a class="navbar_link" id="{{ id }}" href="{{ href }}">
-                        {{#if there_is icon }}<i class="fa {{ icon }}"></i> {{/if}}
+                        {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                         {{ text }}
                       </a>
                     {{/if}}
@@ -78,7 +78,8 @@
 
 <!-- Align right -->
   <ul class="nav navbar-nav navbar-right">
-  </ul>
+    {{> loginButtons}} <!-- here -->
+</ul>
 </template>
 
 
@@ -96,12 +97,18 @@
         <form class="process" id="{{ id }}">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">
+            <h4 class="modal-title" id="myModalLabel" >
                 {{ modal.title }}
             </h4>
           </div>
           <div class="modal-body">
+            {{#if undefined modal.template }}
+            Sorry this feature hasn't been implemented yet. Do you need it badly?
+            You can always increase the priority of this task by <a href="https://coinkite.com/pay/04815AF9C7-2C4BC4">
+            voting with your money</a>.
+            {{else}}
             {{> Template.dynamic template=modal.template }}
+            {{/if}}
           </div>
           <div class="well collapse out" id="help-well">
               <h5>Help</h5>
