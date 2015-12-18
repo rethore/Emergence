@@ -20,5 +20,26 @@ Template.DOI_Metrics.helpers({
   //   let forks = Events.find({doi:this.doi, type:"ForkEvent"}).map(()=>1);
   //   return  (!forks.length) ? 0 : forks.length
   // },
-  github_stats: function() {return URI.findOne({doi: this.doi}).stats.github},
+  github_stats: function() {
+    var git = URI.findOne({doi: this.doi});
+    var def = {
+      n_forks: 0,
+      n_stars: 0,
+      n_open_issues: 0,
+      n_closed_issues: 0,
+      n_subscribers: 0,
+      n_commits: 0,
+    };
+    return (git)? (git.stats)? git.stats.github : def : def},
 });
+
+
+Template.DOI_Integrations.helpers({
+  git : function(){
+
+    var repos = Relationships.find({doi: this.doi, type:"github"})
+    console.log(repos);
+    return repos
+
+    },
+})

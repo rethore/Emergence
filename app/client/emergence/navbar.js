@@ -150,8 +150,12 @@ Template.MainModal.events({
     let item = find_in_menu(event.target.id);
     // Call the function defined in the menu
     var relationship = item.modal.callback(event, template);
-    console.log('registering the following relationship: ', relationship);
-    Meteor.call("register_relationship", relationship);
+    if (!Relationships.findOne(relationship)) {
+        console.log('registering the following relationship: ', relationship);
+        Meteor.call("register_relationship", relationship);
+    } else {
+      console.log("registration already existing")
+    }
     $('#modal').modal('hide');
   }
 });
