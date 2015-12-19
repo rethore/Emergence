@@ -51,8 +51,8 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
               {{#each items }}
-                {{#if separator }}
-                  <li role="separator" class="divider"></li>
+                {{#if there_is "separator" }}
+                  {{#if separator }}<li role="separator" class="divider"></li>{{/if}}
                   <li class="dropdown-header">{{ text }}</li>
                 {{else}}
                   <li>

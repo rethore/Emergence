@@ -80,16 +80,13 @@ var menu = [
   {text: "Emerge",
     href: "#"
   }
-];
-
-// Add a slugified id from the text
-var menu = menu.map(function(obj1){
+].map((obj1) => { // Add a slugified id from the text
   obj1.id = slugify(obj1.text);
   if (obj1.hasOwnProperty('items')) {
-    obj1.items = obj1.items.map(function(obj2){
+    obj1.items = obj1.items.map((obj2) => {
       obj2.id = slugify(obj2.text);
       return obj2;
-    });
+      });
   }
   return obj1
 });
@@ -100,7 +97,7 @@ var menu = menu.map(function(obj1){
  * The .filter((e)=>e) is used to remove the empty/undefined elements in the
  * arrays
  */
-var find_in_menu = function(id) {
+function find_in_menu(id) {
   var item = menu.map(function(e){
     if (e.id == id) return e;
     if (e.hasOwnProperty('items')) {

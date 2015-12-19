@@ -8,7 +8,7 @@ var github = new GitHub({
 });
 
 var fs = Npm.require('fs');
-github_creds = YAML.safeLoad(fs.readFileSync(process.env.PWD + '/.github', 'utf8'));
+var github_creds = YAML.safeLoad(fs.readFileSync(process.env.PWD + '/.github', 'utf8'));
 console.log('path to github creds:',process.env.PWD + '/.github');
 // OAuth2 Key/Secret
 github.authenticate({
@@ -16,7 +16,7 @@ github.authenticate({
     key: github_creds.GITHUB_ID,
     secret: github_creds.GITHUB_SECRET
 })
-
+ 
 
 var crossref = function(doi) {
   let url = 'http://api.crossref.org/works/' + doi;
@@ -104,27 +104,36 @@ Meteor.methods({
       .map(({user, repo}) => {
         console.log('in populate', user, repo)
         if (!URI.findOne({user, repo, type: "github"})) URI.insert({user, repo, type: "github"})
-        github.events.getFromRepo({user, repo, per_page:100})
-          .forEach((c2) => {
-            if (!Events.findOne({doi, id:c2.id})) {
-              // Add the event, with the doi and the origine
-              Events.insert(Object.assign(c2, {doi:doi, origine:{user, repo}}));
-            }});
-        console.log('next page?',github.hasNextPage())
-        // TODO: Figure out the next page thing
-        github_stats = Meteor.call("github_stats", user, repo);
-        github_stats.n_commits = Meteor.call("github_commits", user, repo);
-        github_stats.n_closed_issues = Meteor.call("github_closed_issues", user, repo)
-        return github_stats
-      }) //map
-      .reduce((s1, s2)=> {  // Now lets add those github_stats together
-        for( var el in s1 ) {
-          if( s2.hasOwnProperty( el ) ) {
-            s1[el] = s1[el] + s2[el];
-          }
-        }
-        return s1;
-      });
+        var events = github.events.getFromRepo({user, repo, per_page:100});
+        if (events) {
+          events.forEach((c2) => {
+                if (!Events.findOne({doi, id:c2.id})) {
+                  // Add the event, with the doi and the origine
+                  Events.insert(Object.assign(c2, {doi:doi, origine:{user, repo}}));
+                }});
+            console.log('next page?',github.hasNextPage());
+            // TODO: Figure out the next page thing
+            github_stats = Meteor.call("github_stats", user, repo);
+            github_stats.n_commits = Meteor.call("github_commits", user, repo);
+            github_stats.n_closed_issues = Meteor.call("github_closed_issues", user, repo);
+            return github_stats;
+        } else {
+          return {
+            n_forks: 0,
+            n_stars: 0,
+            n_open_issues: 0,
+            n_closed_issues: 0,
+            n_subscribers: 0,
+            n_commits: 0,
+          }}}) //map
+          .reduce((s1, s2)=> {  // Now lets add those github_stats together
+            for( var el in s1 ) {
+              if( s2.hasOwnProperty( el ) ) {
+                s1[el] = s1[el] + s2[el];
+              }
+            }
+          return s1;
+        });
       console.log('finally', github_stats);
       URI.update({doi}, {$set: {stats:{github:github_stats}}});
   },

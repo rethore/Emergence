@@ -1,12 +1,13 @@
 Meteor.elements = {
   github: {
+    id: "github",
     text: "Github",
     icon: "fa-github-square",
     modal: {
       template: "githubModal",
       base_url: "http://github.com/",
       title: "Register a new github repository",
-      callback: function(event, template){
+      callback(event, template) {
         console.log("github", event, template);
         let comment = event.target.Modalcomment.value;
         let user = event.target.namespace.value;
@@ -19,6 +20,7 @@ Meteor.elements = {
   },
 
   gitlab: {
+    id: "gitlab",
     text: "Gitlab",
     icon: "fa-git",
     // modal: {
