@@ -104,7 +104,16 @@ Meteor.methods({
       .map(({user, repo}) => {
         console.log('in populate', user, repo)
         if (!URI.findOne({user, repo, type: "github"})) URI.insert({user, repo, type: "github"})
-        var events = github.events.getFromRepo({user, repo, per_page:100});
+        try {
+          var events = github.events.getFromRepo({user, repo, per_page:100});
+        } catch (e) {
+          console.log(typeof e);
+          console.log(e.message);
+          if (e.message.message == "Not Found") {
+            console.log("removing the repo from the Relationships");
+            Relationships.remove({doi: doi, type: "github"})
+          }
+        }
         if (events) {
           events.forEach((c2) => {
                 if (!Events.findOne({doi, id:c2.id})) {
