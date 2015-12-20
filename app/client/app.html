@@ -5,7 +5,6 @@
   {{> Footer}}
 </template>
 
-
 <!-- This is the home page================================================== -->
 <template name="home">
   {{> Navbar}}
@@ -25,7 +24,7 @@
 <!-- This is the how it works page================================================== -->
 <template name="HowItWorks">
   {{> Navbar}}
-  {{> tf_home_tour}}
+  {{> modal}}
   {{> tf_tour_whattodo}}
   {{> tf_tour_story_start}}
   {{> Mailing}}
@@ -386,20 +385,41 @@
                     <a class='youtube' href='https://www.youtube.com/watch?v=-MH6JZdGZcI'>
                         <button type="button" class="btn btn-success btn-lg">Watch the Video</button>
                     </a>
-                    <script>
-                        $('.youtube').colorbox({iframe: true, width: 1040, height: 690, href:function(){
-                            var videoId = new RegExp('[\\?&]v=([^&#]*)').exec(this.href);
-                            if (videoId && videoId[1]) {
-                                return 'http://youtube.com/embed/'+videoId[1]+'?rel=0&wmode=transparent';
-                            }
-                        }});
-                    </script>
                 </p>
             </div>
         </div>
     </div>
 </template>
 
+
+<!-- Make the embedded tutorial movie popup in the website ================================================== -->
+<template name="modal">
+    <div id="modal" class="text-center">
+        <div class="overlay">
+            <div class="content">
+                <h1><span class="emph2"><strong>Your portal to expose and discover the hidden</strong></span></h1>
+                <h1><span class="emph2"><strong>knowledge bits behind scientific publications</strong></span></h1>
+                <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: 400px; border: black 2px solid">
+                    <span>Let's get started with <b><i>Emergence</i></b>. Watch the following video to learn how it works!</span>
+                    <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Video</button>
+                </p>
+                <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence!</h4>
+                      </div>
+                      <div class="modal-body">
+                        <iframe width="871" height="480" src="https://www.youtube.com/embed/MH6JZdGZcI?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</template>
 
 
 

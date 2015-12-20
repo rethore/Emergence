@@ -16,6 +16,19 @@
 //       console.log(Session.get("dateval"));
 //   }, 2000 );
 
+  Template.modal.rendered = function() {
+    $('#myModal').on('show.bs.modal', function(event) {
+      var modal, src;
+      modal = $(this);
+      return modal.find('iframe').attr('src', src = "https://www.youtube.com/embed/DGvStTJftHU?showinfo=0&autoplay=1"); // just replace the video_I DGvStTJftHU
+    });
+    return $('#myModal').on('hide.bs.modal', function(event) {
+      var modal;
+      modal = $(this);
+      return modal.find('iframe').attr('src', '');
+    });
+  };
+
 
 Template.Team.helpers({
   members: () => [{
