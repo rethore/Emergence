@@ -1,3 +1,4 @@
+
 var doiRegex = '(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![%"#? ])\\S)+)'
 var doiTextPrefix = 'doi\\:'
 findoi = function (opts) {

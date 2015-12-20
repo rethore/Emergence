@@ -42,4 +42,22 @@ Template.DOI_Integrations.helpers({
     return repos
 
     },
+  checked: function(){
+    let name = "checked_git_repo_"+this.user+'_'+this.repo;
+    if (!Session.keys.hasOwnProperty(name)) Session.set(name, true)
+    return (Session.get(name))? "checked" : ""
+  },
 })
+
+Template.DOI_Integrations.onCreated(function(){
+  Relationships.find({doi: this.doi, type:"github"}).forEach((o=>{
+    Session.set("checked_git_repo_"+o.user+'_'+o.repo, true);
+  }));
+});
+
+Template.DOI_Integrations.events({
+  "click .repo": function(event, template) {
+    let name = "checked_git_repo_"+this.user+'_'+this.repo;
+    Session.set(name, !Session.get(name));
+  }
+});

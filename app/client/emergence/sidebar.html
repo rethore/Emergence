@@ -60,7 +60,7 @@
     <div class="list-group collapse in" id="collapseIntegrations">
       {{#each git }}
       <a href="#"  class="list-group-item" data-toggle="tooltip" title="{{ contrib_user }}: {{ contrib_comment }}">
-        <input type="checkbox" name="options" id="option1" autocomplete="off" data-toggle="collapse" data-target=".collap-{{ user  }}-{{ repo  }}" checked >
+        <input type="checkbox" class="repo" name="options" {{checked}} >
           Github: {{ user }}/{{ repo }}
         </a>
       {{/each}}

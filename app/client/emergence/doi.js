@@ -5,6 +5,7 @@ Meteor.subscribe("relationships");
 Session.setDefault("events", []);
 Session.setDefault("modalcontext", undefined);
 
+
 UI.registerHelper("equals", (a, b) => (a == b));
 UI.registerHelper('formatTime', c =>  moment(c).format('MM/DD/YYYY, hh:mm'));
 UI.registerHelper('shortSHA', sha => sha.slice(0, 5));
@@ -30,6 +31,9 @@ Template.DOI_CitedBy.helpers({
 Template.DOI_Related.helpers({
   event: function() {
     return Events.find({doi: this.doi}, {sort:{created_at:-1}})},
+  checked: function() {
+    return Session.get("checked_git_repo_"+this.origine.user+'_'+this.origine.repo);
+  },
 });
 
 Template.DOI_Related.events({

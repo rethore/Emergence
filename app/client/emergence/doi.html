@@ -103,7 +103,8 @@
     </div>
     <div class="list-group" id="add-stuff-here">
       {{#each event }}
-        <div  class="collapse in collap-{{ git.user }}-{{ git.repo }}">
+        {{#if checked}}
+        <div  class="collapse in collap-{{ origine.user }}-{{ origine.repo }}">
           <div class="list-group-item">
             <span class="event-header">
               <img height="16" src="https://avatars1.githubusercontent.com/u/{{ actor.id }}?v=3&amp;s=32" width="16">
@@ -140,6 +141,7 @@
             {{/if}}
           </div>
         </div>
+        {{/if}}
       {{/each}}
     </div>
   </div>
