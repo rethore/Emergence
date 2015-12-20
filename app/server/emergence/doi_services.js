@@ -107,11 +107,11 @@ Meteor.methods({
         try {
           var events = github.events.getFromRepo({user, repo, per_page:100});
         } catch (e) {
-          console.log(typeof e);
+          console.log(typeof e.message);
           console.log(e.message);
-          if (e.message.message == "Not Found") {
+          if (e.message.includes("Not Found")) {
             console.log("removing the repo from the Relationships");
-            Relationships.remove({doi: doi, type: "github"})
+            Relationships.remove({user, repo, doi, type: "github"})
           }
         }
         if (events) {
