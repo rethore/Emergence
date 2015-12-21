@@ -1,20 +1,24 @@
-# http://fractalflows.com Website repository
+# http://fractalflows.com website repository
 This repo contains all the necessary files to build and deploy the website.
-The website is based on Flask, a minimalistic python webframework, and Bootstrap, a shiny template.
+The website is based on Meteor,a javascript webframework, and Bootstrap, a shiny template from tweeter.
+
 
 ## How to run this thing?
+### Install Meteor
+* OSX/Linux:
+Install the latest official Meteor release from your terminal:
 
 
-### Directly running the webapp using python
-* In the webapp directory do a
-    
-    $ pip install -r requirements.txt
+    $ curl https://install.meteor.com/ | sh
 
-* Then simply run the app.py:
+* Windows:
 
-    $ python app.py
+[Download the official Meteor installer](https://www.meteor.com/install)
 
-* Point your webbrowser to the docker ip address: [http://127.0.0.1:5000/landing](http://127.0.0.1:5000/landing)
+### Run locally
+Go into the `./app/` directory and start meteor
+
+    $ meteor
 
 ### With Docker:
 * You will need to install [Docker on your machine](http://docs.docker.com/installation/windows/). 
@@ -22,16 +26,19 @@ The website is based on Flask, a minimalistic python webframework, and Bootstrap
 * Clone this git repository
 * In the docker terminal:
 
-    $ docker build -t webapp .
-    $ docker run -d -p 49500:5000 --name webapp webapp
 
-* Point your webbrowser to the docker ip address: http://xxx.xxx.xxx.xxx:49500/landing
+    $ cd app
+    $ docker build -t webapp .
+    $ docker run -d \
+        -e ROOT_URL=http://yourapp.com \
+        -e MONGO_URL=mongodb://url \
+        -e MONGO_OPLOG_URL=mongodb://oplog_url \
+        -p 8080:80 \
+        webapp
+
+* Point your webbrowser to the docker ip address: http://<your-docker-ip>:8080
 
 * Look at the logs:
+
     
-   $ docker logs -f webapp
-
-### Automatic deployment
-* Once the changes have been commited and pushed to the repo, just do:
-
-    $ make deploy
+    $ docker logs -f webapp
