@@ -2,7 +2,7 @@
 members:
     - name: Imad Abdallah
       title: CEO - Founder
-      extra: If you never fail, you are not innovating hard enough.
+      #extra:
       experience: MSc & PhD wind energy. <br>
             Senior mechanical engineer in wind energy.
       img: img/team/01.jpg      
@@ -10,7 +10,7 @@ members:
       email: mailto:imad.abdallah.81@gmail.com
     - name: Pierre-Elouan Rethore
       title: CTO - Founder
-      extra: Life starts outside your comfort zone.
+      #extra:
       experience: MSc Comp.Sc. MSc & PhD Wind Energy. <br>
                 Senior researcher in wind energy and computer science.
       img: img/team/02.jpg

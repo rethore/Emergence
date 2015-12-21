@@ -1,1 +1,629 @@
-{% import "bootstrap/wtf.html" as wtf %}{% extends "bootstrap/base.html" %}{% block styles %}{{super()}}<link rel="shortcut icon" href="{{url_for('.static', filename='img/favicon.ico')}}" type="image/x-icon"><link rel="apple-touch-icon" href="{{url_for('.static', filename='img/apple-touch-icon.png')}}"><link rel="apple-touch-icon" sizes="72x72" href="{{url_for('.static', filename='img/apple-touch-icon-72x72.png')}}"><link rel="apple-touch-icon" sizes="114x114" href="{{url_for('.static', filename='img/apple-touch-icon-114x114.png')}}"><link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/bootstrap.css')}}"><link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='fonts/font-awesome/css/font-awesome.css')}}"><!-- Slider================================================== --><!-- <link href="{{url_for('.static', filename='css/owl.carousel.css')}}" rel="stylesheet" media="screen"> --><link href="{{url_for('.static', filename='css/owl.theme.css')}}" rel="stylesheet" media="screen"><!-- Stylesheet================================================== --><link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/style.css')}}"><link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/responsive.css')}}"><link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'><script type="text/javascript" src="{{url_for('.static', filename='js/modernizr.custom.js')}}"></script>{% endblock %}{% block title %}Emergence from Fractal Flows{% endblock %}{% block navbar %}    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">      <div class="container">        <!-- Brand and toggle get grouped for better mobile display -->        <div class="navbar-header">          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">            <span class="sr-only">Toggle navigation</span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>          </button>          <a class="navbar-brand" href="index.html">FractalFlows</a>        </div>        <!-- Collect the nav links, forms, and other content for toggling -->        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">          <ul class="nav navbar-nav navbar-right">            <li><a href="#tf-home" class="page-scroll">Home</a></li>            <li><a href="#tf-about" class="page-scroll">About</a></li>            <li><a href="#tf-team" class="page-scroll">Team</a></li><!--            <li><a href="#tf-services" class="page-scroll">Services</a></li>            <li><a href="#tf-works" class="page-scroll">Portfolio</a></li>            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>-->            <li><a href="#tf-contact" class="page-scroll">Contact</a></li>          </ul>        </div><!-- /.navbar-collapse -->      </div><!-- /.container-fluid --></nav>{% endblock %}{% block content %}    <!-- Home Page    ==========================================-->    <div id="tf-home" class="text-center">        <div class="overlay">            <div class="content">                <h1>Welcome to <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>                <p class="lead">Where <strong>researchers</strong>, <strong>engineers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information.</p>                <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>            </div>        </div>    </div>    <!-- About Us Page    ==========================================-->    <div id="tf-about">        <div class="container">            <div class="row">                <div class="col-md-6">                    <img src="{{url_for('.static', filename='img/02.png')}}" class="img-responsive">                </div>                <div class="col-md-6">                    <div class="about-text">                        <div class="section-title">                            <h4>About us</h4>                            <h2>Some words <strong>about us</strong></h2>                            <hr>                            <div class="clearfix"></div>                        </div>                        <p class="intro">We love building and rebuilding brands through our  specific skills. Using colour, fonts, and illustration, we brand companies in a way they will never forget.</p>                        <ul class="about-list">                            <li>                                <span class="fa fa-dot-circle-o"></span>                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>                            </li>                            <li>                                <span class="fa fa-dot-circle-o"></span>                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>                            </li>                            <li>                                <span class="fa fa-dot-circle-o"></span>                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>                            </li>                        </ul>                    </div>                </div>            </div>        </div>    </div>    <!-- Team Page    ==========================================-->    <div id="tf-team" class="text-center">        <div class="overlay">            <div class="container">                <div class="section-title center">                    <h2>Meet <strong>our team</strong></h2>                    <div class="line">                        <hr>                    </div>                </div>                <div id="team" class="row">                    {% for member in data.members %}                    <div class="col-sm-6 ">                        <div class="thumbnail">                            <img src="{{url_for('.static', filename= member.img )}}" alt="..." class="img-circle team-img">                            <div class="caption">                                <h3>{{ member.name }}</h3>                                <p>{{ member.title }}</p>                                <p>{{ member.experience|linebreaks }}</p>                                <p>                                {% for met in member.meta %}                                  <a href="{{ met.address }}"><i class="fa {{ met.font }}"></i></a>                                {% endfor %}                                </p>                                <p class="italic">"{{ member.extra }}"</p>                            </div>                        </div>                    </div>                    {% endfor %}                </div>            </div>        </div>    </div><!--     Services Section    ==========================================-->    <div id="tf-services" class="text-center">        <div class="container">            <div class="section-title center">                <h2>Take a look at <strong>our services</strong></h2>                <div class="line">                    <hr>                </div>                <div class="clearfix"></div>                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            </div>            <div class="space"></div>            <div class="row">                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-desktop"></i>                    <h4><strong>Web design</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-mobile"></i>                    <h4><strong>Mobile Apps</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-camera"></i>                    <h4><strong>Photography</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-bullhorn"></i>                    <h4><strong>Marketing</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>            </div>        </div>    </div>    <!-- Clients Section    ==========================================    <div id="tf-clients" class="text-center">        <div class="overlay">            <div class="container">                <div class="section-title center">                    <h2>Some of <strong>our Clients</strong></h2>                    <div class="line">                        <hr>                    </div>                </div>                <div id="clients" class="owl-carousel owl-theme">                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/01.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/02.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/03.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/04.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/05.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/06.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/07.png')}}">                    </div>                </div>            </div>        </div>    </div>    -->    <!-- Portfolio Section    ==========================================    <div id="tf-works">        <div class="container">            <div class="section-title text-center center">                <h2>Take a look at <strong>our services</strong></h2>                <div class="line">                    <hr>                </div>                <div class="clearfix"></div>                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            </div>            <div class="space"></div>            <div class="categories">                <ul class="cat">                    <li class="pull-left"><h4>Filter by Type:</h4></li>                    <li class="pull-right">                        <ol class="type">                            <li><a href="#" data-filter="*" class="active">All</a></li>                            <li><a href="#" data-filter=".web">Web Design</a></li>                            <li><a href="#" data-filter=".photography">Photography</a></li>                            <li><a href="#" data-filter=".app" >Mobile App</a></li>                            <li><a href="#" data-filter=".branding" >Branding</a></li>                        </ol>                    </li>                </ul>                <div class="clearfix"></div>            </div>            <div id="lightbox" class="row">                <div class="col-sm-6 col-md-3 col-lg-3 branding">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/01.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 photography app">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/02.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 branding">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/03.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 branding">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/04.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 web">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/05.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 app">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/06.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 photography web">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/07.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 web">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/08.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>            </div>        </div>    </div>-->    <!-- Testimonials Section    ==========================================    <div id="tf-testimonials" class="text-center">        <div class="overlay">            <div class="container">                <div class="section-title center">                    <h2><strong>Our clients’</strong> testimonials</h2>                    <div class="line">                        <hr>                    </div>                </div>                <div class="row">                    <div class="col-md-8 col-md-offset-2">                        <div id="testimonial" class="owl-carousel owl-theme">                            <div class="item">                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>                            </div>                            <div class="item">                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>                            </div>                            <div class="item">                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>                            </div>                        </div>                    </div>                </div>            </div>        </div>    </div>-->    <!-- Contact Section    ==========================================--    <div id="tf-contact" class="text-center">        <div class="container">            <div class="row">                <div class="col-md-8 col-md-offset-2">                    <div class="section-title center">                        <h2>Feel free to <strong>contact us</strong></h2>                        <div class="line">                            <hr>                        </div>                        <div class="clearfix"></div>                        <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>                    </div>                    <form>                            <div class="row">                            <div class="col-md-6">                                <div class="form-group">                                    <label for="exampleInputEmail1">Email address</label>                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">                                </div>                            </div>                            <div class="col-md-6">                                <div class="form-group">                                    <label for="exampleInputName1">Name</label>                                    <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name">                                </div>                            </div>                          </div>                        <div class="form-group">                            <label for="exampleInputsubject1">Subject</label>                            <input type="subject" class="form-control" id="exampleInputsubject1" placeholder="Enter Subject">                        </div>                        <div class="form-group">                            <label for="exampleInputEmail1">Message</label>                            <textarea class="form-control" rows="3"></textarea>                        </div>                        <button type="submit" class="btn tf-btn btn-default">Submit</button>                    </form>                </div>            </div>        </div>    </div>    -->    <div id="tf-contact" class="text-center">      <div class="container">           <div class="row">                <div class="col-md-8 col-md-offset-2">                    <div class="section-title center">                        <h2>Feel free to <strong>contact us</strong></h2>                        <div class="line">                            <hr>                        </div>                        <div class="clearfix"></div>          {% if success %}            <p>Thank you for your message. We'll get back to you shortly.</p>                    </div>          {% else %}                        Are you interested to joining us / funding us / obtaining further information?                    </div>                {% for message in get_flashed_messages() %}                  <div class="flash">{{ message }}</div>                {% endfor %}                <br>                {{ wtf.quick_form(form, form_type='horizontal',                                button_map={'submit_button': 'primary'})}}              {% endif %}                </div>            </div>        </div>    </div>    <nav id="footer">        <div class="container">            <div class="pull-left fnav">                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>            </div>            <div class="pull-right fnav">                <ul class="footer-social">                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>                </ul>            </div>        </div>    </nav>    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.1.11.1.js')}}"></script>    <!-- Include all compiled plugins (below), or include individual files as needed -->    <script type="text/javascript" src="{{url_for('.static', filename='js/bootstrap.js')}}"></script>    <script type="text/javascript" src="{{url_for('.static', filename='js/SmoothScroll.js')}}"></script>    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.isotope.js')}}"></script>    <script src="{{url_for('.static', filename='js/owl.carousel.js')}}"></script>    <!-- Javascripts    ================================================== -->    <script type="text/javascript" src="js/main.js"></script>{% endblock %}
+
+{% import "bootstrap/wtf.html" as wtf %}{% extends "bootstrap/base.html" %}{% block styles %}{{super()}}<link rel="shortcut icon" href="{{url_for('.static', filename='img/favicon.ico')}}" type="image/x-icon"><link rel="apple-touch-icon" href="{{url_for('.static', filename='img/apple-touch-icon.png')}}"><link rel="apple-touch-icon" sizes="72x72" href="{{url_for('.static', filename='img/apple-touch-icon-72x72.png')}}"><link rel="apple-touch-icon" sizes="114x114" href="{{url_for('.static', filename='img/apple-touch-icon-114x114.png')}}"><link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/bootstrap.css')}}"><link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='fonts/font-awesome/css/font-awesome.css')}}"><!-- Slider================================================== --><!-- <link href="{{url_for('.static', filename='css/owl.carousel.css')}}" rel="stylesheet" media="screen"> --><link href="{{url_for('.static', filename='css/owl.theme.css')}}" rel="stylesheet" media="screen"><!-- Stylesheet================================================== --><link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/style.css')}}"><link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/responsive.css')}}"><link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'><link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'><script type="text/javascript" src="{{url_for('.static', filename='js/modernizr.custom.js')}}"></script>{% endblock %}{% block title %}Emergence from Fractal Flows{% endblock %}{% block navbar %}    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">      <div class="container">        <!-- Brand and toggle get grouped for better mobile display -->        <div class="navbar-header">          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">            <span class="sr-only">Toggle navigation</span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>          </button>          <a class="navbar-brand" href="index.html">FractalFlows</a>        </div>        <!-- Collect the nav links, forms, and other content for toggling -->        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">          <ul class="nav navbar-nav navbar-right">            <li><a href="#tf-home" class="page-scroll">Home</a></li>            <li><a href="#tf-about" class="page-scroll">About</a></li>            <li><a href="#tf-team" class="page-scroll">Team</a></li><!--            <li><a href="#tf-services" class="page-scroll">Services</a></li>            <li><a href="#tf-works" class="page-scroll">Portfolio</a></li>            <li><a href="#tf-testimonials" class="page-scroll">Testimonials</a></li>-->            <li><a href="#tf-contact" class="page-scroll">Contact</a></li>          </ul>        </div><!-- /.navbar-collapse -->      </div><!-- /.container-fluid --></nav>{% endblock %}{% block content %}    <!-- Home Page    ==========================================-->    <div id="tf-home" class="text-center">        <div class="overlay">            <div class="content">                <h1>Welcome to <strong><span class="color">Emergence</span></strong> from <strong>Fractal Flows</strong></h1>                <p class="lead">Where <strong>researchers</strong>, <strong>engineers</strong>, and <strong>students</strong> emerge their <strong>knowledge</strong> from the chaos of information.</p>                <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>            </div>        </div>    </div>    <!-- About Us Page    ==========================================-->    <div id="tf-about">        <div class="container">            <div class="row">                <div class="col-md-6">                    <img src="{{url_for('.static', filename='img/02.png')}}" class="img-responsive">                </div>                <div class="col-md-6">                    <div class="about-text">                        <div class="section-title">                            <h4>About us</h4>                            <h2>Some words <strong>about us</strong></h2>                            <hr>                            <div class="clearfix"></div>                        </div>                        <p class="intro">We love building and rebuilding brands through our  specific skills. Using colour, fonts, and illustration, we brand companies in a way they will never forget.</p>                        <ul class="about-list">                            <li>                                <span class="fa fa-dot-circle-o"></span>                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>                            </li>                            <li>                                <span class="fa fa-dot-circle-o"></span>                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>                            </li>                            <li>                                <span class="fa fa-dot-circle-o"></span>                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>                            </li>                        </ul>                    </div>                </div>            </div>        </div>    </div>    <!-- Team Page    ==========================================-->    <div id="tf-team" class="text-center">        <div class="overlay">            <div class="container">                <div class="section-title center">                    <h2>Meet <strong>our team</strong></h2>                    <div class="line">                        <hr>                    </div>                </div>                <div id="team" class="row">                    {% for member in data.members %}                    <div class="col-sm-6 ">                        <div class="thumbnail">                            <img src="{{url_for('.static', filename= member.img )}}" alt="..." class="img-circle team-img">                            <div class="caption">                                <h3>{{ member.name }}</h3>                                <p>{{ member.title }}</p>                                <p>{{ member.experience|linebreaks }}</p>                                <p>                                {% for met in member.meta %}                                  <a href="{{ met.address }}"><i class="fa {{ met.font }}"></i></a>                                {% endfor %}                                </p>                                <p class="italic">"{{ member.extra }}"</p>                            </div>                        </div>                    </div>                    {% endfor %}                </div>            </div>        </div>    </div><!--     Services Section    ==========================================-->    <div id="tf-services" class="text-center">        <div class="container">            <div class="section-title center">                <h2>Take a look at <strong>our services</strong></h2>                <div class="line">                    <hr>                </div>                <div class="clearfix"></div>                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            </div>            <div class="space"></div>            <div class="row">                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-desktop"></i>                    <h4><strong>Web design</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-mobile"></i>                    <h4><strong>Mobile Apps</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-camera"></i>                    <h4><strong>Photography</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>                <div class="col-md-3 col-sm-6 service">                    <i class="fa fa-bullhorn"></i>                    <h4><strong>Marketing</strong></h4>                    <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>                </div>            </div>        </div>    </div>    <!-- Clients Section    ==========================================    <div id="tf-clients" class="text-center">        <div class="overlay">            <div class="container">                <div class="section-title center">                    <h2>Some of <strong>our Clients</strong></h2>                    <div class="line">                        <hr>                    </div>                </div>                <div id="clients" class="owl-carousel owl-theme">                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/01.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/02.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/03.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/04.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/05.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/06.png')}}">                    </div>                    <div class="item">                        <img src="{{url_for('.static', filename='img/client/07.png')}}">                    </div>                </div>            </div>        </div>    </div>    -->    <!-- Portfolio Section    ==========================================    <div id="tf-works">        <div class="container">            <div class="section-title text-center center">                <h2>Take a look at <strong>our services</strong></h2>                <div class="line">                    <hr>                </div>                <div class="clearfix"></div>                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            </div>            <div class="space"></div>            <div class="categories">                <ul class="cat">                    <li class="pull-left"><h4>Filter by Type:</h4></li>                    <li class="pull-right">                        <ol class="type">                            <li><a href="#" data-filter="*" class="active">All</a></li>                            <li><a href="#" data-filter=".web">Web Design</a></li>                            <li><a href="#" data-filter=".photography">Photography</a></li>                            <li><a href="#" data-filter=".app" >Mobile App</a></li>                            <li><a href="#" data-filter=".branding" >Branding</a></li>                        </ol>                    </li>                </ul>                <div class="clearfix"></div>            </div>            <div id="lightbox" class="row">                <div class="col-sm-6 col-md-3 col-lg-3 branding">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/01.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 photography app">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/02.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 branding">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/03.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 branding">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/04.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 web">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/05.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 app">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/06.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 photography web">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/07.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>                <div class="col-sm-6 col-md-3 col-lg-3 web">                    <div class="portfolio-item">                        <div class="hover-bg">                            <a href="#">                                <div class="hover-text">                                    <h4>Logo Design</h4>                                    <small>Branding</small>                                    <div class="clearfix"></div>                                    <i class="fa fa-plus"></i>                                </div>                                <img src="{{url_for('.static', filename='img/portfolio/08.jpg')}}" class="img-responsive" alt="...">                            </a>                        </div>                    </div>                </div>            </div>        </div>    </div>-->    <!-- Testimonials Section    ==========================================    <div id="tf-testimonials" class="text-center">        <div class="overlay">            <div class="container">                <div class="section-title center">                    <h2><strong>Our clients’</strong> testimonials</h2>                    <div class="line">                        <hr>                    </div>                </div>                <div class="row">                    <div class="col-md-8 col-md-offset-2">                        <div id="testimonial" class="owl-carousel owl-theme">                            <div class="item">                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>                            </div>                            <div class="item">                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>                            </div>                            <div class="item">                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>                            </div>                        </div>                    </div>                </div>            </div>        </div>    </div>-->    <!-- Contact Section    ==========================================--    <div id="tf-contact" class="text-center">        <div class="container">            <div class="row">                <div class="col-md-8 col-md-offset-2">                    <div class="section-title center">                        <h2>Feel free to <strong>contact us</strong></h2>                        <div class="line">                            <hr>                        </div>                        <div class="clearfix"></div>                        <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>                    </div>                    <form>                            <div class="row">                            <div class="col-md-6">                                <div class="form-group">                                    <label for="exampleInputEmail1">Email address</label>                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">                                </div>                            </div>                            <div class="col-md-6">                                <div class="form-group">                                    <label for="exampleInputName1">Name</label>                                    <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name">                                </div>                            </div>                          </div>                        <div class="form-group">                            <label for="exampleInputsubject1">Subject</label>                            <input type="subject" class="form-control" id="exampleInputsubject1" placeholder="Enter Subject">                        </div>                        <div class="form-group">                            <label for="exampleInputEmail1">Message</label>                            <textarea class="form-control" rows="3"></textarea>                        </div>                        <button type="submit" class="btn tf-btn btn-default">Submit</button>                    </form>                </div>            </div>        </div>    </div>    -->    <div id="tf-contact" class="text-center">      <div class="container">           <div class="row">                <div class="col-md-8 col-md-offset-2">                    <div class="section-title center">                        <h2>Feel free to <strong>contact us</strong></h2>                        <div class="line">                            <hr>                        </div>                        <div class="clearfix"></div>          {% if success %}            <p>Thank you for your message. We'll get back to you shortly.</p>                    </div>          {% else %}                        Are you interested to joining us / funding us / obtaining further information?                    </div>                {% for message in get_flashed_messages() %}                  <div class="flash">{{ message }}</div>                {% endfor %}                <br>                {{ wtf.quick_form(form, form_type='horizontal',                                button_map={'submit_button': 'primary'})}}              {% endif %}                </div>            </div>        </div>    </div>    <nav id="footer">        <div class="container">            <div class="pull-left fnav">                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>            </div>            <div class="pull-right fnav">                <ul class="footer-social">                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>                </ul>            </div>        </div>    </nav>    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.1.11.1.js')}}"></script>    <!-- Include all compiled plugins (below), or include individual files as needed -->    <script type="text/javascript" src="{{url_for('.static', filename='js/bootstrap.js')}}"></script>    <script type="text/javascript" src="{{url_for('.static', filename='js/SmoothScroll.js')}}"></script>    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.isotope.js')}}"></script>    <script src="{{url_for('.static', filename='js/owl.carousel.js')}}"></script>    <!-- Javascripts    ================================================== -->    <script type="text/javascript" src="js/main.js"></script>{% endblock %}
+=======
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+
+<link rel="shortcut icon" href="{{ url_for('.static', filename='img/favicon.ico') }}" type="image/x-icon"
+      xmlns="http://www.w3.org/1999/html">
+<link rel="apple-touch-icon" href="{{url_for('.static', filename='img/apple-touch-icon.png')}}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{url_for('.static', filename='img/apple-touch-icon-72x72.png')}}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{url_for('.static', filename='img/apple-touch-icon-114x114.png')}}">
+
+
+<link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='fonts/font-awesome/css/font-awesome.css')}}">
+
+<!-- Slider
+================================================== -->
+<!-- <link href="{{url_for('.static', filename='css/owl.carousel.css')}}" rel="stylesheet" media="screen"> -->
+<link href="{{url_for('.static', filename='css/owl.theme.css')}}" rel="stylesheet" media="screen">
+
+<!-- Stylesheet
+================================================== -->
+<link rel="stylesheet" type="text/css"  href="{{url_for('.static', filename='css/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/responsive.css')}}">
+
+
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript" src="{{url_for('.static', filename='js/modernizr.custom.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- javascript jquery code to make navigation bar turn white background when scrolling starts -->
+<script>
+$(document).ready(function(){
+   var scroll_start = 0;
+   var startchange = $('.nav');
+   var offset = startchange.offset();
+   $(document).scroll(function() {
+      scroll_start = $(this).scrollTop();
+      if(scroll_start > offset.top) {
+          $('.navbar-default').css('background-color', 'rgb(255,255,255)');
+          $('.navbar-default').css('border-color', 'rgb(231,76,60)');
+       } else {
+          $('.navbar-default').css('background-color', 'transparent');
+          $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
+       }
+   });
+});
+</script>
+
+
+
+<!-- javascript jquery code to make popup videos -->
+<link rel="stylesheet" href="{{url_for('.static', filename='css/colorbox.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{url_for('.static', filename='js/jquery.colorbox.js')}}"></script>
+<script>
+    $(document).ready(function(){
+	//Examples of how to assign the Colorbox event to elements
+	$(".group1").colorbox({rel:'group1'});
+	$(".group2").colorbox({rel:'group2', transition:"fade"});
+	$(".group3").colorbox({rel:'group3', transition:"none", width:"75%", height:"75%"});
+	$(".group4").colorbox({rel:'group4', slideshow:true});
+	$(".ajax").colorbox();
+	$(".youtube").colorbox({iframe:true, innerWidth:640, innerHeight:390});
+	$(".vimeo").colorbox({iframe:true, innerWidth:500, innerHeight:409});
+	$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+	$(".inline").colorbox({inline:true, width:"50%"});
+	$(".callbacks").colorbox({
+	    onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+		onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+		onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+		onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+		onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+		});
+		$('.non-retina').colorbox({rel:'group5', transition:'none'})
+		$('.retina').colorbox({rel:'group5', transition:'none', retinaImage:true, retinaUrl:true});
+
+		//Example of preserving a JavaScript event for inline calls.
+		$("#click").click(function(){
+		$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+		return false;
+		});
+    });
+</script>
+
+
+
+{% endblock %}
+
+{% block title %}
+Emergence from Fractal Flows
+{% endblock %}
+
+{% block navbar %}
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://127.0.0.1:5000"><strong><span class="color">Fractal Flows</span></strong></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#tf-home" class="page-scroll"><b>Home</b></a></li>
+            <li><a href="#tf-about" class="page-scroll"><b>About</b></a></li>
+            <li><a href="taketour" class="page-scroll"><b>How it Works</b></a></li>
+            <li><a href="#tf-team" class="page-scroll"><b>Team</b></a></li><!--
+            <!--<li><a href="#tf-contact" class="page-scroll">Contact</a></li>-->
+            <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+
+{% block content %}
+    <!-- Home Page
+    ==========================================-->
+    <div id="tf-home" class="text-center">
+        <div class="overlay">
+            <div class="content">
+                <h1><span class="emph">Emergence</span> from <strong>Fractal Flows</strong></h1>
+                <p class="lead"><strong>A web app to review and reproduce scientific results</strong></p>
+                 <a class="btn btn-success btn-lg" href="http://emergence.fractalflows.com" role="button">Try <strong>Emergence</strong> for free &#8594;</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Page
+    ==========================================-->
+    <div id="tf-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{url_for('.static', filename='img/FFConcept.jpg')}}" class="img-responsive">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p style="padding: 10px; color: black; background-color: #FAA9C5; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 0px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> you can review a scientific article and reproduce its results.</font>
+                    </p>
+                    <p style="padding: 10px; color: black; background-color: #F8F67B; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 80px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> Others can review your article and reproduce its results making your article far more useful and impactful.</font>
+                    </p>
+                    <p style="padding: 10px; color: black; background-color: #59B2F2; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 0px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> you can easily search, discover, share, acquire and exchange knowledge bits of any article.</font>
+                    </p>
+                    <p style="padding: 10px; color: black; background-color: #83DD9E; width: 400px; height: 120px; border-radius: 20px; text-align: left; margin-left: 80px; border: black 2px solid">
+                            <font size="4">On <strong>Emergence</strong> engineers, scientists, researchers, and students collaborate and emerge their knowledge from the chaos of scientific articles and publications.</font>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-text">
+                        <div class="section-title">
+                            <h2><strong>about</strong></h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!--
+                        <p class="intro"><strong>Emergence from Fractal Flows</strong> is an online exchange system that makes it easier for engineers, scientists, researchers and students to search, discover, collaborate, acquire and exchange engineering information, data and knowledge products. The exchange system integrates and links networks of knowledge repositories and tracks their evolution and <strong>emerge</strong> a value from the perspective of various communities.</p>
+    -->
+                        <p class="intro">Every year there are more than <u>2 million</u> articles that are published in scientific peer-review journals. Unfortunately, only a small fraction of those will be reproducible. Even worst, hidden under those millions of articles there is an even greater number of hypothesis, methodologies, simulation results, experimental results, analysis, datasets, mathematical formulations, assumptions, scripts, source code, etc. <strong><u>(a.k.a knowledge bits)</u></strong> that will never see the light of day, and will slowly rote, submerged, deep inside the abyss of the authors' brains or hard disks. These knowledge bits could be extremely important to assess the reproducibility of the articles, and to actually make the articles more useful. But unfortunately, for multiple-reasons, the system discourage the authors to share those Knowledge Products. Those two effects combined, create a tsunamy of low quality publications, which saturates the attention of engineers, reduces the speed of scientific progress and waste an enormous amount of time and money for society.</p>
+                        <p class="intro">We, at <strong>FractalFlows</strong>, are developing a web app called <strong>Emergence</strong> that allows anyone to review articles and most importantly reproduce results, data and source code featured in an article. Thus (1) making it easier for engineers, scientists, researchers and students to search, discover, collaborate, share, acquire and exchange the necessary knowledge bits revolving around a given article, and (2) making the article significantly more useful!</p>
+                        <p class="intro"><strong>Emergence</strong> is integrated with <u>Github</u> and the network <u>DOI</u> (..and more to come). <strong>Integrations</strong> with external tools let you automatically pull information from outside tools into Emergence in a way that's timely, relevant, and searchable. </p>
+<!--                        <p class="intro"><strong>What we consider as Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, source code, licenses to simulation code, etc.</p>
+                        <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
+                        <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub and Zenodo.</p>
+
+                        <ul class="about-list">
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
+                            </li>
+                        </ul>
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr width="100%">
+    </div>
+
+
+
+    <!-- Tour the benefits Section
+    ==========================================
+    -->
+    <div id="tf-benefits" class="text-center">
+        <div class="overlay">
+            <div class="section-title center">
+                <h2><strong>Benefits</strong></h2>
+                <div class="line">
+                    <hr>
+                </div>
+                <div class="clearfix"></div>
+                <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: 400px; border: black 2px solid">
+                    <span>Check out how it works! Learn what Emergence from Fractal Flows can do for you.</span>
+                    <a class="btn btn-success btn-lg" href="taketour" role="button">Take a tour &#8594;</a>
+                </p>
+            </div>
+            <div class="space"></div>
+        </div>
+    </div>
+
+
+    <!-- Team Page
+    ==========================================-->
+    <div id="tf-team" class="text-center">
+        <div class="overlay">
+            <div class="container">
+                <div class="section-title center">
+                    <h2><strong>The team</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </div>
+
+                <div id="team" class="row">
+                    {% for member in data.members %}
+                    <div class="col-sm-6 ">
+                        <div class="thumbnail">
+                            <img src="{{url_for('.static', filename= member.img )}}" alt="..." class="img-circle team-img">
+                            <div class="caption">
+                                <h3>{{ member.name }}</h3>
+                                <p>{{ member.title }}</p>
+                                <p>{{ member.experience|linebreaks }}</p>
+                                <p>
+                                {% for met in member.meta %}
+                                  <a href="{{ met.address }}"><i class="fa {{ met.font }}"></i></a>
+                                {% endfor %}
+                                </p>
+                                <!--<p class="italic">"{{ member.extra }}"</p>-->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Clients Section
+    ==========================================
+    <div id="tf-clients" class="text-center">
+        <div class="overlay">
+            <div class="container">
+
+                <div class="section-title center">
+                    <h2>Some of <strong>our Clients</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </div>
+                <div id="clients" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/01.png')}}">
+                    </div>
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/02.png')}}">
+                    </div>
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/03.png')}}">
+                    </div>
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/04.png')}}">
+                    </div>
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/05.png')}}">
+                    </div>
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/06.png')}}">
+                    </div>
+                    <div class="item">
+                        <img src="{{url_for('.static', filename='img/client/07.png')}}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    -->
+
+    <!-- Portfolio Section
+    ==========================================
+    <div id="tf-works">
+        <div class="container">
+            <div class="section-title text-center center">
+                <h2>Take a look at <strong>our services</strong></h2>
+                <div class="line">
+                    <hr>
+                </div>
+                <div class="clearfix"></div>
+                <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
+            </div>
+            <div class="space"></div>
+
+            <div class="categories">
+
+                <ul class="cat">
+                    <li class="pull-left"><h4>Filter by Type:</h4></li>
+                    <li class="pull-right">
+                        <ol class="type">
+                            <li><a href="#" data-filter="*" class="active">All</a></li>
+                            <li><a href="#" data-filter=".web">Web Design</a></li>
+                            <li><a href="#" data-filter=".photography">Photography</a></li>
+                            <li><a href="#" data-filter=".app" >Mobile App</a></li>
+                            <li><a href="#" data-filter=".branding" >Branding</a></li>
+                        </ol>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div id="lightbox" class="row">
+
+                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/01.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 photography app">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/02.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/03.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 branding">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/04.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 web">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/05.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 app">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/06.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 photography web">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/07.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3 col-lg-3 web">
+                    <div class="portfolio-item">
+                        <div class="hover-bg">
+                            <a href="#">
+                                <div class="hover-text">
+                                    <h4>Logo Design</h4>
+                                    <small>Branding</small>
+                                    <div class="clearfix"></div>
+                                    <i class="fa fa-plus"></i>
+                                </div>
+                                <img src="{{url_for('.static', filename='img/portfolio/08.jpg')}}" class="img-responsive" alt="...">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+-->
+    <!-- Testimonials Section
+    ==========================================
+    <div id="tf-testimonials" class="text-center">
+        <div class="overlay">
+            <div class="container">
+                <div class="section-title center">
+                    <h2><strong>Our clients’</strong> testimonials</h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div id="testimonial" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
+                            </div>
+
+                            <div class="item">
+                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
+                            </div>
+
+                            <div class="item">
+                                <h5>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</h5>
+                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <!-- Contact Section
+    ==========================================--
+    <div id="tf-contact" class="text-center">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <div class="section-title center">
+                        <h2>Feel free to <strong>contact us</strong></h2>
+                        <div class="line">
+                            <hr>
+                        </div>
+                        <div class="clearfix"></div>
+                        <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>
+                    </div>
+
+                    <form>
+                            <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Name</label>
+                                    <input type="name" class="form-control" id="exampleInputName1" placeholder="Enter name">
+                                </div>
+                            </div>
+                          </div>
+                        <div class="form-group">
+                            <label for="exampleInputsubject1">Subject</label>
+                            <input type="subject" class="form-control" id="exampleInputsubject1" placeholder="Enter Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Message</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn tf-btn btn-default">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    -->
+
+    <div id="tf-contact" class="text-center">
+      <div class="container">
+
+           <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+
+                    <div class="section-title center">
+                        <h2> <strong>contact us</strong></h2>
+                        <div class="line">
+                            <hr>
+                        </div>
+
+                        <div class="clearfix"></div>
+          {% if success %}
+            <p>Thank you for your message. We'll get back to you shortly.</p>
+
+                    </div>
+          {% else %}
+                        Are you interested to joining us / working with us / funding us / obtaining further information?
+
+                    </div>
+
+
+
+                {% for message in get_flashed_messages() %}
+                  <div class="flash">{{ message }}</div>
+                {% endfor %}
+
+                <br>
+
+
+                {{ wtf.quick_form(form, form_type='horizontal',
+                                button_map={'submit_button': 'primary'})}}
+
+              {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <nav id="footer">
+        <div class="container">
+            <div class="pull-left fnav">
+                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>
+            </div>
+            <div class="pull-right fnav">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.1.11.1.js')}}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="{{url_for('.static', filename='js/bootstrap.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/SmoothScroll.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.static', filename='js/jquery.isotope.js')}}"></script>
+
+    <script src="{{url_for('.static', filename='js/owl.carousel.js')}}"></script>
+
+    <!-- Javascripts
+    ================================================== -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+{% endblock %}

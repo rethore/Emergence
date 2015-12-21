@@ -61,6 +61,10 @@ def contact():
   form = ContactForm()
   return render_template('contact.html', form=form)
 
+@app.route('/taketour')
+def taketour():
+  return render_template('taketour.html')
+
 @app.route('/hello')
 def hello():
     provider = str(os.environ.get('PROVIDER', 'world'))
