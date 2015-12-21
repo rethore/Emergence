@@ -2,6 +2,8 @@ Meteor.publish("uri", () => URI.find());
 Meteor.publish("events", () => Events.find());
 Meteor.publish("relationships", () => Relationships.find());
 
+
+
 var github = new GitHub({
     version: "3.0.0", // required
     timeout: 5000     // optional

@@ -13,7 +13,6 @@ Template.DOI_Navbar.helpers({
 });
 
 var menu = [
-  {text: "Access Publication", href: this.url},
   {text: "Related", icon: "fa-link", items: [
     {text: "URL/DOI", icon: "fa-link"},
     {text: "Slideshow", icon: "fa-desktop"},

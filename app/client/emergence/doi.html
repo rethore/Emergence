@@ -42,6 +42,7 @@
   </div>
 </template>
 
+
 <template name="DOI_Summary">
   <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -50,12 +51,26 @@
             <a type="button" class="dropdown-toggle glyphicon glyphicon-plus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Add new</a></li>
+              <li><a href="#" id="add_new_summary">Add new</a></li>
               <li><a href="#">Fork</a></li>
             </ul>
           </div>
       </div>
-      <div class="panel-body collapse in" id="abstract">{{ summary }}</div>
+      <div class="panel-body collapse in" id="abstract">
+          {{#each summaries }}
+            {{#if edit}}
+            <form class="summary_form">
+              <textarea
+              placeholder="Enter your summary here"
+              class="form-control" rows="5"
+              value={{text}}>
+              </textarea>
+            </form>
+            {{else}}
+              {{ text }}
+            {{/if}}
+          {{/each}}
+        </div>
   </div>
 </template>
 

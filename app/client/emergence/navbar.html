@@ -27,13 +27,19 @@
     <span id="year">
         {{ year }}.
     </span>
-    <a id="link" href="{{ publi.url }}">{{ doi }}</a>
+    <a id="link" href="{{ url }}">{{ doi }}</a>
   </div>
 </template>
 
 
 <template name="DOI_Menubar">
   <ul class="nav navbar-nav navbar-left">
+    <li>
+            <a href="{{ url }}">
+                <i class="fa {{ icon }}"></i>
+                Access publication
+            </a>
+    </li>
     {{#each item }}
       {{#if there_is "href" }}
         <li>

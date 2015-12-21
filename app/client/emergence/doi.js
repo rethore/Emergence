@@ -14,7 +14,22 @@ UI.registerHelper("undefined", val => (typeof val === "undefined"));
 
 
 Template.DOI_Summary.helpers({
-  summary: function() { return "Summary of " + this.doi },
+  summaries: function() { return URI.findOne({doi:this.doi}).summaries },
+  edit: function() {return get.Session("edit_summary") === this.id},
+});
+
+Template.DOI_Summary.events({
+  "click #add_new_summary": function(event, template){
+    let summaries = URI.findOne({doi:this.doi}).summaries;
+    if (summaries) {
+      summaries.append({text: "", author: Meteor.user().username, id: summaries.length+1})
+    } else { 
+      let summaries = [{text: "", author: Meteor.user().username, id: 1}];
+    }
+    URI.update({doi}, {$set:{summaries}})
+    Session.set("edit_summary", summaries.length);
+    console.log("new summary", summaries)
+  }
 });
 
 Template.DOI_Citations.helpers({
