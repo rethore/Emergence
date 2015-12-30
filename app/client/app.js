@@ -56,3 +56,27 @@ Template.Team.helpers({
       }],
     }],
   });
+
+
+
+
+Template.Mailing.events({
+	'submit form#mailing-list':function(e){
+		var contactForm = $(e.currentTarget),
+			fname = mailing-list.find('#userName').val(),
+			email = mailing-list.find('#emailAddress').val()
+
+		//isFilled and isEmail are my helper methods, which checks if variable exists or is email address valid
+		//if(isFilled(fname) && isFilled(lname) && isFilled(email) && isFilled(phone) && isFilled(message) && isEmail(email)){
+			var dataText = "Message from: " + fname + " " +  "\rEmail: " + email;
+
+			Meteor.call('sendEmail', dataText);
+			//throwAlert is my helper method which creates popup with message
+			//throwAlert('Email send.', 'success');
+		//}else{
+		//	throwAlert('An error occurred. Sorry', 'error');
+		//	return false;
+		//}
+	}
+});
+

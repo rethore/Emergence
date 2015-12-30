@@ -149,7 +149,7 @@ font-weight: 900;
 
 /* Emergence Search Style*/
 #tf-Emergence-Search{
-    background-color: #2F4F4F;
+    background-color: #B0C4DE;
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -179,7 +179,7 @@ font-weight: 900;
 
 /* Home Style*/
 #tf-home{
-	background: url('../img/Picture1.png');
+	background: url('../img/DigitalWater_0009_Ebene 11.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -215,7 +215,7 @@ font-weight: 900;
 
 /* Home Style of the tour page*/
 #modal{
-	background: url('../img/Emergence.jpg');
+	background: url('../img/DigitalWater_0005_Ebene 7.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -279,7 +279,7 @@ ul.about-list li span{
 }
 
 
-/* Tour section story*/
+
 
 #tf-tour-Iam{
 	background-color: #41924B;
@@ -794,7 +794,7 @@ nav#footer p{
 div.box  {
 	color: black;
 	padding: 10px;
-	width: 300px;
+	width: 320px;
 	border-radius: 20px;
 	text-align: left;
 	border: black 2px solid;
