@@ -78,6 +78,9 @@ var menu = [
     href: "https://coinkite.com/pay/04815AF9C7-2C4BC4"},
   {text: "Emerge",
     href: "#"
+  },
+  {text: "My portfolio",
+    href: "#"
   }
 ].map((obj1) => { // Add a slugified id from the text
   obj1.id = slugify(obj1.text);
