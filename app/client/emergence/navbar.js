@@ -78,7 +78,7 @@ var menu = [
     {text: "Open Access Publications", separator: true},
     {text: "Zenodo", icon: "fa-file-text-o"},
     {text: "Figshare", icon: "fa-file-image-o"},
-    {text: "Authora", icon: "fa-file-text-o"},
+    {text: "Authorea", icon: "fa-file-text-o"},
     {text: "Wikipedia", icon: "fa-wikipedia-w"},
     {text: "Data Dryad", icon: "fa-database", href: "http://datadryad.org"},
 
