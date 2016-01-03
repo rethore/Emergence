@@ -12,23 +12,42 @@
 </template>
 
 
+<template name="search_box_in_emergence">
+    <form class="search">
+        <input type="text" class="form-control input-lg" name="search_text"
+        placeholder="Enter an article DOI or keywords">
+    </form>
+</template>
+
 <template name="DOI_Title">
-  <div class="container">
-    <h3 id="title_article">{{ title }}.</h3>
-    <div id="authors">
-        by
-        {{#each author}}
-            {{ last }}, {{ first }};
-        {{/each}}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+             <div class="container">
+                <h3 id="title_article">{{ title }}.</h3>
+                <div id="authors">
+                    by
+                    {{#each author}}
+                        {{ last }}, {{ first }};
+                    {{/each}}
+                </div>
+                <span id="journal">
+                    {{ journal }}.
+                </span>
+                <span id="year">
+                    {{ year }}.
+                </span>
+                <a id="link" href="{{ url }}">{{ doi }}</a>
+              </div>
+         </div>
+        <div class="col-xs-6 col-sm-3"></div>
+        <div class="clearfix visible-xs"></div>
+        <div class="col-xs-6 col-sm-3"></div>
+        <div class="col-xs-6 col-sm-3">
+            {{> search_box_in_emergence }}
+        </div>
+      </div>
     </div>
-    <span id="journal">
-        {{ journal }}.
-    </span>
-    <span id="year">
-        {{ year }}.
-    </span>
-    <a id="link" href="{{ url }}">{{ doi }}</a>
-  </div>
 </template>
 
 
