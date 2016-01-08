@@ -57,30 +57,43 @@ Template.Team.helpers({
     }],
   });
 
-
-
-
 Template.Mailing.events({
 	'submit form#mailing-list':function(e){
       e.preventDefault();
 	  var contactForm = $(e.currentTarget);
 	  var fname = contactForm.find('#userName').val();
 	  var email = contactForm.find('#emailAddress').val();
-    // var fname = e.target.userName.value;
-    // var email = e.target.emailAddress.value;
-
 		//isFilled and isEmail are my helper methods, which checks if variable exists or is email address valid
-		//if(isFilled(fname) && isFilled(email)){
-      var dataText = "Message from: " + fname + " " +  "\rEmail: " + email;
-      Meteor.call('sendEmail', dataText);
-      // reset field
-      $('#userName').val('');
-      $('#emailAddress').val('');
-			//throwAlert is my helper method which creates popup with message
-			//throwAlert('Email send.', 'success');
+	  if(isEmail(email) && isFilled(fname) && isFilled(email)){ 
+        var dataText = "Message from: " + fname + " " +  "\rEmail: " + email;
+        Meteor.call('sendEmail', dataText);
+        // reset field
+        $('#userName').val('');
+        $('#emailAddress').val('');
+        //alert("Thanks for signing up! We'll email you occasionally with updates about Emergence from Fractal Flows!");
+		//throwAlert is my helper method which creates popup with message
+		//throwAlert('Email send.', 'success');
 		//}else{
 		//	throwAlert('An error occurred. Sorry', 'error');
 		//	return false;
-		//}
+		//
+		//
+        contactForm.replaceWith("<div><p>Thanks for signing up! We'll email you occasionally with updates about Emergence from Fractal Flows.</p></div>");
+      }else{
+        alert("An error occurred. Sorry.");
+      }
 	}
 });
+
+function isEmail(address) {
+  return /^[A-Z0-9'.1234z_%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(address);
+};
+
+function isFilled(field) {
+    if (field === '') {
+      throw new Meteor.Error("Please enter a ", field);
+      return false
+    }else{
+      return true
+    }
+};
