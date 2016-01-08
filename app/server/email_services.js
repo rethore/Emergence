@@ -1,6 +1,6 @@
 Meteor.methods({
   sendEmail: function (text) {
-    check([text], [String]);
+    //check([text], [String]);
 
     this.unblock();
 
@@ -10,5 +10,7 @@ Meteor.methods({
       subject: "New user signup",
       text: text
     });
+
+    console.log('I just sent you an email:', text);
   }
 });

@@ -62,9 +62,12 @@ Template.Team.helpers({
 
 Template.Mailing.events({
 	'submit form#mailing-list':function(e){
-		var contactForm = $(e.currentTarget),
-			fname = mailing-list.find('#userName').val(),
-			email = mailing-list.find('#emailAddress').val()
+    e.preventDefault();
+		var contactForm = $(e.currentTarget);
+		var fname = contactForm.find('#userName').val();
+	  var email = contactForm.find('#emailAddress').val();
+    // var fname = e.target.userName.value;
+    // var email = e.target.emailAddress.value;
 
 		//isFilled and isEmail are my helper methods, which checks if variable exists or is email address valid
 		//if(isFilled(fname) && isFilled(lname) && isFilled(email) && isFilled(phone) && isFilled(message) && isEmail(email)){
@@ -79,4 +82,3 @@ Template.Mailing.events({
 		//}
 	}
 });
-
