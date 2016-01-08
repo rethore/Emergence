@@ -62,18 +62,20 @@ Template.Team.helpers({
 
 Template.Mailing.events({
 	'submit form#mailing-list':function(e){
-    e.preventDefault();
-		var contactForm = $(e.currentTarget);
-		var fname = contactForm.find('#userName').val();
+      e.preventDefault();
+	  var contactForm = $(e.currentTarget);
+	  var fname = contactForm.find('#userName').val();
 	  var email = contactForm.find('#emailAddress').val();
     // var fname = e.target.userName.value;
     // var email = e.target.emailAddress.value;
 
 		//isFilled and isEmail are my helper methods, which checks if variable exists or is email address valid
-		//if(isFilled(fname) && isFilled(lname) && isFilled(email) && isFilled(phone) && isFilled(message) && isEmail(email)){
-			var dataText = "Message from: " + fname + " " +  "\rEmail: " + email;
-
-			Meteor.call('sendEmail', dataText);
+		//if(isFilled(fname) && isFilled(email)){
+      var dataText = "Message from: " + fname + " " +  "\rEmail: " + email;
+      Meteor.call('sendEmail', dataText);
+      // reset field
+      $('#userName').val('');
+      $('#emailAddress').val('');
 			//throwAlert is my helper method which creates popup with message
 			//throwAlert('Email send.', 'success');
 		//}else{
