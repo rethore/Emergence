@@ -26,7 +26,6 @@ var menu = [
     {text: "Raise a Question", icon: "fa-question-circle"}]},
 */
   {text: "Extend", icon: "fa fa-arrows-v", items: [
-    {text: "URL/DOI", icon: "fa-link"},
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
@@ -42,6 +41,7 @@ var menu = [
     {text: "Video", icon: "fa-film"},
     {text: "Reproduction", icon: "fa-clone",},
     {text: "Version", icon: "fa-code-fork",},
+    {text: "URL/DOI", icon: "fa-link"},
   ],},
   {text: "Integrate", items: [
     {text: "Workspaces", separator: false},
