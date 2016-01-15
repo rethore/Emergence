@@ -13,25 +13,33 @@ Template.DOI_Navbar.helpers({
 });
 
 var menu = [
+/*
   {text: "Related", icon: "fa-link", items: [
     {text: "URL/DOI", icon: "fa-link"},
     {text: "Slideshow", icon: "fa-desktop"},
     {text: "Video", icon: "fa-film"}]},
+*/
+/*
   {text: "Discuss", icon: "fa-comments-o", items: [
     {text: "Comment", icon: "fa-comments-o"},
     {text: "Review", icon: "fa-gavel"},
     {text: "Raise a Question", icon: "fa-question-circle"}]},
+*/
   {text: "Extend", icon: "fa fa-arrows-v", items: [
+    {text: "URL/DOI", icon: "fa-link"},
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
   {text: "Register", items: [
     {text: "Question", icon: "fa-question-circle",},
+    {text: "Review", icon: "fa-gavel"},
     {text: "Hypothesis / Method", icon: "fa-question-circle"},
     {text: "Experiment", icon: "fa-cogs",},
     {text: "Observation", icon: "fa-star-o",},
     {text: "Result", icon: "fa-star-o",},
     {text: "Dataset", icon: "fa-database",},
+    {text: "Slideshow", icon: "fa-desktop"},
+    {text: "Video", icon: "fa-film"},
     {text: "Reproduction", icon: "fa-clone",},
     {text: "Version", icon: "fa-code-fork",},
   ],},
