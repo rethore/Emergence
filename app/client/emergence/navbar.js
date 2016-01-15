@@ -32,7 +32,8 @@ var menu = [
   {text: "Register", items: [
     Meteor.elements.question,
     {text: "Review", icon: "fa-gavel"},
-    {text: "Hypothesis / Method", icon: "fa-question-circle"},
+    {text: "Hypothesis", icon: "fa-question-circle"},
+    {text: "Method", icon: "fa-question-circle"},        
     {text: "Experiment", icon: "fa-cogs",},
     {text: "Observation", icon: "fa-star-o",},
     {text: "Result", icon: "fa-star-o",},
