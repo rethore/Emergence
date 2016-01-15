@@ -23,7 +23,7 @@ Meteor.elements = {
 
   question: {
     id: "question",
-    text: "Question",
+    text: "Scientific Question",
     icon: "fa-question-circle",
     modal: {
       template: "Question",
