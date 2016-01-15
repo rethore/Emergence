@@ -26,7 +26,7 @@ var menu = [
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
   {text: "Register", items: [
-    {text: "Question", icon: "fa-question-circle",},
+    Meteor.elements.question,
     {text: "Hypothesis / Method", icon: "fa-question-circle"},
     {text: "Experiment", icon: "fa-cogs",},
     {text: "Observation", icon: "fa-star-o",},

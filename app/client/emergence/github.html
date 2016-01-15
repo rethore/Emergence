@@ -1,0 +1,26 @@
+<template name="PushEvent">
+  <span class="message-type">
+    <strong>New push</strong>
+  </span>
+    <span class="login">@{{ actor.login }}</span> <span class="date">{{ formatTime created_at }}</span>
+    <ul>
+      {{#each payload.commits }}
+        <li><a href="https://github.com/{{ origine.user }}/{{ origine.repo }}/commits/{{ sha }}">{{ shortSHA sha }}</a>
+          {{ message }}
+        </li>
+      {{/each}}
+    </ul>
+</template>
+
+
+<template name="IssueCommentEvent">
+  <span class="message-type">
+    <strong>
+      New comment on Issue <span class="issue-title">"<em>{{ title }}</em>"</span>
+    </strong>
+  </span>
+  <span class="login">@{{ login }}</span> <span class="date">{{ formatTime created_at }}</span>
+  <div class="comment">
+    {{ payload.comment.body }}
+  </div>
+</template>

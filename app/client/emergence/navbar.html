@@ -191,3 +191,13 @@
             rows="10"
             placeholder="Tell us why this workspace is relevant to this URI"></textarea>
 </template>
+
+<template name="Question">
+  <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
+  <input type="text" class="form-control" placeholder="question" name="question">
+  <textarea class="form-control"
+            name="comment"
+            id="Modalcomment"
+            rows="10"
+            placeholder="Tell us why this question is relevant to this URI"></textarea>
+</template>

@@ -11,6 +11,7 @@ UI.registerHelper('formatTime', c =>  moment(c).format('MM/DD/YYYY, hh:mm'));
 UI.registerHelper('shortSHA', sha => sha.slice(0, 5));
 UI.registerHelper("not_undefined", val => !val);
 UI.registerHelper("undefined", val => (typeof val === "undefined"));
+UI.registerHelper("stringify", val => JSON.stringify(val, {indent: true}))
 
 
 Template.DOI_Summary.helpers({
@@ -23,7 +24,7 @@ Template.DOI_Summary.events({
     let summaries = URI.findOne({doi:this.doi}).summaries;
     if (summaries) {
       summaries.append({text: "", author: Meteor.user().username, id: summaries.length+1})
-    } else { 
+    } else {
       let summaries = [{text: "", author: Meteor.user().username, id: 1}];
     }
     URI.update({doi}, {$set:{summaries}})
@@ -49,6 +50,7 @@ Template.DOI_Related.helpers({
   checked: function() {
     return Session.get("checked_git_repo_"+this.origine.user+'_'+this.origine.repo);
   },
+  supported: val => (['PushEvent', 'IssueEvent'].indexOf(val) > -1),
 });
 
 Template.DOI_Related.events({

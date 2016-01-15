@@ -215,7 +215,7 @@ font-weight: 900;
 
 /* Home Style of the tour page*/
 #modal{
-	background: url('../img/DigitalWater_0005_Ebene 7.jpg');
+	/*background: url('../img/DigitalWater_0005_Ebene 7.jpg');*/
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;

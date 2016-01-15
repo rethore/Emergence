@@ -21,11 +21,24 @@
 
 <template name="DOI_Main">
   {{> DOI_Summary }}
+  {{> RelatedQuestions }}
   {{> DOI_Citations }}
   {{> DOI_CitedBy }}
   {{> DOI_Related }}
 </template>
 
+<template name="MainPanel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a class="accordion-toggle" href="#{{id}}" data-toggle="collapse">{{title}}</a>
+        <a class="pull-right glyphicon glyphicon-plus" href="#" data-toggle="tooltip" data-placement="top" title="Add">
+      </a>
+    </div>
+    <div class="panel-body collapse" id="{{id}}">
+      {{> UI.contentBlock}}
+    </div>
+  </div>
+</template>
 
 
 <template name="DOI_pdf">
@@ -42,7 +55,25 @@
   </div>
 </template>
 
+<template name="DOI_Summary">
+  {{#MainPanel id="summary" title="Summary"}}
+    {{#each summaries }}
+      {{#if edit}}
+      <form class="summary_form">
+        <textarea
+        placeholder="Enter your summary here"
+        class="form-control" rows="5"
+        value={{text}}>
+        </textarea>
+      </form>
+      {{else}}
+        {{ text }}
+      {{/if}}
+    {{/each}}
+  {{/MainPanel}}
+</template>
 
+<!--
 <template name="DOI_Summary">
   <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -72,7 +103,7 @@
           {{/each}}
         </div>
   </div>
-</template>
+</template> -->
 
 
 <template name="DOI_Citations">
@@ -112,52 +143,33 @@
 
 
 <template name="DOI_Related">
-  <div class="panel panel-default">
+  {{#MainPanel id="related_ff" title="Related Fractal Flows"}}
+  <!-- <div class="panel panel-default">
     <div class="panel-heading">Related Fractal Flows
       <a href="#" class="pull-right glyphicon glyphicon-plus rest-call" data-toggle="tooltip" data-placement="top" title="Add related"></a>
-    </div>
-    <div class="list-group" id="add-stuff-here">
+    </div> -->
+    <!-- <div class="list-group" id="add-stuff-here" style="border:0px"> -->
       {{#each event }}
         {{#if checked}}
         <div  class="collapse in collap-{{ origine.user }}-{{ origine.repo }}">
-          <div class="list-group-item">
+          <div style="padding:10px">
             <span class="event-header">
               <img height="16" src="https://avatars1.githubusercontent.com/u/{{ actor.id }}?v=3&amp;s=32" width="16">
             </span>
             <a class="pull-right glyphicon glyphicon-education" aria-hidden="true" aria-label="Review" href="#"  data-toggle="tooltip" data-placement="top" title="Rate relevance"></a>
-            {{#if equals type "PushEvent" }}
-              <span class="message-type">
-                <strong>New push</strong>
-              </span>
-                <span class="login">@{{ actor.login }}</span> <span class="date">{{ formatTime created_at }}</span>
-                <ul>
-                  {{#each payload.commits }}
-                    <li><a href="https://github.com/{{ origine.user }}/{{ origine.repo }}/commits/{{ sha }}">{{ shortSHA sha }}</a>
-                      {{ message }}
-                    </li>
-                  {{/each}}
-                </ul>
+            {{#if supported type }}
+              {{> UI.dynamic template=type}}
             {{else}}
-              {{#if equals type "IssueCommentEvent" }}
-                <span class="message-type">
-                  <strong>
-                    New comment on Issue <span class="issue-title">"<em>{{ title }}</em>"</span>
-                  </strong>
-                </span>
-                <span class="login">@{{ login }}</span> <span class="date">{{ formatTime created_at }}</span>
-                <div class="comment">
-                  {{ payload.comment.body }}
-                </div>
-              {{else}}
                 <span class="message-type"><strong>{{ type }}</strong></span>
                 <span class="login">@{{ actor.login }}</span>
                 <span class="date">{{ formatTime created_at }}</span>
-              {{/if}}
+                {{! stringify this }}
             {{/if}}
           </div>
         </div>
         {{/if}}
       {{/each}}
-    </div>
-  </div>
+  <!-- </div> -->
+  <!-- </div> -->
+  {{/MainPanel}}
 </template>

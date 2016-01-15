@@ -6,17 +6,38 @@ Meteor.elements = {
     text: "Github",
     icon: "fa-github-square",
     modal: {
-      template: "githubModal",
-      base_url: "http://github.com/",
-      title: "Register a new github repository",
+      template: "Question",
+      title: "Register a related scientific question",
       callback(event, template) {
         console.log("github", event, template);
         let comment = event.target.Modalcomment.value;
         let user = event.target.namespace.value;
         let repo = event.target.reponame.value;
         let doi = event.target.doi.value;
+        let userid = Meteor.userId();
         console.log("github", event, template, comment, user, repo, doi);
-        return {doi: doi, type:"github", user, repo, comment};
+        return {doi: doi, type:"github", user, repo, userid, comment};
+      },
+    },
+  },
+
+  question: {
+    id: "question",
+    text: "Question",
+    icon: "fa-question-circle",
+    modal: {
+      template: "Question",
+      base_url: "http://github.com/",
+      title: "Register a new github repository",
+      callback(event, template) {
+        // console.log("question", event, template);
+        let question = event.target.question.value
+        let comment = event.target.Modalcomment.value;
+        let userid = Meteor.userId();
+        // let repo = event.target.reponame.value;
+        // let doi = event.target.doi.value;
+        // console.log("question", {doi, type:"question", user, question, comment});
+        return {doi, type:"question", userid, question, comment};
       },
     },
   },
