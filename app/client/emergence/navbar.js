@@ -29,14 +29,14 @@ var menu = [
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
-  {text: "Register", items: [
+  {text: "Add Relationship", items: [
     Meteor.elements.question,
     {text: "Review", icon: "fa-gavel"},
     {text: "Hypothesis", icon: "fa-question-circle"},
     {text: "Method", icon: "fa-question-circle"},
     {text: "Model", icon: "fa-question-circle"},
     {text: "Code", icon: "fa-question-circle"},
-    {text: "Software", icon: "fa-question-circle"},                    
+    {text: "Software", icon: "fa-question-circle"},
     {text: "Experiment", icon: "fa-cogs",},
     {text: "Observation", icon: "fa-star-o",},
     {text: "Result", icon: "fa-star-o",},
