@@ -16,7 +16,7 @@
 <template name="about">
   {{> Navbar}}
   {{> Problemdef}}
-  {{> tf_tour_story_start}}
+  {{> tf_tour_story_start_1}}
   {{> Mailing}}
   {{> Footer}}
 </template>
@@ -26,7 +26,7 @@
   {{> Navbar}}
   {{> modal}}
   {{> tf_tour_whattodo}}
-  {{> tf_tour_story_start}}
+  {{> tf_tour_story_start_2}}
   {{> Footer}}
 </template>
 
@@ -47,7 +47,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><strong><span class="color">Fractal Flows</span></strong></a>
+            <a class="navbar-brand" href="/"><strong><span class="color">&cwconint; Fractal Flows</span></strong></a>
           </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -101,6 +101,20 @@
            href="/emergence" >
           Try <strong>Emergence</strong> for free &#8594;
         </a>
+        <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Video</button>
+        <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-center" id="gridSystemModalLabel">What is Emergence From Fractal Flows?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe width="871" height="480" src="https://www.youtube.com/embed/MH6JZdGZcI?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -349,24 +363,6 @@
 
 
 <!-- Home take tour + button ================================================== -->
-<template name="tf_home_tour">
-    <div id="tf-home-tour" class="text-center">
-        <div class="overlay">
-            <div class="content">
-                <h1><span class="emph2"><strong>Your portal to expose and discover the hidden</strong></span></h1>
-                <h1><span class="emph2"><strong>knowledge bits behind scientific publications</strong></span></h1>
-                <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: auto; margin-right: auto; border: black 2px solid">
-                    <span>Let's get started with <b><i>Emergence</i></b>. Watch the following video to learn how it works!</span>
-                    <a class='youtube' href='https://www.youtube.com/watch?v=-MH6JZdGZcI'>
-                        <button type="button" class="btn btn-success btn-lg">Watch the Video</button>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-</template>
-
-
 <!-- Make the embedded tutorial movie popup in the website ================================================== -->
 <template name="modal">
     <div id="modal" class="text-center">
@@ -376,14 +372,14 @@
                 <h1><span class="emph2"><strong>knowledge bits behind scientific publications</strong></span></h1>
                 <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: auto; margin-right: auto; border: black 2px solid">
                     <span>Let's get started with <b><i>Emergence</i></b>. Watch the following video to learn how it works!</span>
-                    <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Video</button>
+                    <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Tutorial</button>
                 </p>
                 <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence!</h4>
+                        <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence Tutorial!</h4>
                       </div>
                       <div class="modal-body">
                         <iframe width="871" height="480" src="https://www.youtube.com/embed/MH6JZdGZcI?showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -578,10 +574,22 @@
 
 
 <!-- Use Emergence from Fractal Flows    ==========================================-->
-<template name="tf_tour_story_start">
+<template name="tf_tour_story_start_1">
     <div id="tf-tour-story_start" class="text-center">
         <div class="section-title center">
             <h2><strong> Ready to give it a try? let´s go.</strong></h2>
+            <div class="line"><hr></div>
+            <div class="clearfix"></div>
+            <a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
+      </div>
+      <hr width="100%">
+    </div>
+</template>
+
+<template name="tf_tour_story_start_2">
+    <div id="tf-tour-story_start" class="text-center">
+        <div class="section-title center">
+            <h2><strong> Peek behind the curtain and take Emergence for a Spin right now.</strong></h2>
             <div class="line"><hr></div>
             <div class="clearfix"></div>
             <a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
