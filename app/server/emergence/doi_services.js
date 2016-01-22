@@ -18,7 +18,7 @@ github.authenticate({
     key: github_creds.GITHUB_ID,
     secret: github_creds.GITHUB_SECRET
 })
- 
+
 
 var crossref = function(doi) {
   let url = 'http://api.crossref.org/works/' + doi;
@@ -245,6 +245,7 @@ Meteor.methods({
   register_relationship: function(item) {
     console.log("in the server", item);
     Relationships.insert(item);
+    
     // Now update
     Meteor.call("populate", item.doi);
   },

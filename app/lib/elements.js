@@ -27,17 +27,32 @@ Meteor.elements = {
     icon: "fa-question-circle",
     modal: {
       template: "Question",
-      base_url: "http://github.com/",
-      title: "Register a new github repository",
+      title: "Add relationship to scientific questions",
       callback(event, template) {
         // console.log("question", event, template);
         let question = event.target.question.value
         let comment = event.target.Modalcomment.value;
         let userid = Meteor.userId();
-        // let repo = event.target.reponame.value;
-        // let doi = event.target.doi.value;
+        let doi = event.target.doi.value;
         // console.log("question", {doi, type:"question", user, question, comment});
         return {doi, type:"question", userid, question, comment};
+      },
+    },
+  },
+
+  model: {
+    id: "model",
+    text: "Model",
+    icon: "fa-question-circle",
+    modal: {
+      template: "Model",
+      title: "Add relationship to scientific model",
+      callback(event, template) {
+        let model = event.target.model.value
+        let comment = event.target.Modalcomment.value;
+        let userid = Meteor.userId();
+        let doi = event.target.doi.value;
+        return {doi, type:"model", userid, model, comment};
       },
     },
   },

@@ -29,12 +29,12 @@ var menu = [
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
+    {text: "Review", icon: "fa-gavel"},
   {text: "Add Relationship", items: [
     Meteor.elements.question,
-    {text: "Review", icon: "fa-gavel"},
+    Meteor.elements.model,
     {text: "Hypothesis", icon: "fa-question-circle"},
     {text: "Method", icon: "fa-question-circle"},
-    {text: "Model", icon: "fa-question-circle"},
     {text: "Code", icon: "fa-question-circle"},
     {text: "Software", icon: "fa-question-circle"},
     {text: "Experiment", icon: "fa-cogs",},
@@ -95,10 +95,10 @@ var menu = [
     href: "#"
   }
 ].map((obj1) => { // Add a slugified id from the text
-  obj1.id = slugify(obj1.text);
+  if (!obj1.hasOwnProperty('id')) obj1.id = slugify(obj1.text);
   if (obj1.hasOwnProperty('items')) {
     obj1.items = obj1.items.map((obj2) => {
-      obj2.id = slugify(obj2.text);
+      if (!obj2.hasOwnProperty('id')) obj2.id = slugify(obj2.text);
       return obj2;
       });
   }

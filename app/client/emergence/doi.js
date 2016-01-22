@@ -15,7 +15,7 @@ UI.registerHelper("stringify", val => JSON.stringify(val, {indent: true}))
 
 
 Template.DOI_Summary.helpers({
-  summaries: function() { return URI.findOne({doi:this.doi}).summaries },
+  summaries: function() {}, //{ return URI.findOne({doi:this.doi}).summaries },
   edit: function() {return get.Session("edit_summary") === this.id},
 });
 
@@ -71,4 +71,20 @@ Template.DOI_pdf.events({
     console.log('in DOIpdf client');
       Meteor.call('scihub', this.doi);
   },
+});
+
+
+Template.Relationships.helpers({
+  relationship: () => {
+    console.log(this.doi);
+    return [
+      Meteor.elements.question,
+      Meteor.elements.model,
+    ]},
+  item: function(_id){
+    var rel = Relationships.find({type:_id});
+    console.log('item', _id, this.doi, rel, this);
+    return rel
+  },
+  item_text: function(){return this[this.type]},
 });
