@@ -25,6 +25,7 @@ Router.route('/HowItWorks');
 // Emergence routes ------------------------------------------------------------
 Router.route('/emergence/doi/:doi*', function() {
     this.render('DOI', {data: {doi: this.params.doi}})
+    Session.set('DOI', this.params.doi);
 });
 
 Router.route('/emergence/search/:key*', function() {

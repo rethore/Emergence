@@ -16,6 +16,7 @@ Template.emergence_main.events({
     if (findoi({exact:true}).test(text)) {
       console.log('found it', text);
       Router.go(`/emergence/doi/${text}`);
+      Session.set('DOI', text);
     } else {
       var keys = text.replace(/ /g, '+');
       Router.go(`/emergence/search/${keys}`);

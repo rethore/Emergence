@@ -4,7 +4,7 @@ Meteor.subscribe("relationships");
 
 Session.setDefault("events", []);
 Session.setDefault("modalcontext", undefined);
-
+Session.setDefault("DOI", undefined);
 
 UI.registerHelper("equals", (a, b) => (a == b));
 UI.registerHelper('formatTime', c =>  moment(c).format('MM/DD/YYYY, hh:mm'));
@@ -82,8 +82,8 @@ Template.Relationships.helpers({
       Meteor.elements.model,
     ]},
   item: function(_id){
-    var rel = Relationships.find({type:_id});
-    console.log('item', _id, this.doi, rel, this);
+    var rel = Relationships.find({type:_id, doi:Session.get("DOI")});
+    console.log('item', _id, Session.get("DOI"), rel, this);
     return rel
   },
   item_text: function(){return this[this.type]},

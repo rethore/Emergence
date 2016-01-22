@@ -42,14 +42,13 @@
 
 <template name="Relationships">
   {{#MainPanel id="related_questions" title="Related"}}
-      {{doi}}
       {{#each relationship}}
-      <h4>{{text}}</h4>
-      {{#each item id}}
-        <div class="containter" data-toggle="tooltip" data-placement="left" title="{{comment}}">
-          {{item_text}}
-        </div>
-      {{/each}}
+        <h4>{{text}}</h4>
+        {{#each item id}}
+          <div class="containter" data-toggle="tooltip" data-placement="left" title="{{comment}}">
+            {{item_text}}
+          </div>
+        {{/each}}
       {{/each}}
   {{/MainPanel}}
 </template>
