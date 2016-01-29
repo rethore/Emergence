@@ -29,6 +29,11 @@ module.exports = function() {
       .toContain(text.toLowerCase())
   });
 
+  this.When(/^I click on some stuff$/, function (callback) {
+    // Write code here that turns the phrase above into concrete actions
+    browser.click('h4*='+text)
+  });
+
   // Feature: Scientific Questions
 
   // * Scenario: Force user to sign in to register a question

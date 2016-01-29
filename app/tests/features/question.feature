@@ -6,7 +6,7 @@ Feature: Add a new related scientific question to an article
 
   @watch
   Scenario: Force user to sign in to register a question
-    Given that I'm this address "emergence/doi/10.1002/we.1736"
+    Given that I'm on this address "emergence/doi/10.1002/we.1736"
     And that I have not signed in
     When I try to add a question
     Then the website asks me to sign up
