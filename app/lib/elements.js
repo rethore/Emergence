@@ -1,6 +1,12 @@
 
 
 Meteor.elements = {
+  comment: {
+    id: "comment",
+    text: "Comment",
+    icon: "fa-commenting-o",
+  },
+  
   github: {
     id: "github",
     text: "Github",
