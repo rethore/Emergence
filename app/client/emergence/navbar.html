@@ -5,32 +5,34 @@
         {{> DOI_Title publication }}
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        {{> DOI_Menubar publication }}
+        {{> Menubar publication }}
       </div>
     </div>
   </nav>
 </template>
 
 
-<template name="DOI_Title">
+
+<template name="NavbarBase">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        {{> NavbarHeader }}
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        {{> Menubar }}
+      </div>
+    </div>
+  </nav>
+</template>
+
+<template name="NavbarHeader">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-3">
              <div class="container">
                 <h3 id="title_article">{{ title }}.</h3>
-                <div id="authors">
-                    by
-                    {{#each author}}
-                        {{ last }}, {{ first }};
-                    {{/each}}
-                </div>
-                <span id="journal">
-                    {{ journal }}.
-                </span>
-                <span id="year">
-                    {{ year }}.
-                </span>
-                <a id="link" href="{{ url }}">{{ doi }}</a>
+                {{> Template.dynamic template=type_template }}
               </div>
          </div>
         <div class="col-xs-6 col-sm-3"></div>
@@ -42,14 +44,32 @@
     </div>
 </template>
 
+<template name="DefaultTitle">
+</template>
 
-<template name="DOI_Menubar">
+<template name="DOI_Title">
+  <div id="authors">
+    by
+    {{#each author}}
+        {{ last }}, {{ first }};
+    {{/each}}
+  </div>
+  <span id="journal">
+      {{ journal }}.
+  </span>
+  <span id="year">
+      {{ year }}.
+  </span>
+  <a id="link" href="{{ url }}">{{ doi }}</a>
+</template>
+
+
+<template name="Menubar">
   <ul class="nav navbar-nav navbar-left">
     <li>
-            <a href="{{ url }}">
-                <i class="fa {{ icon }}"></i>
-                Access publication
-            </a>
+        <a href="{{ url }}">
+            External
+        </a>
     </li>
     {{#each item }}
       {{#if there_is "href" }}
@@ -195,11 +215,22 @@
 <template name="Question">
   <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
   <input type="text" class="form-control" placeholder="question" name="question">
+  {{> stupid }}
   <textarea class="form-control"
             name="comment"
             id="Modalcomment"
             rows="10"
             placeholder="Tell us why this question is relevant to this URI"></textarea>
+</template>
+
+<template name="stupid">
+  {{> EasySearch.Input index=questions }}
+
+  <ul>
+      {{#EasySearch.Each index=questions }}
+          <li>Question: {{question}}</li>
+      {{/EasySearch.Each}}
+  </ul>
 </template>
 
 <template name="Model">

@@ -42,3 +42,5 @@ useraccounts:iron-routing
 pauli:accounts-linkedin
 mleiber:accounts-orcid
 email
+perak:fuzzy-search
+easy:search

@@ -5,6 +5,22 @@
 </template>
 
 
+<template name="DOI_NavbarHeader">
+  <div id="authors">
+      by
+      {{#each author}}
+          {{ last }}, {{ first }};
+      {{/each}}
+  </div>
+  <span id="journal">
+      {{ journal }}.
+  </span>
+  <span id="year">
+      {{ year }}.
+  </span>
+  <a id="link" href="{{ url }}">{{ doi }}</a>
+</template>
+
 <template name="DOI_Body">
   <div class="panel-body">
     <div class="row">
@@ -25,19 +41,6 @@
   {{> DOI_Citations }}
   {{> DOI_CitedBy }}
   {{> DOI_Related }}
-</template>
-
-<template name="MainPanel">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <a class="accordion-toggle" href="#{{id}}" data-toggle="collapse">{{title}}</a>
-        <a class="pull-right glyphicon glyphicon-plus" href="#" data-toggle="tooltip" data-placement="top" title="Add">
-      </a>
-    </div>
-    <div class="panel-body" id="{{id}}">
-      {{> UI.contentBlock}}
-    </div>
-  </div>
 </template>
 
 <template name="Relationships">

@@ -2,6 +2,17 @@ UI.registerHelper("there_is", function(value){
   return this.hasOwnProperty(value)
 });
 
+let vect = () => Session.get('vect')
+
+Template.NavbarHeader.helpers({
+  type_template() {
+    console.log(this);
+    if (this.type === "DOI") {return this.type + "_Title"}
+    return "DefaultTitle"
+  },
+});
+
+
 
 Template.DOI_Navbar.helpers({
   publication: function(){
@@ -122,12 +133,13 @@ function find_in_menu(id) {
   return item
 }
 
-Template.DOI_Menubar.helpers({
+Template.Menubar.helpers({
   item: () => menu,
+  url: () => null,
 });
 
 
-Template.DOI_Menubar.events({
+Template.Menubar.events({
   "click .navbar_link": function(event, template){
       // Get the corresponding item in the menu array
       let item = find_in_menu(event.target.id);
@@ -139,6 +151,9 @@ Template.DOI_Menubar.events({
   }
 });
 
+Template.stupid.helpers({
+  questions: () => Questions,
+});
 
 Template.ModalContext.helpers({
   show_modal: () => (!Session.get('modalcontext')), // not undefined

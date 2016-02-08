@@ -40,6 +40,12 @@ Meteor.elements = {
     },
   },
 
+  doi: {
+    id: "doi",
+    text: "DOI",
+    icon: "fa-file-text-o"
+  },
+
   model: {
     id: "model",
     text: "Model",

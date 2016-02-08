@@ -1,3 +1,7 @@
+Meteor.subscribe("vector");
+Session.setDefault("vect", undefined);
+Session.setDefault("vectkey", undefined);
+
 
 var doiRegex = '(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![%"#? ])\\S)+)'
 var doiTextPrefix = 'doi\\:'

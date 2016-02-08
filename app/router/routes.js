@@ -28,6 +28,20 @@ Router.route('/emergence/doi/:doi*', function() {
     Session.set('DOI', this.params.doi);
 });
 
+Router.route('/emergence/hash/:hashkey*', function() {
+  this.render('EmergenceVector')
+  Session.set('vectkey', this.params.hashkey);
+  Session.set('vect', Vector.findOne({_id:this.params.hashkey}));
+})
+
+Router.route('/emergence/:type/:slug*', function() {
+  this.render('EmergenceVector')
+  let vect = Vector.findOne({type:this.params.type, slug:this.params.slug});
+  Session.set('vectkey', (vect)?vect._id:undefined);
+  Session.set('vect', vect);
+});
+
+
 Router.route('/emergence/search/:key*', function() {
   HTTP.get("https://api.crossref.org/works?query="+this.params.key, (err, res) => {
     if (err) console.log('ERROR:',err);

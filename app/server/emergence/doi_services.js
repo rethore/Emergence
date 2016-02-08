@@ -1,8 +1,7 @@
 Meteor.publish("uri", () => URI.find());
 Meteor.publish("events", () => Events.find());
 Meteor.publish("relationships", () => Relationships.find());
-
-
+Meteor.publish("vector", () => Vector.find());
 
 var github = new GitHub({
     version: "3.0.0", // required
@@ -245,7 +244,7 @@ Meteor.methods({
   register_relationship: function(item) {
     console.log("in the server", item);
     Relationships.insert(item);
-    
+
     // Now update
     Meteor.call("populate", item.doi);
   },

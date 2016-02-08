@@ -1,6 +1,5 @@
 Meteor.subscribe("uri");
 Meteor.subscribe("events");
-Meteor.subscribe("relationships");
 
 Session.setDefault("events", []);
 Session.setDefault("modalcontext", undefined);

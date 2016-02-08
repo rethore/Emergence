@@ -1,0 +1,135 @@
+
+<template name="EmergenceVector">
+  {{!-- > ModalContext vector --}}
+  {{> NavbarBase vector}}
+  {{> VectorBody }}
+</template>
+
+<template name="VectorBody">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3">
+        {{> VectorSideBar }}
+      </div>
+      <div class="col-md-9">
+        {{> VectorMain }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="VectorSideBar">
+  {{> search_emergence_side_bar }}
+  {{> VectoMetrics }}
+  {{!-- > VectorIntegrations --}}
+</template>
+
+
+<template name="VectoMetrics">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <a class="accordion-toggle" data-toggle="collapse" href="#collapseMetric" aria-expanded="false" aria-controls="collapseMetric">
+         Total Elevation: 5 m
+      </a>
+    </div>
+    <div class="list-group collapse" id="collapseMetric">
+      <a href="#" class="list-group-item">
+        <strong>Reproducibility:</strong> This work hasn't been reproduced yet
+        </a>
+      <a href="#" class="list-group-item">
+        <strong>Number of commits:</strong> {{ github_stats.n_commits }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Number of forks:</strong> {{ github_stats.n_forks }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Number of issues open/closed:</strong> {{ github_stats.n_open_issues }} / {{ github_stats.n_closed_issues }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Number of github stars:</strong> {{ github_stats.n_stars }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Number of github suscribers:</strong> {{ github_stats.n_subscribers }}
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Reviews passed:</strong> 0
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Comments:</strong> 0
+      </a>
+      <a href="#" class="list-group-item">
+        <strong>Rating:</strong> 9.3 / 10
+      </a>
+      <a href="#" class="list-group-item">
+          <strong>Number of readers:</strong> 100
+      </a>
+      <a href="#" class="list-group-item">
+          <strong>Number of visits:</strong> 300
+      </a>
+    </div>
+  </div>
+</template>
+
+<template name="VectorMain">
+  {{> VectorSummary }}
+  {{> VectorRelationships }}
+  {{> VectorLeaks }}
+</template>
+
+
+<!-- Base template to make a pannel ........................................ -->
+<template name="MainPanel">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a class="accordion-toggle" href="#{{panel_id}}" data-toggle="collapse">{{title}}</a>
+        <a class="pull-right glyphicon glyphicon-plus"
+           href="#" data-toggle="tooltip" data-placement="top" title="Add"></a>
+    </div>
+    <div class="panel-body" id="{{panel_id}}">
+      {{> UI.contentBlock}}
+    </div>
+  </div>
+</template>
+
+<template name="VectorRelationships">
+  {{#MainPanel panel_id="related_questions" title="Related"}}
+      {{#each relationship}}
+        {{#if item.count}}
+          <h4><i class="fa {{ icon }}"></i> {{text}}</h4>
+          {{#each item}}
+            <div class="containter" data-toggle="tooltip" data-placement="left" title="{{comment}}">
+              <a href="/emergence/{{type}}/{{slug}}">{{title}}</a>
+              {{{process text}}}
+            </div>
+          {{/each}}
+        {{/if}}
+      {{/each}}
+  {{/MainPanel}}
+</template>
+
+
+<template name="VectorSummary">
+  {{#MainPanel id="summary" title="Summary"}}
+    {{#each summaries }}
+      {{#if edit}}
+      <form class="summary_form">
+        <textarea
+        placeholder="Enter your summary here"
+        class="form-control" rows="5"
+        value={{text}}>
+        </textarea>
+      </form>
+      {{else}}
+        {{ text }}
+      {{/if}}
+    {{/each}}
+  {{/MainPanel}}
+</template>
+
+<template name="VectorLeaks">
+  {{#MainPanel id="related_ff" title="Related Fractal Flows"}}
+    {{#each event }}
+      {{> UI.dynamic template=event_type}}
+    {{/each}}
+  {{/MainPanel}}
+</template>
