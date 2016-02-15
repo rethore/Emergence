@@ -97,6 +97,11 @@ function promoteError (reject, resolve) {
 // });
 
 Meteor.methods({
+  new_vect(target, text, user, type, title, slug) {
+    createdAt = new Date();
+    Vector.insert((slug)? {target, text, user, type, title, createdAt, slug} :
+                          {target, text, user, type, title, createdAt})
+  },
   /*
    * Populate the Event db using the registered relationships
    */

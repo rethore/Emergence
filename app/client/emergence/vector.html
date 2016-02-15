@@ -1,8 +1,8 @@
 
 <template name="EmergenceVector">
   {{!-- > ModalContext vector --}}
-  {{> NavbarBase vector}}
-  {{> VectorBody }}
+  {{> NavbarBase vector }}
+  {{> VectorBody vector }}
 </template>
 
 <template name="VectorBody">
@@ -71,7 +71,8 @@
 </template>
 
 <template name="VectorMain">
-  {{> VectorSummary }}
+  {{> VectorText }}
+  {{! > VectorSummary }}
   {{> VectorRelationships }}
   {{> VectorLeaks }}
 </template>
@@ -91,6 +92,18 @@
   </div>
 </template>
 
+<template name="VectorText">
+  {{#MainPanel panel_id="vector_text" title="Text"}}
+    {{{process text }}}
+    <form class="comment_form">
+      <!-- <input class="form-control" name="title" placeholder="Title" required> -->
+      <textarea class="form-control" rows="5" name="textarea"
+      placeholder="Enter your comment here"></textarea>
+      <button class="btn btn-success">Post</button>
+    </form>
+  {{/MainPanel}}
+</template>
+
 <template name="VectorRelationships">
   {{#MainPanel panel_id="related_questions" title="Related"}}
       {{#each relationship}}
@@ -98,7 +111,7 @@
           <h4><i class="fa {{ icon }}"></i> {{text}}</h4>
           {{#each item}}
             <div class="containter" data-toggle="tooltip" data-placement="left" title="{{comment}}">
-              <a href="/emergence/{{type}}/{{slug}}">{{title}}</a>
+              <a href="/emergence/{{#if slug}}{{type}}/{{slug}}{{else}}hash/{{_id}}{{/if}}">{{title}}</a>
               {{{process text}}}
             </div>
           {{/each}}
@@ -120,7 +133,7 @@
         </textarea>
       </form>
       {{else}}
-        {{ text }}
+        {{{process text }}}
       {{/if}}
     {{/each}}
   {{/MainPanel}}

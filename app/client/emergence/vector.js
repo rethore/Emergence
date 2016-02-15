@@ -1,7 +1,8 @@
 /* Process a text and replace the emergence hashkeys by the title
  * adds a link to the corresponding emergence page
  */
-var template = (vect) => `<a href="/emergence/${vect.type}/${vect.slug}">"${vect.title}"</a>`;
+var template = (vect) => (vect.slug)? `<a href="/emergence/${vect.type}/${vect.slug}">"${vect.title}"</a>`:
+                                      `<a href="/emergence/hash/${vect.id}">"${vect.title}"</a>`;
 UI.registerHelper("process", function(text){
   var rego = new RegExp('(?:\#[0-9a-z]*)','g');
   var new_text = text;
@@ -10,6 +11,20 @@ UI.registerHelper("process", function(text){
     var new_text = new_text.replace(match[0], (vec)? template(vec) : match[0]);
   }
   return new_text
+});
+
+
+Template.VectorText.events({
+  "submit .comment_form": function(e, t){
+    e.preventDefault();
+    let text = e.target.textarea.value;
+    let title = "";
+    let user = Meteor.userId();
+    e.target.textarea.value = "";
+    // e.target.title.value = "";
+    console.log(text);
+    Meteor.call("new_vect", [Session.get("vectkey")], text, user, 'comment', title, null);
+  },
 });
 
 Template.EmergenceVector.helpers({
