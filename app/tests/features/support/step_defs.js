@@ -24,7 +24,7 @@ module.exports = function() {
     browser.click('h4*='+text)
   });
 
-  this.Then(/^I see a new page with a title that contains  "([^"]*)"$/, function (text) {
+  this.Then(/^I see a new page with a title that contains "([^"]*)"$/, function (text) {
     expect(browser.getText('h3[id="title_article"]').toLowerCase())
       .toContain(text.toLowerCase())
   });
@@ -35,9 +35,8 @@ module.exports = function() {
   });
 
   // Feature: Scientific Questions
-
   // * Scenario: Force user to sign in to register a question
-  this.Given(/^that I'm this address "([^"]*)"$/, function (url) {
+  this.Given(/^that I'm on this address "([^"]*)"$/, function (url) {
     browser.url('http://localhost:3000/'+url)
   });
 
@@ -54,6 +53,7 @@ module.exports = function() {
 
   this.Then(/^the website asks me to sign up$/, function () {
     console.log(browser.getText('#myModalLabel'));
+    ///browser.switchTo().activeElement();
     browser.waitUntil(() => {
       console.log(browser.getText('#myModalLabel'));
       return ! (browser.getText('#myModalLabel') === '')

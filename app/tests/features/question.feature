@@ -4,13 +4,13 @@ Feature: Add a new related scientific question to an article
   I can add related scientific questions to existing articles
   So that I can discover other related articles
 
-  @watch
   Scenario: Force user to sign in to register a question
     Given that I'm on this address "emergence/doi/10.1002/we.1736"
     And that I have not signed in
     When I try to add a question
     Then the website asks me to sign up
 
+  @watch
   Scenario: Add a new question show it in the panel Related
     Given that I'm on this address "emergence/doi/10.1002/we.1736"
     And that I have signed in
@@ -37,7 +37,8 @@ Feature: Add a new related scientific question to an article
   Scenario: The question page shows all the related articles
     Given that I'on this address
     Then I can see the following DOIs:
-      |10.1002/we.1736   |
-      |10.1002/we.1736   |
+      | DOI               |
+      | 10.1002/we.1736   |
+      | 10.1002/we.1736   |
     When I click on "10.1002/we.1736"
     Then I go to this address "emergence/doi/10.1002/we.1736"

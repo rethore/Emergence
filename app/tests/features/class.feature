@@ -1,4 +1,5 @@
 Feature: Help a class to gather all the relevant material
+
   As a class lecturer
   I want to be able to regroup all the related material per lecture
   So that my students can expand it and learn from it
@@ -21,5 +22,3 @@ Feature: Help a class to gather all the relevant material
       | Scientific packages |
       | Plotting            |
       | Databases           |
-
-  
