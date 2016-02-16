@@ -847,3 +847,45 @@ div.box_frame{
 div.box_frame:first-child{
     margin-left: 0;
 }
+
+box_contents {
+    float:left;
+    width: 30%;
+    padding-bottom: 5%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-color: white;
+		border: 1px solid #898989;
+    border-radius: 11px;
+		text-align: center;
+		/* change border to be inside the box */
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom: 18%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    overflow:hidden;
+}
+
+.boxcontent {
+    position:absolute;
+    height:100%;
+    width:100%;
+    padding: 5% 5%;
+}
+.table{
+    display:table;
+    height:100%;
+    width:100%;
+}
+.table-cell{
+    display:table-cell;
+    vertical-align:middle;
+    height:100%;
+    width:100%;
+}
