@@ -97,6 +97,33 @@ ul, ol{
 }
 
 
+.left {
+    float: left;
+    width: 35%;
+}
+.right {
+    float: right;
+    width: 60%;
+		margin-right: 5%
+}
+.group:after {
+    content:"";
+    display: table;
+    clear: both;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 480px) {
+    .left,
+    .right {
+        float: none;
+        width: auto;
+    }
+}
+
+
 div.container {
   display: block;
 	margin-left: auto;
@@ -862,7 +889,6 @@ box_contents {
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
 }
-
 .square {
     float:left;
     position: relative;
@@ -871,7 +897,20 @@ box_contents {
     margin:1.66%;
     overflow:hidden;
 }
-
+.squarebox {
+    float:left;
+    position: relative;
+    width: 75%;
+    padding-bottom: 80%; /* = width for a 1:1 aspect ratio */
+    margin:10%;
+    overflow:hidden;
+		background-color: lightgoldenrodyellow;
+		color: black;
+		border-radius: 20px;
+		text-align: left;
+		border: black 2px solid;
+		font-size: medium;
+}
 .boxcontent {
     position:absolute;
     height:100%;
