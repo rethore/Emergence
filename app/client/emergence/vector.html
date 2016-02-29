@@ -73,6 +73,7 @@
 <template name="VectorMain">
   {{> VectorText }}
   {{! > VectorSummary }}
+  {{> VectorJSON }}
   {{> VectorRelationships }}
   {{> VectorLeaks }}
 </template>
@@ -93,19 +94,33 @@
 </template>
 
 <template name="VectorText">
-  {{#MainPanel panel_id="vector_text" title="Text"}}
+  {{#MainPanel panel_id="vector_text" title="Description"}}
     {{{process text }}}
-    <form class="comment_form">
-      <!-- <input class="form-control" name="title" placeholder="Title" required> -->
-      <textarea class="form-control" rows="5" name="textarea"
-      placeholder="Enter your comment here"></textarea>
-      <button class="btn btn-success">Post</button>
-    </form>
   {{/MainPanel}}
 </template>
 
+<template name="VectorJSON">
+  {{#MainPanel panel_id="vector_json" title="JSON"}}
+  {{#markdown}}
+  ```
+  {{{ data }}}
+  ```
+  {{/markdown}}
+
+  {{/MainPanel}}
+</template>
+
+<template name="VectorComment">
+  <form class="comment_form">
+    <!-- <input class="form-control" name="title" placeholder="Title" required> -->
+    <textarea class="form-control" rows="5" name="textarea"
+    placeholder="Enter your comment here"></textarea>
+    <button class="btn btn-success">Post</button>
+  </form>
+</template>
+
 <template name="VectorRelationships">
-  {{#MainPanel panel_id="related_questions" title="Related"}}
+  {{#MainPanel panel_id="related_questions" title="Related Dimensions"}}
       {{#each relationship}}
         {{#if item.count}}
           <h4><i class="fa {{ icon }}"></i> {{text}}</h4>

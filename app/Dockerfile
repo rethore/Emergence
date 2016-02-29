@@ -10,6 +10,20 @@
 #        -p 8080:80 \
 #        yourname/app
 
-FROM meteorhacks/meteord:onbuild
+FROM ubuntu:latest
+MAINTAINER Pierre-Elouan Rethore <pe@retho.re>
 
-MAINTAINER Pierre-Elouan Rethore <pire@dtu.dk>
+RUN apt-get update -y \
+ && apt-get install -y curl \
+ && apt-get clean
+
+RUN export LC_ALL=en_US.UTF-8
+RUN curl -sL https://install.meteor.com | sed s/--progress-bar/-sL/g | /bin/sh
+RUN mkdir /app
+ADD . /app
+WORKDIR /app
+
+ENV IP 82.196.13.8
+ENV PORT 80
+
+CMD meteor --port $(IP):$(PORT)

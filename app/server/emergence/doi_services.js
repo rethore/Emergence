@@ -1,4 +1,4 @@
-Meteor.publish("uri", () => URI.find());
+//Meteor.publish("uri", () => URI.find());
 Meteor.publish("events", () => Events.find());
 Meteor.publish("relationships", () => Relationships.find());
 Meteor.publish("vector", () => Vector.find());
@@ -18,34 +18,85 @@ github.authenticate({
     secret: github_creds.GITHUB_SECRET
 })
 
+var datacite = function(doi) {
+  return new Promise(function(resolve, reject) {
+    let url = `http://search.datacite.org/api?q={doi}&wt=json`
+    HTTP.get(url, function(err, res) {
+      if (err) {
+        console.log("error in datacite/HTTP.get", err);
+        reject(err);
+      } else {
+        console.log("success in datacite/HTTP.get", res);
+        let msg = res.response.docs[0];
+        Vector.insert({doi,
+          type: "doi",
+          url: `http://doi.org/{doi}`,
+          title: msg.title,
+          author: msg.creator.map(o => ({
+            first: o.split(' ')[0],
+            last: o.split(' ').slice(1),
+            affiliation: '',
+          })),
+          datacite: msg,
+      }, (err, id)=>{
+        if (err) {
+          reject(err);
+        } else {
+          // This will return the id of the new vector once its created
+          resolve(id);
+        }
+      }); // Vector.insert
+    } // else
+  }) // HTTP.get
+}); // Promise
+}; // datacite
 
+
+/**
+ * Crossref function, register a new DOI vector
+ * @param {string} doi  the doi number of the uri
+ * @return {promise} promise a Promise returning the id of the key
+ */
 var crossref = function(doi) {
-  let url = 'http://api.crossref.org/works/' + doi;
-  HTTP.get(url, function(err, res) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(res);
-      let msg = res.data.message;
+  return new Promise(function(resolve, reject) {
+    let url = 'http://api.crossref.org/works/' + doi;
+    HTTP.get(url, function(err, res) {
+      if (err) {
+        console.log("error in crossref/HTTP.get", err);
+        reject(err);
+      } else {
+        console.log("success in crossref/HTTP.get", res);
+        let msg = res.data.message;
 
-      URI.insert({doi,
-        url: msg.URL,
-        title: msg.title,
-        author: msg.author.map(o => ({
-          first: o.given,
-          last: o.family,
-          affiliation: o.affiliation,
-        })),
-        issn: msg.issn,
-        issue: msg.issue,
-        date: msg.issued["date-parts"][0],
-        journal: msg["container-title"][msg["container-title"].length-1],
-        publisher: msg.publisher,
-        year: msg.issued["date-parts"][0][0],
-      });
-    }
-  })
-};
+        // Create a new DOI vector
+        Vector.insert({doi,
+          type: "doi",
+          url: msg.URL,
+          title: msg.title,
+          author: msg.author.map(o => ({
+            first: o.given,
+            last: o.family,
+            affiliation: o.affiliation,
+          })),
+          issn: msg.issn,
+          issue: msg.issue,
+          date: msg.issued["date-parts"][0],
+          journal: msg["container-title"][msg["container-title"].length-1],
+          publisher: msg.publisher,
+          year: msg.issued["date-parts"][0][0],
+          crossref: msg,
+        }, (err, id)=>{
+          if (err) {
+            reject(err);
+          } else {
+            // This will return the id of the new vector once its created
+            resolve(id);
+          }
+        }); // Vector.insert
+      } // else
+    }) // HTTP.get
+  }); // Promise
+}; // crossref
 
 var X_Ray = Meteor.npmRequire("x-ray");
 var xray = new X_Ray();
@@ -109,7 +160,7 @@ Meteor.methods({
     let github_stats = Relationships.find({doi: doi, type: "github"})
       .map(({user, repo}) => {
         console.log('in populate', user, repo)
-        if (!URI.findOne({user, repo, type: "github"})) URI.insert({user, repo, type: "github"})
+        if (!Vector.findOne({user, repo, type: "github"})) Vector.insert({user, repo, type: "github"})
         try {
           var events = github.events.getFromRepo({user, repo, per_page:100});
         } catch (e) {
@@ -150,7 +201,7 @@ Meteor.methods({
           return s1;
         });
       console.log('finally', github_stats);
-      URI.update({doi}, {$set: {stats:{github:github_stats}}});
+      Vector.update({doi}, {$set: {stats:{github:github_stats}}});
   },
 
   /*
@@ -158,7 +209,7 @@ Meteor.methods({
    *
    */
   github: function(user, repo, doi) {
-    if (!URI.find({user, repo, type: "github"})) URI.insert({user, repo, type: "github"})
+    if (!Vector.find({user, repo, type: "github"})) Vector.insert({user, repo, type: "github"})
     github.events.getFromRepo({user, repo, per_page:100})
       .forEach((c) => {
         // Check that the event isn't already in the db
@@ -180,7 +231,7 @@ Meteor.methods({
         n_open_issues: rep_data.open_issues,
         n_subscribers: rep_data.subscribers_count,
       };
-     URI.update({type:"github", user, repo}, {$set:github_stats});
+     Vector.update({type:"github", user, repo}, {$set:github_stats});
      return github_stats;
     },
 
@@ -194,17 +245,23 @@ Meteor.methods({
       // TODO: This is very slow for large repos!
       let n_commits_promise = computeCommits(user, repo);
       let n_commits = Promise.await(n_commits_promise);
-      URI.update({type:"github", user, repo}, {$set:{n_commits}});
+      Vector.update({type:"github", user, repo}, {$set:{n_commits}});
       console.log('n_commits', n_commits);
       return n_commits;
    },
 
   /*
-   * register is registering the URI in the database by calling several online
+   * register is registering the Vector in the database by calling several online
    * services
+   * @param {string} doi  The doi of the URI
+   * @return {string} id  The id of the Vector
    */
-  register: function(doi) {
-    if (!URI.findOne({doi})) crossref(doi)
+  register_DOI: function(doi) {
+    if (!Vector.findOne({doi})) {
+      return Promise.await(crossref(doi))
+    } else {
+      return Vector.findOne({doi})._id
+    }
   },
 
   /*
@@ -242,7 +299,7 @@ Meteor.methods({
       console.log('error', error)
     } else {
       console.log('res', result);
-      URI.update({doi: doi}, {$set: {pdf_src: result}});
+      Vector.update({doi: doi}, {$set: {pdf_src: result}});
     }
   },
 

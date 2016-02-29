@@ -28,7 +28,11 @@ Template.VectorText.events({
 });
 
 Template.EmergenceVector.helpers({
-  vector: () => Session.get("vect"),
+  vector(){
+    let vectkey = Session.get("vectkey")
+    let new_vect = Vector.findOne({id: vectkey});
+    if (! typeof new_vect === "undefined") Session.set("vect", new_vect)
+    return Session.get("vect", new_vect)},
 });
 
 // Remap the elements object into an array for easier processing
@@ -62,4 +66,11 @@ Template.VectorSummary.helpers({
     {text: "blabla2"},
   ],
   edit: () => null,
+});
+
+
+Template.VectorJSON.helpers({
+  data() {
+    return JSON.stringify(this, undefined, 2);
+  },
 });

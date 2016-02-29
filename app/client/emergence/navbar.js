@@ -7,7 +7,7 @@ let vect = () => Session.get('vect')
 Template.NavbarHeader.helpers({
   type_template() {
     console.log(this);
-    if (this.type === "DOI") {return this.type + "_Title"}
+    if (this.type === "doi") {return "DOI_Title"}
     return "DefaultTitle"
   },
 });

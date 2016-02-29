@@ -23,24 +23,16 @@ Router.route('/about');
 Router.route('/HowItWorks');
 
 // Emergence routes ------------------------------------------------------------
-Router.route('/emergence/doi/:doi*', function() {
-    this.render('DOI', {data: {doi: this.params.doi}})
-    Session.set('DOI', this.params.doi);
-});
+// Router.route('/emergence/doi/:doi*', function() {
+//     this.render('DOI', {data: {doi: this.params.doi}})
+//     Session.set('DOI', this.params.doi);
+// });
 
 Router.route('/emergence/hash/:hashkey*', function() {
   this.render('EmergenceVector')
   Session.set('vectkey', this.params.hashkey);
   Session.set('vect', Vector.findOne({_id:this.params.hashkey}));
 })
-
-Router.route('/emergence/:type/:slug*', function() {
-  this.render('EmergenceVector')
-  let vect = Vector.findOne({type:this.params.type, slug:this.params.slug});
-  Session.set('vectkey', (vect)?vect._id:undefined);
-  Session.set('vect', vect);
-});
-
 
 Router.route('/emergence/search/:key*', function() {
   HTTP.get("https://api.crossref.org/works?query="+this.params.key, (err, res) => {
@@ -49,6 +41,27 @@ Router.route('/emergence/search/:key*', function() {
     this.render('Search', {data: {keys: this.params.key, search:res.data.message.items}})
   })
 });
+
+Router.route('/emergence/:type/:slug*', function() {
+  if (this.params.type in Meteor.elements){
+    this.render('EmergenceVector')
+    if (this.params.type === "doi") {
+      var doi = this.params.slug;
+      var vect = Vector.findOne({doi});
+      if (!vect){
+        var vectkey = Meteor.call("register_DOI", doi);
+        console.log('register_DOI returned this id', vectkey);
+        var vect = Vector.findOne({_id:vectkey});
+      }
+    } else {
+      var vect = Vector.findOne({type:this.params.type, slug:this.params.slug});
+    }
+    Session.set('vectkey', (vect) ? vect._id : undefined);
+    Session.set('vect', vect);
+  }
+});
+
+
 
 Router.route("/emergence", {
   name:"emergence",

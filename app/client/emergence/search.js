@@ -27,7 +27,7 @@ Template.Search.events({
     var key = event.target.item_text.value.replace(/ /g, '+');
     HTTP.get("https://api.crossref.org/works?query="+key, (err, res) => {
       if (err) console.log('ERROR:',err);
-      console.log("https://api.crossref.org/works?query="+key, err, res);
+      console.log("crossref", "https://api.crossref.org/works?query="+key, err, res);
       Router.go(`/emergence/search/${key}`);
     })
   }

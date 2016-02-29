@@ -44,3 +44,5 @@ mleiber:accounts-orcid
 email
 perak:fuzzy-search
 easy:search
+simple:highlight.js
+chuangbo:marked

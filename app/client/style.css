@@ -179,7 +179,8 @@ font-weight: 900;
 
 /* Home Style*/
 #tf-home{
-	background: url('../img/DigitalWater_0009_Ebene 11.jpg');
+	/*background: url('../img/DigitalWater_0009_Ebene 11.jpg');*/
+	background: url('../img/ff.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
@@ -211,6 +212,10 @@ font-weight: 900;
 .emph2 {
   font-weight: bold;
   font-size: xx-large
+}
+.emph2 {
+  font-weight: bold;
+  font-size: x-large
 }
 
 /* Home Style of the tour page*/
