@@ -2,7 +2,7 @@ Meteor.subscribe("uri");
 Meteor.subscribe("events");
 
 Session.setDefault("events", []);
-Session.setDefault("modalcontext", undefined);
+
 Session.setDefault("DOI", undefined);
 
 UI.registerHelper("equals", (a, b) => (a == b));

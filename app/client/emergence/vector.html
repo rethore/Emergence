@@ -1,6 +1,6 @@
 
 <template name="EmergenceVector">
-  {{!-- > ModalContext vector --}}
+  {{> ModalContext vector }}
   {{> NavbarBase vector }}
   {{> VectorBody vector }}
 </template>
@@ -73,9 +73,9 @@
 <template name="VectorMain">
   {{> VectorText }}
   {{! > VectorSummary }}
-  {{> VectorJSON }}
   {{> VectorRelationships }}
   {{> VectorLeaks }}
+  {{> VectorJSON }}
 </template>
 
 
@@ -87,7 +87,7 @@
         <a class="pull-right glyphicon glyphicon-plus"
            href="#" data-toggle="tooltip" data-placement="top" title="Add"></a>
     </div>
-    <div class="panel-body" id="{{panel_id}}">
+    <div class="panel-body {{collapse}}" id="{{panel_id}}">
       {{> UI.contentBlock}}
     </div>
   </div>
@@ -95,12 +95,16 @@
 
 <template name="VectorText">
   {{#MainPanel panel_id="vector_text" title="Description"}}
-    {{{process text }}}
+  <div class="container">
+  {{#markdown}}
+  {{{process text }}}
+  {{/markdown}}
+  </div>
   {{/MainPanel}}
 </template>
 
 <template name="VectorJSON">
-  {{#MainPanel panel_id="vector_json" title="JSON"}}
+  {{#MainPanel panel_id="vector_json" title="JSON" collapse="collapse"}}
   {{#markdown}}
   ```
   {{{ data }}}
@@ -126,8 +130,13 @@
           <h4><i class="fa {{ icon }}"></i> {{text}}</h4>
           {{#each item}}
             <div class="containter" data-toggle="tooltip" data-placement="left" title="{{comment}}">
-              <a href="/emergence/{{#if slug}}{{type}}/{{slug}}{{else}}hash/{{_id}}{{/if}}">{{title}}</a>
-              {{{process text}}}
+              <a href="/emergence/{{#if slug}}{{type}}/{{slug}}{{else}}hash/{{_id}}{{/if}}">{{{process_nolinks title}}}</a>
+              {{! {process text} }}
+              {{#each find_relationships _id}}
+              <div class="container">
+                {{{process text}}}
+              </div>
+              {{/each}}
             </div>
           {{/each}}
         {{/if}}

@@ -204,6 +204,10 @@ font-weight: 900;
 	font-weight: bold;
 }
 
+span.nolinks{
+	font-style: italic;
+}
+
 .emph {
   font-weight: bold;
   color: #FCAC45;

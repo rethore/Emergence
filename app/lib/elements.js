@@ -1,4 +1,28 @@
+var standard_register = function(self, event, template, vect) {
+  // Create the two new vectors
 
+  Meteor.call('new_vect',
+    targets=[],
+    text=event.target.details.value,
+    user=Meteor.userId(),
+    type=self.id,
+    title=event.target.title.value,
+    slug=slugify(event.target.title),
+    function(err, res){
+      // This is a callback to register the second vector using the
+      // id of the first vector
+      if (err) {
+        console.log('error in first new_vect call', err, res)
+      } else {
+        Meteor.call('new_vect',
+          targets=[res, vect._id],
+          text=event.target.comment.value,
+          user=Meteor.userId(),
+          type='relationship',
+          title=`Relationship between #${res} and #${self.vect._id}`)
+      }
+    });
+};
 
 Meteor.elements = {
   comment: {
@@ -6,23 +30,44 @@ Meteor.elements = {
     text: "Comment",
     icon: "fa-commenting-o",
   },
-  
+
   github: {
     id: "github",
     text: "Github",
     icon: "fa-github-square",
     modal: {
-      template: "Question",
-      title: "Register a related scientific question",
-      callback(event, template) {
+      template: "githubModal",
+      title: "Integrate with a related github repository",
+      register: function(self, event, template, vect) {
         console.log("github", event, template);
-        let comment = event.target.Modalcomment.value;
-        let user = event.target.namespace.value;
-        let repo = event.target.reponame.value;
-        let doi = event.target.doi.value;
-        let userid = Meteor.userId();
-        console.log("github", event, template, comment, user, repo, doi);
-        return {doi: doi, type:"github", user, repo, userid, comment};
+        // let user = event.target.namespace.value;
+        // let repo = event.target.reponame.value;
+        // let userid = Meteor.userId();
+        // console.log("github", event, template, comment, user, repo, doi);
+        //
+        // Meteor.call('new_vect',
+        //   targets = [],
+        //   text = "",
+        //   user = userid,
+        //   namespace = event.target.namespace.value,
+        //   repo = event.target.reponame.value,
+        //   type = "github",
+        //   title = event.target.title.value,
+        //   slug = slugify(event.target.title),
+        //   function(err, res){
+        //     // This is a callback to register the second vector using the
+        //     // id of the first vector
+        //     if (err) {
+        //       console.log('error in first new_vect call', err, res)
+        //     } else {
+        //       Meteor.call('new_vect',
+        //         targets = [res, vect._id],
+        //         text = event.target.Modalcomment.value,
+        //         user = Meteor.userId(),
+        //         type = 'relationship',
+        //         title = `Relationship between #${res} and #${self.vect._id}`)
+        //     }
+        //   });
       },
     },
   },
@@ -32,17 +77,9 @@ Meteor.elements = {
     text: "Scientific Question",
     icon: "fa-question-circle",
     modal: {
-      template: "Question",
+      template: "ModalStandard",
       title: "Add relationship to scientific questions",
-      callback(event, template) {
-        // console.log("question", event, template);
-        let question = event.target.question.value
-        let comment = event.target.Modalcomment.value;
-        let userid = Meteor.userId();
-        let doi = event.target.doi.value;
-        // console.log("question", {doi, type:"question", user, question, comment});
-        return {doi, type:"question", userid, question, comment};
-      },
+      register: standard_register,
     },
   },
 
@@ -59,13 +96,7 @@ Meteor.elements = {
     modal: {
       template: "Model",
       title: "Add relationship to scientific model",
-      callback(event, template) {
-        let model = event.target.model.value
-        let comment = event.target.Modalcomment.value;
-        let userid = Meteor.userId();
-        let doi = event.target.doi.value;
-        return {doi, type:"model", userid, model, comment};
-      },
+      register: standard_register,
     },
   },
 

@@ -13,7 +13,6 @@ Template.NavbarHeader.helpers({
 });
 
 
-
 Template.DOI_Navbar.helpers({
   publication: function(){
     let publi = URI.findOne({doi: this.doi});
@@ -40,7 +39,7 @@ var menu = [
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
-    {text: "Review", icon: "fa-gavel"},
+    // {text: "Review", icon: "fa-gavel"},
   {text: "Add Relationship", items: [
     Meteor.elements.question,
     Meteor.elements.model,
@@ -127,9 +126,10 @@ function find_in_menu(id) {
     if (e.id == id) return e;
     if (e.hasOwnProperty('items')) {
       // We do the same for the nested items
-      return e.items.map(function(e2){
-        if (e2.id == id) return e2}).filter((e3)=>e3)[0]}
-      }).filter((e)=>e)[0];
+      return e.items.map(e2 => (e2.id == id)? e2: undefined)
+                    .filter(e3 => e3)[0]
+    }
+  }).filter(e4 => e4)[0];
   return item
 }
 
@@ -141,40 +141,14 @@ Template.Menubar.helpers({
 
 Template.Menubar.events({
   "click .navbar_link": function(event, template){
+      event.preventDefault();
       // Get the corresponding item in the menu array
       let item = find_in_menu(event.target.id);
-      item.doi = template.data.doi;
+      item.vect = Session.get('vect');
+      console.log('you clicked on this',item);
       // Update the modal with its content
       Session.set('modalcontext', item);
       // Show the modal
       $('#modal').modal('show');
-  }
-});
-
-Template.stupid.helpers({
-  questions: () => Questions,
-});
-
-Template.ModalContext.helpers({
-  show_modal: () => (!Session.get('modalcontext')), // not undefined
-  modalcontext: () => Session.get('modalcontext'),
-});
-
-
-Template.MainModal.events({
-  "submit .process": function(event, template){
-    event.preventDefault();
-    console.log("in submit", event, template)
-    // Get the corresponding item in the menu array
-    let item = find_in_menu(event.target.id);
-    // Call the function defined in the menu
-    var relationship = item.modal.callback(event, template);
-    if (!Relationships.findOne(relationship)) {
-        console.log('registering the following relationship: ', relationship);
-        Meteor.call("register_relationship", relationship);
-    } else {
-      console.log("registration already existing")
-    }
-    $('#modal').modal('hide');
   }
 });

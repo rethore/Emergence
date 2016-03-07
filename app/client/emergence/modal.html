@@ -1,0 +1,183 @@
+
+<template name="ModalContext">
+  {{! #if show_modal }}
+    {{> MainModal modalcontext }}
+  {{! /if}}
+</template>
+
+
+<template name="MainModal">
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="{{ id }}Label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="process" id="{{ id }}">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel" >
+                {{#if undefined modal.template }}
+                  Feature not implemented yet
+                {{else}}
+                  {{ modal.title }}
+                {{/if}}
+            </h4>
+          </div>
+          <div class="modal-body">
+            {{#if undefined modal.template }}
+            Sorry this feature hasn't been implemented yet. Do you need it badly?
+            You can always increase the priority of this task by <a href="https://coinkite.com/pay/04815AF9C7-2C4BC4">
+            voting with your money</a>.
+            {{else}}
+            {{! > Template.dynamic template=modal.template }}
+            {{> ModalStandard }}
+            {{/if}}
+          </div>
+          <div class="well collapse out" id="help-well">
+              <h5>Help</h5>
+              <div id="#help-text">
+                {{#if undefined modal.helps }}
+                  Sorry, no help is available for that modal. If things are not clear,
+                  please give us some feedbacks to help us making this website more relevant for you and your
+                  research field.
+                {{else}}
+                  {{ modal.helps }}
+                {{/if}}
+              </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default">Feedbacks</button>
+              <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#help-well">Help</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="githubModal">
+  <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
+  <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">{{ modal.base_url }}</span>
+      <input type="text" class="form-control" placeholder="namespace" name="namespace">
+      <span class="input-group-addon" id="sizing-addon2">/</span>
+      <input type="text" class="form-control" placeholder="reponame" name="reponame">
+  </div>
+  <textarea class="form-control"
+            name="comment"
+            id="Modalcomment"
+            rows="10"
+            placeholder="Tell us why this repository is relevant to this URI"></textarea>
+</template>
+
+<template name="SharedDirectory">
+  <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
+  <input type="text" class="form-control" placeholder="namespace" name="namespace">
+  <textarea class="form-control"
+            name="comment"
+            id="Modalcomment"
+            rows="10"
+            placeholder="Tell us why this directory is relevant to this URI"></textarea>
+</template>
+
+
+<template name="SharedWorkspace">
+  <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
+  <input type="text" class="form-control" placeholder="namespace" name="namespace">
+  <textarea class="form-control"
+            name="comment"
+            id="Modalcomment"
+            rows="10"
+            placeholder="Tell us why this workspace is relevant to this URI"></textarea>
+</template>
+
+<template name="Question">
+  <!-- input type="hidden"
+         class="form-control"
+         placeholder="namespace"
+         name="doi"
+         value="{{ doi }}" -->
+  <div class="form-group">
+  <label for="ShortQuestion">Title</label>
+  <input type="text"
+         class="form-control"
+         id="ShortQuestion"
+         name="title"
+         placeholder="Write a short question title">
+  </div>
+  {{! > stupid }}
+
+  <div class="form-group">
+  <label for="ModalDetails">Details</label>
+  <textarea class="form-control"
+            name="details"
+            id="ModalDetails"
+            rows="10"
+            placeholder="Describe in more details this question"></textarea>
+  </div>
+
+  <div class="form-group">
+  <label for="ModalComment">Relevance</label>
+  <textarea class="form-control"
+            name="comment"
+            id="ModalComment"
+            rows="10"
+            placeholder="Tell us why this question is relevant to this {{ vect.type }}"></textarea>
+  </div>
+</template>
+
+<template name="stupid_search">
+  {{> EasySearch.Input index=questions }}
+
+  <ul>
+      {{#EasySearch.Each index=questions }}
+          <li>Question: {{question}}</li>
+      {{/EasySearch.Each}}
+  </ul>
+</template>
+
+<template name="Model">
+  <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
+  <input type="text" class="form-control" placeholder="model" name="model">
+  <textarea class="form-control"
+            name="comment"
+            id="Modalcomment"
+            rows="10"
+            placeholder="Tell us why this model is relevant to this URI"></textarea>
+</template>
+
+<template name="ModalStandard">
+  <!-- input type="hidden"
+         class="form-control"
+         placeholder="namespace"
+         name="doi"
+         value="{{ doi }}" -->
+  <div class="form-group">
+  <label for="Short">Title</label>
+  <input type="text"
+         class="form-control"
+         id="Short"
+         name="title"
+         placeholder="Write a short model title">
+  </div>
+  {{! > stupid }}
+
+  <div class="form-group">
+  <label for="ModalDetails">Details</label>
+  <textarea class="form-control"
+            name="details"
+            id="ModalDetails"
+            rows="10"
+            placeholder="Describe in more details this {{id}}"></textarea>
+  </div>
+
+  <div class="form-group">
+  <label for="ModalComment">Relevance</label>
+  <textarea class="form-control"
+            name="comment"
+            id="ModalComment"
+            rows="10"
+            placeholder="Tell us why this {{id}} is relevant to this {{ vect.type }}"></textarea>
+  </div>
+</template>
