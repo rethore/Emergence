@@ -9,9 +9,7 @@ Template.ModalContext.helpers({
 Template.MainModal.events({
   "submit .process": function(event, template){
     event.preventDefault();
-    var self = this;
-    this.register()
-
+    Meteor.elements[this.id].modal.register(this, event, template, Session.get('vect'));
 
     // Hiding the modal
     $('#modal').modal('hide');

@@ -27,8 +27,8 @@
             You can always increase the priority of this task by <a href="https://coinkite.com/pay/04815AF9C7-2C4BC4">
             voting with your money</a>.
             {{else}}
-            {{! > Template.dynamic template=modal.template }}
-            {{> ModalStandard }}
+            {{> Template.dynamic template=modal.template }}
+            {{! > ModalStandard }}
             {{/if}}
           </div>
           <div class="well collapse out" id="help-well">
@@ -56,20 +56,6 @@
 </template>
 
 
-<template name="githubModal">
-  <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
-  <div class="input-group">
-      <span class="input-group-addon" id="sizing-addon1">{{ modal.base_url }}</span>
-      <input type="text" class="form-control" placeholder="namespace" name="namespace">
-      <span class="input-group-addon" id="sizing-addon2">/</span>
-      <input type="text" class="form-control" placeholder="reponame" name="reponame">
-  </div>
-  <textarea class="form-control"
-            name="comment"
-            id="Modalcomment"
-            rows="10"
-            placeholder="Tell us why this repository is relevant to this URI"></textarea>
-</template>
 
 <template name="SharedDirectory">
   <input type="hidden" class="form-control" placeholder="namespace" name="doi" value="{{ doi }}">
@@ -147,12 +133,7 @@
             placeholder="Tell us why this model is relevant to this URI"></textarea>
 </template>
 
-<template name="ModalStandard">
-  <!-- input type="hidden"
-         class="form-control"
-         placeholder="namespace"
-         name="doi"
-         value="{{ doi }}" -->
+<template name="standard_modal_title">
   <div class="form-group">
   <label for="Short">Title</label>
   <input type="text"
@@ -161,8 +142,9 @@
          name="title"
          placeholder="Write a short model title">
   </div>
-  {{! > stupid }}
+</template>
 
+<template name="standard_modal_details">
   <div class="form-group">
   <label for="ModalDetails">Details</label>
   <textarea class="form-control"
@@ -171,7 +153,9 @@
             rows="10"
             placeholder="Describe in more details this {{id}}"></textarea>
   </div>
+</template>
 
+<template name="standard_modal_relevance">
   <div class="form-group">
   <label for="ModalComment">Relevance</label>
   <textarea class="form-control"
@@ -180,4 +164,22 @@
             rows="10"
             placeholder="Tell us why this {{id}} is relevant to this {{ vect.type }}"></textarea>
   </div>
+</template>
+
+<template name="ModalStandard">
+  {{> standard_modal_title }}
+  {{> standard_modal_details }}
+  {{> standard_modal_relevance }}
+</template>
+
+
+<template name="githubModal">
+  <div class="input-group">
+      <span class="input-group-addon" id="sizing-addon1">{{ modal.base_url }}</span>
+      <input type="text" class="form-control" placeholder="namespace" name="namespace">
+      <span class="input-group-addon" id="sizing-addon2">/</span>
+      <input type="text" class="form-control" placeholder="reponame" name="reponame">
+  </div>
+  {{> standard_modal_details }}
+  {{> standard_modal_relevance }}
 </template>

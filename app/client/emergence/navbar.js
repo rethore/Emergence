@@ -43,19 +43,34 @@ var menu = [
   {text: "Add Relationship", items: [
     Meteor.elements.question,
     Meteor.elements.model,
-    {text: "Hypothesis", icon: "fa-question-circle"},
-    {text: "Method", icon: "fa-question-circle"},
-    {text: "Code", icon: "fa-question-circle"},
-    {text: "Software", icon: "fa-question-circle"},
-    {text: "Experiment", icon: "fa-cogs",},
-    {text: "Observation", icon: "fa-star-o",},
-    {text: "Result", icon: "fa-star-o",},
-    {text: "Dataset", icon: "fa-database",},
-    {text: "Slideshow", icon: "fa-desktop"},
-    {text: "Video", icon: "fa-film"},
-    {text: "Reproduction", icon: "fa-clone",},
-    {text: "Version", icon: "fa-code-fork",},
-    {text: "URL/DOI", icon: "fa-link"},
+    Meteor.elements.hypothesis,
+    Meteor.elements.method,
+    Meteor.elements.code,
+    Meteor.elements.software,
+    Meteor.elements.experiment,
+    Meteor.elements.observation,
+    Meteor.elements.result,
+    Meteor.elements.dataset,
+    Meteor.elements.slideshow,
+    Meteor.elements.video,
+    Meteor.elements.reproduction,
+    Meteor.elements.version,
+    Meteor.elements.doi,
+    Meteor.elements.url,
+    // {text: "Hypothesis", icon: "fa-question-circle"},
+    // {text: "Method", icon: "fa-question-circle"},
+    // {text: "Code", icon: "fa-question-circle"},
+    // {text: "Software", icon: "fa-question-circle"},
+    // {text: "Experiment", icon: "fa-cogs",},
+    // {text: "Observation", icon: "fa-star-o",},
+    // {text: "Result", icon: "fa-star-o",},
+    // {text: "Dataset", icon: "fa-database",},
+    // {text: "Slideshow", icon: "fa-desktop"},
+    // {text: "Video", icon: "fa-film"},
+    // {text: "Reproduction", icon: "fa-clone",},
+    // {text: "Version", icon: "fa-code-fork",},
+    // {text: "DOI", icon: "fa-link"},
+    // {text: "URL", icon: "fa-link"},
   ],},
   {text: "Integrate", items: [
     {text: "Workspaces", separator: false},
@@ -104,16 +119,19 @@ var menu = [
   {text: "My portfolio",
     href: "#"
   }
-].map((obj1) => { // Add a slugified id from the text
-  if (!obj1.hasOwnProperty('id')) obj1.id = slugify(obj1.text);
-  if (obj1.hasOwnProperty('items')) {
-    obj1.items = obj1.items.map((obj2) => {
-      if (!obj2.hasOwnProperty('id')) obj2.id = slugify(obj2.text);
-      return obj2;
-      });
-  }
-  return obj1
-});
+];
+
+
+// .map((obj1) => { // Add a slugified id from the text
+//   if (!obj1.hasOwnProperty('id')) obj1.id = slugify(obj1.text);
+//   if (obj1.hasOwnProperty('items')) {
+//     obj1.items = obj1.items.map((obj2) => {
+//       if (!obj2.hasOwnProperty('id')) obj2.id = slugify(obj2.text);
+//       return obj2;
+//       });
+//   }
+//   return obj1
+// })
 
 
 /*

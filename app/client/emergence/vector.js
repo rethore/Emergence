@@ -96,3 +96,20 @@ Template.VectorJSON.helpers({
     return JSON.stringify(this, undefined, 2);
   },
 });
+
+
+// Temporary hack to get the github integration working asap
+Template.DOI_Related.helpers({
+  event: function() {
+    return Events.find({id: this._id}, {sort:{created_at:-1}})},
+  checked: function() {
+    return Session.get("checked_git_repo_"+this.origine.user+'_'+this.origine.repo);
+  },
+  supported: val => (['PushEvent', 'IssueEvent'].indexOf(val) > -1),
+});
+
+Template.DOI_Related.events({
+  "click .rest-call": function(event, template){
+      Meteor.call('populate', this.doi);
+  },
+});

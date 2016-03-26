@@ -159,32 +159,32 @@ Meteor.methods({
   /*
    * Populate the Event db using the registered relationships
    */
-  populate: function(doi) {
-    let github_stats = Relationships.find({doi: doi, type: "github"})
-      .map(({user, repo}) => {
-        console.log('in populate', user, repo)
-        if (!Vector.findOne({user, repo, type: "github"})) Vector.insert({user, repo, type: "github"})
+  populate: function(id) {
+    let github_stats = Vector.find({_id: id})
+      .map((data) => {
+        console.log('in populate', data.namespace, data.repo)
+        // if (!Vector.findOne({data, type: "github"})) Vector.insert({user, repo, type: "github"})
         try {
-          var events = github.events.getFromRepo({user, repo, per_page:100});
+          var events = github.events.getFromRepo({user:data.namespace, repo:data.repo, per_page:100});
         } catch (e) {
           console.log(typeof e.message);
           console.log(e.message);
-          if (e.message.includes("Not Found")) {
-            console.log("removing the repo from the Relationships");
-            Relationships.remove({user, repo, doi, type: "github"})
-          }
+          // if (e.message.includes("Not Found")) {
+          //   console.log("removing the repo from the Relationships");
+          //   Relationships.remove({user, repo, id, type: "github"})
+          // }
         }
         if (events) {
           events.forEach((c2) => {
-                if (!Events.findOne({doi, id:c2.id})) {
+                if (!Events.findOne({repoid:id, id:c2.id})) {
                   // Add the event, with the doi and the origine
-                  Events.insert(Object.assign(c2, {doi:doi, origine:{user, repo}}));
+                  Events.insert(Object.assign(c2, {repoid:id, origine:{namespace:data.namespace, repo:data.repo}}));
                 }});
-            console.log('next page?',github.hasNextPage());
+            console.log('next page?', github.hasNextPage());
             // TODO: Figure out the next page thing
-            github_stats = Meteor.call("github_stats", user, repo);
-            github_stats.n_commits = Meteor.call("github_commits", user, repo);
-            github_stats.n_closed_issues = Meteor.call("github_closed_issues", user, repo);
+            github_stats = Meteor.call("github_stats", data.namespace, data.repo);
+            github_stats.n_commits = Meteor.call("github_commits", data.namespace, data.repo);
+            github_stats.n_closed_issues = Meteor.call("github_closed_issues", data.namespace, data.repo);
             return github_stats;
         } else {
           return {
@@ -204,7 +204,7 @@ Meteor.methods({
           return s1;
         });
       console.log('finally', github_stats);
-      Vector.update({doi}, {$set: {stats:{github:github_stats}}});
+      Vector.update({_id:id}, {$set: {stats:{github:github_stats}}});
   },
 
   /*
