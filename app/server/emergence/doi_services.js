@@ -148,24 +148,30 @@ function promoteError (reject, resolve) {
 // });
 
 Meteor.methods({
-  new_vect(targets, text, user, type, title, slug) {
+  new_vect(targets, text, user, type, title, slug, data) {
     createdAt = new Date();
-    console.log('in new_vector', targets, text, user, type, title, slug);
-    let new_id =  Vector.insert((slug)? {targets, text, user, type, title, createdAt, slug} :
-                          {targets, text, user, type, title, createdAt, slug:slugify(title)})
-    console.log('new registration', new_id);
-    return new_id
+    // Check if a vector of similar nature exists already
+    let vect = Vector.findOne({title, text, data});
+    if (vect) {
+      return vect._id
+    } else {
+      console.log('in new_vector', targets, text, user, type, title, slug, data);
+      let new_id =  Vector.insert((slug)? {targets, text, user, type, title, data, createdAt, slug} :
+                            {targets, text, user, type, title, data, createdAt,slug:slugify(title)})
+      console.log('new registration', new_id);
+      return new_id 
+    }
   },
   /*
    * Populate the Event db using the registered relationships
    */
   populate: function(id) {
     let github_stats = Vector.find({_id: id})
-      .map((data) => {
-        console.log('in populate', data.namespace, data.repo)
+      .map(({data:{namespace, repo}}) => {
+        console.log('in populate', namespace, repo)
         // if (!Vector.findOne({data, type: "github"})) Vector.insert({user, repo, type: "github"})
         try {
-          var events = github.events.getFromRepo({user:data.namespace, repo:data.repo, per_page:100});
+          var events = github.events.getFromRepo({user:namespace, repo:repo, per_page:100});
         } catch (e) {
           console.log(typeof e.message);
           console.log(e.message);
@@ -178,13 +184,13 @@ Meteor.methods({
           events.forEach((c2) => {
                 if (!Events.findOne({repoid:id, id:c2.id})) {
                   // Add the event, with the doi and the origine
-                  Events.insert(Object.assign(c2, {repoid:id, origine:{namespace:data.namespace, repo:data.repo}}));
+                  Events.insert(Object.assign(c2, {repoid:id, origine:{namespace, repo}}));
                 }});
             console.log('next page?', github.hasNextPage());
             // TODO: Figure out the next page thing
-            github_stats = Meteor.call("github_stats", data.namespace, data.repo);
-            github_stats.n_commits = Meteor.call("github_commits", data.namespace, data.repo);
-            github_stats.n_closed_issues = Meteor.call("github_closed_issues", data.namespace, data.repo);
+            github_stats = Meteor.call("github_stats", namespace, repo);
+            github_stats.n_commits = Meteor.call("github_commits", namespace, repo);
+            github_stats.n_closed_issues = Meteor.call("github_closed_issues", namespace, repo);
             return github_stats;
         } else {
           return {

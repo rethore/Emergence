@@ -26,10 +26,12 @@ UI.registerHelper("process_nolinks", function(text){
   console.log('processing', new_text);
   return new_text
 });
-
+UI.registerHelper("jsonify", function(text){
+  return JSON.stringify(text, undefined, 2)
+});
 
 Template.VectorText.events({
-  "submit .comment_form": function(e, t){
+  "submit .comment_form"(e, t){
     e.preventDefault();
     let text = e.target.textarea.value;
     let title = "";
@@ -54,7 +56,7 @@ let element_array = Object.keys(Meteor.elements).sort().map(e=>Meteor.elements[e
 
 Template.VectorRelationships.helpers({
   relationship: () => element_array,
-  item: function() {
+  item() {
     var self = this
     // get all the ids that are contained in the current object targets
     let idval = (Session.get("vect"))? (typeof Session.get("vect").targets === "object")? {"$in": Session.get("vect").targets} : {"$in":[Session.get("vect").targets]} : null;
@@ -65,7 +67,7 @@ Template.VectorRelationships.helpers({
     //console.log('all ids', all_id);
     return Vector.find({type:self.id, _id:{'$in':all_id}})
   },
-  find_relationships: function(id){
+  find_relationships(id){
     return Vector.find({type:"relationship", '$and':[{targets:Session.get("vectkey")}, {targets:id}]})
   }
 });
@@ -99,17 +101,18 @@ Template.VectorJSON.helpers({
 
 
 // Temporary hack to get the github integration working asap
-Template.DOI_Related.helpers({
-  event: function() {
-    return Events.find({id: this._id}, {sort:{created_at:-1}})},
-  checked: function() {
-    return Session.get("checked_git_repo_"+this.origine.user+'_'+this.origine.repo);
+Template.VectorLeaks.helpers({
+  event() {
+    return Events.find({repoid: Session.get("vectkey")}, {sort:{created_at:-1}})},
+  checked() {
+    return true //Session.get("checked_git_repo_"+this.origine.user+'_'+this.origine.repo);
   },
   supported: val => (['PushEvent', 'IssueEvent'].indexOf(val) > -1),
 });
 
-Template.DOI_Related.events({
-  "click .rest-call": function(event, template){
-      Meteor.call('populate', this.doi);
+Template.VectorLeaks.events({
+  "click .glyphicon-plus"(event, template){
+      console.log(event, template, this, Session.get("vectkey"))
+      Meteor.call('populate', Session.get("vectkey"));
   },
 });
