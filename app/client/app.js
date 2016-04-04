@@ -64,7 +64,7 @@ Template.Mailing.events({
 	  var fname = contactForm.find('#userName').val();
 	  var email = contactForm.find('#emailAddress').val();
 		//isFilled and isEmail are my helper methods, which checks if variable exists or is email address valid
-	  if(isEmail(email) && isFilled(fname) && isFilled(email)){ 
+	  if(isEmail(email) && isFilled(fname) && isFilled(email)){
         var dataText = "Message from: " + fname + " " +  "\rEmail: " + email;
         Meteor.call('sendEmail', dataText);
         // reset field
