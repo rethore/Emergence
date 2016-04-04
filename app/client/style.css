@@ -97,6 +97,38 @@ ul, ol{
 }
 
 
+.left {
+    float: left;
+    width: 35%;
+}
+.right {
+    float: right;
+    width: 60%;
+		margin-right: 5%
+}
+.group:after {
+    content:"";
+    display: table;
+    clear: both;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+@media screen and (max-width: 480px) {
+    .left,
+    .right {
+        float: none;
+        width: auto;
+    }
+}
+
+
+div.container {
+  display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 /* Navigation */
 #tf-menu {
@@ -212,7 +244,10 @@ font-weight: 900;
   font-weight: bold;
   font-size: xx-large
 }
-
+.emph3 {
+  font-weight: bold;
+  font-size: large
+}
 /* Home Style of the tour page*/
 #modal{
 	background: url('../img/DigitalWater_0005_Ebene 7.jpg');
@@ -841,4 +876,58 @@ div.box_frame{
 }
 div.box_frame:first-child{
     margin-left: 0;
+}
+
+box_contents {
+    float:left;
+    width: 30%;
+    padding-bottom: 5%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-color: white;
+		border: 1px solid #898989;
+    border-radius: 11px;
+		text-align: center;
+		/* change border to be inside the box */
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom: 18%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    overflow:hidden;
+}
+.squarebox {
+    float:left;
+    position: relative;
+    width: 75%;
+    padding-bottom: 80%; /* = width for a 1:1 aspect ratio */
+    margin:10%;
+    overflow:hidden;
+		background-color: lightgoldenrodyellow;
+		color: black;
+		border-radius: 20px;
+		text-align: left;
+		border: black 2px solid;
+		font-size: medium;
+}
+.boxcontent {
+    position:absolute;
+    height:100%;
+    width:100%;
+    padding: 5% 5%;
+}
+.table{
+    display:table;
+    height:100%;
+    width:100%;
+}
+.table-cell{
+    display:table-cell;
+    vertical-align:middle;
+    height:100%;
+    width:100%;
 }
