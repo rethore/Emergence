@@ -2,7 +2,6 @@
 <template name="main">
   {{> Navbar}}
   {{> yield}} <!-- allow the content of other templates to appear here-->
-  {{> Footer}}
 </template>
 
 <!-- This is the home page================================================== -->
@@ -10,7 +9,6 @@
   <meta name="viewport" content="width=device-width, user-scalable=yes">
   {{> Navbar}}
   {{> Landing}}
-  {{> Footer}}
 </template>
 
 <!-- This is the About page================================================== -->
@@ -19,7 +17,9 @@
   {{> Navbar}}
   {{> Problemdef}}
   {{> tf_tour_story_start_1}}
+  {{> tf_tour_whattodo}}
   {{> Mailing}}
+  {{> Resources}}
   {{> Footer}}
 </template>
 
@@ -28,9 +28,8 @@
   <meta name="viewport" content="width=device-width, user-scalable=yes">
   {{> Navbar}}
   {{> modal}}
-  {{> tf_tour_whattodo_2}}
+  {{> tf_tour_whattodo}}
   {{> tf_tour_story_start_2}}
-  {{> Footer}}
 </template>
 
 
@@ -57,8 +56,8 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/emergence" class="page-scroll"><b>Emergence</b></a></li>
             <li><a href="about" class="page-scroll"><b>Learn more</b></a></li>
-            <li><a href="HowItWorks" class="page-scroll"><b>Features</b></a></li>
-            <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li>
+        <!--    <li><a href="HowItWorks" class="page-scroll"><b>Features</b></a></li> -->
+        <!--    <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li> -->
           </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -73,10 +72,9 @@
          $(document).scroll(function() {
             scroll_start = $(this).scrollTop();
             if(scroll_start > offset.top) {
-                //$('.navbar-default').css('background-color', 'rgb(255,255,255)');
-                //$('.navbar-default').css('border-color', 'rgb(231,76,60)');
                 var alpha=Math.max(0.0, Math.min(0.8,(scroll_start-offset.top)/(10.0*offset.top)));
                 $('.navbar-default').css('background-color', `rgba(255,255,255, ${alpha})`);
+                // $('.navbar-default').css('border-color', 'rgb(231,76,60)');
              } else {
                 $('.navbar-default').css('background-color', 'transparent');
                 $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
@@ -93,22 +91,26 @@
       <div class="content">
         <h1 class="emph"><strong>Emergence from Fractal Flows</strong></h1>
         <br>
-        <span class="emph2">Science and engineering unchained on the blockchain</span>
+        <span class="emph2">Science and engineering unchained on the Blockchain</span>
         <span class="emph2"></span>
         <br>
         <span class="emph3">Leverage the power of the Blockchain
-           to make it easier for researchers, scientists, students and engineers
+           <!--to make it easier for researchers, scientists, students and engineers-->
           to share, track, expose and discover all the hidden work behind scientific publications.
         </span>
         <br>
         <br>
         <br>
         <a class="btn btn-success btn-lg" role="button"
-           href="/emergence" >
-          Try <strong>Emergence</strong> for free &#8594;
+           href="/emergence">
+          Launch <strong>Emergence</strong> &#8594;
         </a>
-        <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".emergence-video-modal">Watch the Video</button>
-        <div class="modal fade bs-example-modal-lg emergence-video-modal" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <a class="btn btn-success btn-lg" role="button"
+           href="#" >
+          Read the Paper &#8594;
+        </a>
+        <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Video</button>
+        <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -130,16 +132,9 @@
 <template name="Problemdef">
   <div id="tf-Problemdef">
       <br><br><br><br><br>
-
       <div class="row">
         <div class="col-md-4">
           <div class="squarebox">
-      <!-- div class="group">
-        <div class="left">
-          <box_contents class="squarebox">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell" -->
                   <span style="color: #8b0000; font-weight: bold">knowledge bits</span>
                   are numerical bits, files,
                   containing simulation results, experimental results, detailed analysis,
@@ -149,11 +144,8 @@
                   hypothesis and methodologies. Knowledge bits are the hidden backbone, essentially the atomic
                   particles composing a scientific work, while the associated scientific
                   publication is merely its projection on a piece of (digital) paper.
-                </div>
-              </div>
-            <!-- /div >
-          < /box_contents>
-        </div -->
+          </div>
+        </div>
 
           <div class="container col-md-6">
               <div class="section-title">
@@ -163,17 +155,16 @@
               </div>
                 <p class="intro">
                   Every year there are over <u>2 million</u> articles that are
-                  published in scientific peer-review journals. Unfortunately, only a
-                  small fraction of those will be reproducible. Even worst, hidden under
-                  the millions of articles there is an even greater number of simulation results, experimental results, detailed analysis, datasets,
-                  detailed mathematical formulations, description of assumptions, hypothesis and methodologies, scripts, source code, etc.
-                  <strong><u>(a.k.a knowledge bits)</u></strong> that are invisible, will never be checked, will never be shared, will never see the
+                  published in scientific peer-review journals. Hidden under
+                  the millions of articles there is an even greater number of
+                  <strong><u>knowledge bits</u></strong> that are invisible, will never be
+                  checked, will never be shared, will never see the
                   light of day, and will slowly rote, submerged, deep inside the abyss of
                   the authors' brains or hard disks. These so called knowledge bits could be extremely
                   important to assess the reproducibility of articles, and to actually
-                  make the articles more useful for others. Unfortunately, for
-                  multiple-reasons, the system does not offer incentives (even discourages) the authors to share those
-                  knowledge bits. As a result we see a Tsunamy of low quality publications
+                  make the articles more useful for others. Unfortunately, the current system does
+                  not offer incentives to the authors to share those
+                  knowledge bits. As a result we only see a Tsunamy of publications
                   which saturates the attention of engineers, reduces the speed of scientific
                   progress and waste an enormous amount of time and money for society.
                 </p>
@@ -186,19 +177,14 @@
                 <p class="intro">We, at <strong>FractalFlows</strong>, are developing a decentralized web
                   application called <strong>Emergence</strong> that allows anyone to create
                   relationships between articles and their associated knowledge
-                  bits which are scattered on the web. This empowers scientist, researchers, engineers and students to quickly discover
+                  bits which are scattered on the web. This empowers scientist, researchers, engineers and students
+                  to quickly discover
                   the relevant scientific activities behind an article and makes it easier to search, discover,
                   collaborate, share, acquire and exchange the necessary knowledge bits revolving around an
-                  article, allowing to create a utility for an article beyond
+                  article, allowing to create an impactful utility for an article beyond
                   the number of citations it received. Emergence is a decentralized web app that leverages the power
-                  of the Blockchain technology to access, track, share, expose and discover the hidden work behind scientific publications
-                  such as files containing reviews, datasets, scripts, source code, simulation results, experimental results,
-                  detailed mathematical formulations, detailed analysis, reproductions, hypothesis & methodologies, etc.
-                  Emergence allows anyone to expose (register) knowledge bits related to an article.
-                  Emergence allows anyone to search and access the knowledge bits featured in an article.
-                  Emergence allows anyone to register a reproduction of the results in an article, and by doing so, one will
-                  have to register the associated new knowledge bits.
-                  Through Blockchains and smart contracts Emergence from Fractal Flows is in effect decentralizing
+                  of the Blockchain technology to access, track, share, expose and discover the hidden work behind
+                  scientific publications. Through Blockchains and smart contracts Emergence from Fractal Flows is in effect decentralizing
                   the funding and publication processes.
                 </p>
                 <div class="space"></div>
@@ -207,45 +193,43 @@
                   <hr>
                   <div class="clearfix"></div>
                 </div>
-                <p class="intro"> Emergence form Fractal Flows is a decentralized application that relies on blockchain
-                  technologies to provide an indirect cooperation ecosystem for students, scientists,
-                  researchers and engineers to cooperate through incentive schemes, without the need for
-                  any intermediary authority or centralized agency. One can think of the blockchain
-                  network as a distributed, self-authenticating, time-stamped store of data which at its core is
-                  designed to overcome many
-                  challenges in distributed systems. The blockchain is secure and
-                  decentralized: no one entity holds and stores the data. Decentralization eliminate
-                  counterparty risks and centralized servers and single points of failure. The Blockchain is
-                  trustless but probably more like "trust but verify". The Blockchain facilitates the management
-                  of Peer-to-peer operations such as IPFS which we intend to use for data sharing.
-                  The blockchain is immutable and permanent: once a block has been created containing
-                  certain data (code, results, authorship, etc.), it will not and cannot be changed nor modified by anyone, ever.
-                  At its core, a blockchain is a special type of data structure. The blocks within the chain contain
-                  data (code, results, authorship, etc.), but this does not make it a database; at best the blocks represent the transaction
-                  log of a specific database implementation. The Blockchain is an enabler of smart contracts:
-                  modern blockchain designs are capable of storing arbitrary data and establishing permissions
-                  to modify that data through self-administering and self-executing scripts which are performed
-                  by a distributed virtual machine (i.e. Ethereum). These scripts are known as smart contracts, and they allow
-                  platform operators/agents/cooperating entities to define complex and fully
-                  customisable rules which govern the blockchain interactions. For exampe a smart contract automatically triggers a predifined reward to the owner/author
-                  any time his/her data/results/code/etc. are being actively used by others.
-                  One thing we are addressing through the blockchain is building a pseudoanonymous scientific reputation system
+                <p class="intro"> Emergence relies on the Blockchain
+                  to facilitate a cooperation ecosystem for students, scientists,
+                  researchers and engineers through incentive schemes, without the need for
+                  any intermediary authority or centralized agency. One can think of the Blockchain
+                  network as a distributed, self-authenticating, time-stamped store of data.
+                  The Blockchain is immutable and permanent: once a block has been created containing
+                  certain data (code, results, authorship, etc.), it will not and cannot be changed nor modified
+                  by anyone, ever.
+                  <!--The blocks within the chain contain
+                  data (code, results, authorship, etc.), but this does not make it a database;
+                  at best the blocks represent the transaction
+                  log of a specific database implementation.--> The Blockchain is also an enabler of smart contracts
+                  which allows the platform operators/agents/cooperating entities to define complex and fully
+                  customisable rules which govern the Blockchain interactions. For exampe a smart contract
+                  automatically triggers a predifined reward to the author
+                  any time his/her data are being used by others.
+                  One thing we are addressing through the Blockchain is building a pseudoanonymous scientific
+                  reputation system
                   As well as a pseudo-anonymous scientific micro-publication hub of knowledge bits.
                   Agents can publish/register on Emergence any unfinished work such as partial simulation results or partial
                   mathematical proofs without the need to wait for the final journal publication to be ready.
-                  Their work and authorship is indeed forever saved on the Blockchain in complete pseudo-anonynimaty.
-                  Anybody working on those knowledge bits in the meanwhile
-                  would increase the reputation and reward (credit) of the chain of authors through smart contracts.
+                  Their work and authorship is forever saved on the Blockchain in complete
+                  pseudo-anonynimaty. Anybody working on those knowledge bits in the meanwhile
+                  would increase the reputation and reward (credit) of the chain of authors through smart
+                  contracts.
                 </p>
-          </div>
+        </div>
       </div>
-        <hr width="100%">
+<!--        <hr width="100%"> -->
+<br><br><br><br><br>
   </div>
 </template>
 
 
 <template name="Mailing">
   <div id="Mailing" class="text-center">
+    <br><br><br><br><br>
       <div class="overlay">
         <div class="section-title center">
             <h2><strong>Interested in what we’re doing? Join our mailing list.</strong></h2>
@@ -263,35 +247,47 @@
             </form>
         </div>
       </div>
+      <br><br><br><br><br>
   </div>
 </template>
 
 
 
-<!-- <hr width="100%"> -->
-<!--
-<p class="intro"><strong>Emergence from Fractal Flows</strong> is an online exchange system that makes it easier for engineers, scientists, researchers and students to search, discover, collaborate, acquire and exchange engineering information, data and knowledge products. The exchange system integrates and links networks of knowledge repositories and tracks their evolution and <strong>emerge</strong> a value from the perspective of various communities.</p>
--->
+<template name="Resources">
+  <div id="tf-resources">
+    <div class="grid grid-pad">
+        <div class="col-1-2">
+           <div class="content">
+               <h2><b>Developer Resources</b></h2>
+               <ul>
+                 <li><a href="https://github.com/FractalFlows/FFLandingPage_Public.git" class="fa fa-code-fork"><b> Source code on GitHub</b></a></li>
+                 <li><a href="#" class="fa fa-map-o"><b> Whitepaper</b></a></li>
+                 <li><a href="#" class="fa fa-question-circle"><b> FAQ</b></a></li>
+                 <li><a href="#" class="fa fa-database"><b> API</b></a></li>
+               </ul>
+           </div>
+        </div>
+        <div class="col-1-2">
+           <div class="content">
+               <h2><b>Community</b></h2>
+               <ul>
+                 <li><a href="http://emergencefractalflows.tumblr.com/" class="fa fa-book"><b> Blog</b></a></li>
+                 <li><a href="#" class="fa fa-linkedin-square"><b> LinkedIn</b></a></li>
+                 <li><a href="#" class="fa fa-twitter-square"><b> Twitter</b></a></li>
+                 <li><a href="#" class="fa fa-youtube"><b> Youtube</b></a></li>
+                 <li><a href="#" class="fa fa-reddit"><b> Reddit</b></a></li>
+                 <li><a href="#" class="fa fa-stack-exchange"><b> Stack Exchange</b></a></li>
+                 <li><a href="#" class="fa fa-facebook-square"><b> Facebook</b></a></li>
+                 <li><a href="mailto:AI@fractalflows.com" class="fa fa-envelope"><b> Email us</b></a></li>
+               </ul>
+           </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+  </div>
+</template>
 
-<!--                        <p class="intro"><strong>What we consider as Knowledge Products include:</strong> experimental data, experimental setup, numerical simulation data, files containing data, simulation code, theoretical solutions, models, models results, equations, mathematical formulations, source code, licenses to simulation code, etc.</p>
-                  <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub, GitLab, Zenodo, university databases, open access scholarly publications repositories, personal data server, a shared Google Drive, Dropbox, Box, or OneDrive repositories, etc.</p>
-                  <p class="intro"><strong>Knowledge Repositories include:</strong> GitHub and Zenodo.</p>
 
-                  <ul class="about-list">
-                      <li>
-                          <span class="fa fa-dot-circle-o"></span>
-                          <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
-                      </li>
-                      <li>
-                          <span class="fa fa-dot-circle-o"></span>
-                          <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
-                      </li>
-                      <li>
-                          <span class="fa fa-dot-circle-o"></span>
-                          <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
-                      </li>
-                  </ul>
--->
 
 
 <template name="Why">
@@ -319,7 +315,7 @@
         <h2><strong>Benefits</strong></h2>
         <div class="line"><hr></div>
         <div class="clearfix"></div>
-        <p class='roundbox'>
+        <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: auto; margin-right: auto; border: black 2px solid">
         <span>Check out how it works! Learn what Emergence from Fractal Flows can do for you.</span>
         <a class="btn btn-success btn-lg" href="taketour" role="button">Take a tour &#8594;</a>
         </p>
@@ -369,16 +365,16 @@
   <nav id="footer">
         <div class="container">
             <div class="pull-left fnav">
-                <p>ALL RIGHTS RESERVED. COPYRIGHT FRACTAL FLOWS © 2015.</p>
+                <p>Copyright ©2016 Fractal Flows. All Rights Reserved.</p>
             </div>
-            <div class="pull-right fnav">
+            <!--<div class="pull-right fnav">
                 <ul class="footer-social">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </nav>
 </template>
@@ -401,14 +397,14 @@
                 <h1><span class="emph2"><strong>knowledge bits behind scientific publications</strong></span></h1>
                 <p class='roundbox'>
                     <span>Let's get started with <b><i>Emergence</i></b>. Watch the following tutorial to learn how it works!</span>
-                    <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Tutorial</button>
+                    <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch Demo</button>
                 </p>
-                <div class="modal fade bs-example-modal-lg tutorial-modal" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+                <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence Tutorial!</h4>
+                        <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence Demo!</h4>
                       </div>
                       <div class="modal-body">
                         <iframe width="871" height="480" src="https://www.youtube.com/embed/DGvStTJftHU?showinfo=0" frameborder="0" allowfullscreen></iframe>
@@ -416,7 +412,6 @@
                     </div>
                   </div>
                 </div>
-
             </div>
         </div>
   </div>
@@ -474,120 +469,6 @@
 </template> -->
 
 
-<!-- take a tour story     ==========================================-->
-<template name="tf_tour_whattodo">
-    <div id="tf_tour_whattodo">
-        <br><br><br><br><br>
-        <div class="text-center">
-            <h2><strong> WHAT CAN I DO WITH EMERGENCE?</strong></h2>
-            <h3>We simply want you to spend less time looking and more time making</h3>
-        </div>
-
-        <div class="container">
-          <!-- 1st row */ -->
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Register knowledge bits</h3>
-                  <p>Register the knowledge bits used in an article OR register any related knowledge bits which could potentially be useful for that same article.</p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Access knowledge bits</h3>
-                  <p>Be it a researcher, scientist, engineer or student you can search for an article by DOI number or keywords and access its registered knowledge bits on Emergence, for free.</p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Raise issues & requests</h3>
-                  <p>If knowledge bits related to an article are not available, one can raise a request for others to register related knowledge bits.
-                  One can also raise issues about existing knowledge bits.</p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>External integrations</h3>
-                  <p>Emergence is integrated with <u>Github</u> and the
-                  <u>DOI</u> network (..and more to come). Integrations with external tools let you quickly see the activities happening on external
-                  webservices from Emergence.</p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Register reproductions</h3>
-                  <p>Make an article significantly more impactful by reproducing or requesting others to reproduce the results in it. By doing so, one will have to show how they
-                  reproduced the results by registering their new knowledge bits on Emergence.</p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Add relationships</h3>
-                  <p>Create meaningful relationships between existing
-                  knowledge bits accessible on other external web services
-                  (e.g. github, zenodo, dropbox, email, etc.) and Emergence.
-                </p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Proof of authership</h3>
-                  <p>Register on Emergence any unfinished work such as partial simulation results or partial
-                    mathematical proofs without the need to wait for the final journal publication to be ready.
-                    Their work and authorship is indeed forever saved on the Blockchain in complete
-                    pseudo-anonymity.</p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-          <box_contents class="square">
-            <div class="boxcontent">
-              <div class="table">
-                <div class="table-cell">
-                  <h3>Increase your reputation</h3>
-                  <p>Register on Emergence unfinished knowledge bits and anybody working on those knowledge bits
-                    would increase the reputation and reward of the chain of authors through smart
-                    contracts. Keeping those knowledge bits for yourself until you have your paper accepted for publication
-                    will result in loss of reputation and revenue.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </box_contents>
-        </div>
-        <hr width="100%">
-    </div>
-</template>
-
-
-
-<!-- take a tour story     ==========================================-->
-
 <template name="box">
   <div class="col-md-4">
     <div class="boxcontent">
@@ -601,7 +482,8 @@
   </div>
 </template>
 
-<template name="tf_tour_whattodo_2">
+<!-- take a tour story     ==========================================-->
+<template name="tf_tour_whattodo">
     <div id="tf-tour-tf_tour_whattodo">
         <br><br><br><br><br>
         <div class="text-center">
@@ -609,39 +491,76 @@
             <h3>We simply want you to spend less time looking and more time making</h3>
         </div>
 
-        <div class="container">
-          <div class="row">
-          <!-- 1st row */ -->
-          {{>box title="Register knowledge bits"
-                 text="Register the knowledge bits used in an article OR register any related knowledge bits which could potentially be useful for that same article."}}
-
-          {{>box title="Access knowledge bits"
-                 text="Be it a researcher, scientist, engineer or student you can search for an article by DOI number or keywords and access its registered knowledge bits on Emergence, for free."}}
-
-          {{>box title="Raise issues & requests"
-                 text="If knowledge bits related to an article are not available, one can raise a request for others to register related knowledge bits. One can also raise issues about existing knowledge bits."}}
-          </div>
-          <div class="row">
-          {{>box title="External integrations"
-                 text="Emergence is integrated with <u>Github</u> and the <u>DOI</u> network (..and more to come). Integrations with external tools let you quickly see the activities happening on external webservices from Emergence."}}
-
-          {{>box title="Register reproductions"
-                 text="Make an article significantly more impactful by reproducing or requesting others to reproduce the results in it. By doing so, one will have to show how they reproduced the results by registering their new knowledge bits on Emergence."}}
-
-          {{>box title="Add relationships"
-                 text="Create meaningful relationships between existing knowledge bits accessible on other external web services (e.g. github, zenodo, dropbox, email, etc.) and Emergence."}}
-          </div>
-          <div class="row">
-          {{>box title="Proof of authorship"
-                 text="Register on Emergence any unfinished work such as partial simulation results or partial mathematical proofs without the need to wait for the final journal publication to be ready. Their work and authorship is indeed forever saved on the Blockchain in complete pseudo-anonymity."}}
-
-          {{>box title="Increase your reputation"
-                 text="Register on Emergence unfinished knowledge bits and anybody working on those knowledge bits would increase the reputation and reward of the chain of authors through smart contracts. Keeping those knowledge bits for yourself until you have your paper accepted for publication will result in loss of reputation and revenue."}}
-          </div>
+        <div class="owl-carousel owl-theme">
+                    <div class="squareboxForSlider">
+                            <span style="color: #8b0000; font-weight: bold">Register knowledge bits:</span>
+                            Register the knowledge bits used in an article OR register any related
+                            knowledge bits which could potentially be useful for that same article.
+                    </div>
+                    <div class="squareboxForSlider">
+                          <span style="color: #8b0000; font-weight: bold">Access knowledge bits:</span>
+                          Be it a researcher, scientist, engineer or student you can search for an
+                          article by DOI number or keywords and access its related knowledge bits
+                          on Emergence.
+                    </div>
+                    <div class="squareboxForSlider">
+                         <span style="color: #8b0000; font-weight: bold">Raise issues & requests:</span>
+                         If knowledge bits related to an article are not available, one can raise a
+                         request for others to register related knowledge bits. One can also raise issues
+                         about existing knowledge bits.
+                   </div>
+                   <div class="squareboxForSlider">
+                        <span style="color: #8b0000; font-weight: bold">External integrations:</span>
+                        Emergence is integrated with <u>Github</u> and the <u>DOI</u> network (..and more to come).
+                        Integrations with external tools lets you keep on working on such services that you
+                        already use today while maintaining an overview of the activities related to an article from Emergence.
+                  </div>
+                  <div class="squareboxForSlider">
+                       <span style="color: #8b0000; font-weight: bold">Register reproductions:</span>
+                       Make an article significantly more impactful by reproducing or requesting others to reproduce
+                       the results in it. By doing so, one will have to show how they reproduced the results by registering
+                       their new knowledge bits on Emergence.
+                 </div>
+                 <div class="squareboxForSlider">
+                      <span style="color: #8b0000; font-weight: bold">Add relationships:</span>
+                      Create meaningful relationships between Emergence and existing knowledge bits accessible on external web
+                      services (e.g. github, zenodo, dropbox, email, etc.). You can also create meaningful relationships
+                      between knowledge bits and publications already registered on Emergence.
+                </div>
+                <div class="squareboxForSlider">
+                     <span style="color: #8b0000; font-weight: bold">Proof of authorship:</span>
+                    Register on Emergence any unfinished work such as partial simulation results or partial
+                    mathematical proofs without the need to wait for the final publication to be ready.
+                    The work and authorship are indeed forever saved on the Blockchain in complete pseudo-anonymity.
+               </div>
+               <div class="squareboxForSlider">
+                    <span style="color: #8b0000; font-weight: bold">Increase your reputation:</span>
+                    Register on Emergence unfinished knowledge bits and anybody working on those knowledge bits would
+                    increase the reputation and reward of the chain of authors through smart contracts. Keeping those
+                    knowledge bits for yourself until you have your paper accepted for publication will result in loss of
+                    reputation and revenue.
+              </div>
         </div>
-        <hr width="100%">
+        <script>
+          //javascript jquery code sliders
+          $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+              items: 1,
+              singleItem: true,
+              navigation:true,
+              navigationText: [
+                "<i class='icon-chevron-left icon-white'><</i>",
+                "<i class='icon-chevron-right icon-white'>></i>"
+              ],
+            });
+          });
+        </script>
+        <br><br><br><br><br>
     </div>
 </template>
+
+
+
 
 <!-- Take a tour story     ==========================================-->
 <template name="tf_tour_story_researcher">
@@ -712,12 +631,28 @@
 <template name="tf_tour_story_start_1">
     <div id="tf-tour-story_start" class="text-center">
         <div class="section-title center">
-            <h2><strong> Ready to give it a try? let´s go.</strong></h2>
+          <br><br><br><br><br>
+            <h2><strong> Ready to take Emergence for a spin right now? let´s go.</strong></h2>
             <div class="line"><hr></div>
             <div class="clearfix"></div>
             <a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
+            <button href="" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Demo</button>
+            <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence Demo!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <iframe width="871" height="480" src="https://www.youtube.com/embed/D3KH5cbAKUc?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
       </div>
-      <hr width="100%">
+      <br><br><br><br><br>
+  <!--    <hr width="100%">-->
     </div>
 </template>
 
