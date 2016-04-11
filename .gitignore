@@ -7,6 +7,8 @@ __pycache__/
 
 .github
 .DS_Store
+.idea
+
 
 # Distribution / packaging
 .Python
