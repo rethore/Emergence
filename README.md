@@ -2,6 +2,8 @@
 This repo contains all the necessary files to build and deploy the emergence website hosted at http://fractalflows.com.
 The website is based on Meteor ,a javascript web framework, and Bootstrap, a shiny template from tweeter.
 
+## How to contribute?
+See [CONTRIBUTE.rst](https://github.com/FractalFlows/Emergence/blob/master/CONTRIBUTING.rst)
 
 ## How to run this thing?
 ### Install Meteor
