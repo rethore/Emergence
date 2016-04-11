@@ -10,8 +10,9 @@ See [CONTRIBUTE.rst](https://github.com/FractalFlows/Emergence/blob/master/CONTR
 * OSX/Linux:
 Install the latest official Meteor release from your terminal:
 
-
+```bash
     $ curl https://install.meteor.com/ | sh
+```
 
 * Windows:
 
