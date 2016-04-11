@@ -69,14 +69,16 @@ Ready to contribute? Here's how to set up `Emergence` for local development.
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
-5. `Install meteor<https://www.meteor.com/install>`_
+5. Install meteor::
 
-6. Start the website locally
+See official instructions: https://www.meteor.com/install
+
+6. Start the website locally::
 
     $ cd app/
     $ meteor
 
-7. Now you can make your changes locally.
+7. Now you can make your changes locally::
 
 8. Commit your changes and push your branch to GitHub::
 
