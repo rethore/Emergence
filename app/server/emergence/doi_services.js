@@ -159,7 +159,7 @@ Meteor.methods({
       let new_id =  Vector.insert((slug)? {targets, text, user, type, title, data, createdAt, slug} :
                             {targets, text, user, type, title, data, createdAt,slug:slugify(title)})
       console.log('new registration', new_id);
-      return new_id 
+      return new_id
     }
   },
   /*
@@ -270,45 +270,6 @@ Meteor.methods({
       return Promise.await(crossref(doi))
     } else {
       return Vector.findOne({doi})._id
-    }
-  },
-
-  /*
-   * Sci-Hub is providing a link to the full text pdf.
-   *
-   * x-ray is crashing if sci-hub is crashing, so it's not very stable.
-   * There must be a way to catch the error of xray in order to avoid that,
-   * but I haven't fount it yet
-   * UNTIL THEN DO NOT USE.
-   *
-   * TODO: detect when the url is not responding before doing a query on xray
-   */
-  scihub: function(doi) {
-    console.log('in scihub', doi);
-
-    let {result, error} = Async.runSync(function(done) {
-      url = 'http://sci-hub.io/' + doi;
-      console.log('in Async', url);
-      try { // <= TODO: fix this
-        xray(url, "body div#content iframe@src")(function(err, embed_src) {
-          if (err) {
-            console.log('danm', err);
-          } else {
-          console.log('in xray', embed_src);
-          done(err, embed_src);
-          }
-        })
-      } catch (e) {
-        console.log(e);
-        done(e, null);
-      }
-
-    })
-    if (error) {
-      console.log('error', error)
-    } else {
-      console.log('res', result);
-      Vector.update({doi: doi}, {$set: {pdf_src: result}});
     }
   },
 
