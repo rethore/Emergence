@@ -70,14 +70,7 @@ Template.Mailing.events({
         // reset field
         $('#userName').val('');
         $('#emailAddress').val('');
-        //alert("Thanks for signing up! We'll email you occasionally with updates about Emergence from Fractal Flows!");
-		//throwAlert is my helper method which creates popup with message
-		//throwAlert('Email send.', 'success');
-		//}else{
-		//	throwAlert('An error occurred. Sorry', 'error');
-		//	return false;
-		//
-		//
+
         contactForm.replaceWith("<div><p>Thanks for signing up! We'll email you occasionally with updates about Emergence from Fractal Flows.</p></div>");
       }else{
         alert("An error occurred. Sorry.");
