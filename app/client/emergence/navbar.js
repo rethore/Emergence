@@ -122,21 +122,43 @@ var menu = [
 ];
 
 
+function find_in_menu(id) {
+  var item = menu.map(function(e){
+    if (e.id == id) return e;
+    if (e.hasOwnProperty('items')) {
+      // We do the same for the nested items
+      return e.items.map(e2 => (e2.id == id)? e2: undefined)
+                    .filter(e3 => e3)[0]
+    }
+  }).filter(e4 => e4)[0];
+  return item
+}
+
+Template.Menubar.helpers({
+  item: () => menu,
+  url: () => null,
+});
+
+
+Template.Menubar.events({
+  "click .navbar_link": function(event, template){
+      event.preventDefault();
+      // Get the corresponding item in the menu array
+      let item = find_in_menu(event.target.id);
+      item.vect = Session.get('vect');
+      console.log('you clicked on this',item);
+      // Update the modal with its content
+      Session.set('modalcontext', item);
+      // Show the modal
+      $('#modal').modal('show');
+  }
+});
+
+
+/* Side menu */
 
 var Sidemenu = [
-/*
-  {text: "Related", icon: "fa-link", items: [
-    {text: "URL/DOI", icon: "fa-link"},
-    {text: "Slideshow", icon: "fa-desktop"},
-    {text: "Video", icon: "fa-film"}]},
-*/
-/*
-  {text: "Discuss", icon: "fa-comments-o", items: [
-    {text: "Comment", icon: "fa-comments-o"},
-    {text: "Review", icon: "fa-gavel"},
-    {text: "Raise a Question", icon: "fa-question-circle"}]},
-*/
-  {text: "Extend", icon: "fa fa-arrows-v", items: [
+  {text: "Extend", items: [
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
     {text: "Add a keyword", icon: "fa-list"}]},
@@ -200,38 +222,6 @@ var Sidemenu = [
     {text: "Reproduction"}]}
 ];
 
-
-function find_in_menu(id) {
-  var item = menu.map(function(e){
-    if (e.id == id) return e;
-    if (e.hasOwnProperty('items')) {
-      // We do the same for the nested items
-      return e.items.map(e2 => (e2.id == id)? e2: undefined)
-                    .filter(e3 => e3)[0]
-    }
-  }).filter(e4 => e4)[0];
-  return item
-}
-
-Template.Menubar.helpers({
-  item: () => menu,
-  url: () => null,
-});
-
-
-Template.Menubar.events({
-  "click .navbar_link": function(event, template){
-      event.preventDefault();
-      // Get the corresponding item in the menu array
-      let item = find_in_menu(event.target.id);
-      item.vect = Session.get('vect');
-      console.log('you clicked on this',item);
-      // Update the modal with its content
-      Session.set('modalcontext', item);
-      // Show the modal
-      $('#modal').modal('show');
-  }
-});
 
 
 
