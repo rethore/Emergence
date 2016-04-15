@@ -64,6 +64,7 @@
 </template>
 
 
+
 <template name="Menubar">
   <ul class="nav navbar-nav navbar-left">
     <li>
@@ -122,4 +123,60 @@
   <ul class="nav navbar-nav navbar-right">
     {{> loginButtons}} <!-- here -->
 </ul>
+</template>
+
+
+
+
+
+
+
+<template name="SideMenubar">
+  <ul class="nav navbar-nav navbar-left">
+    {{#each item }}
+      {{#if there_is "href" }}
+        <li>
+            <a href="{{ href }}">
+                {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+                {{ text }}
+            </a>
+        </li>
+      {{else}}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+             role="button" aria-haspopup="true" aria-expanded="false">
+            {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
+            {{ text }}
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {{#each items }}
+                {{#if there_is "separator" }}
+                  {{#if separator }}<li role="separator" class="divider"></li>{{/if}}
+                  <li class="dropdown-header">{{ text }}</li>
+                {{else}}
+                  <li>
+                    {{#if modal}}
+                        <a class="navbar_link"
+                           id="{{ id }}"
+                           href="#">
+                          {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+                          {{ text }}
+                        </a>
+                    {{else}}
+                      <a class="navbar_link"
+                         id="{{ id }}"
+                         href="{{ href }}"
+                         style="color:red">
+                        {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+                        {{ text }}
+                      </a>
+                    {{/if}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
 </template>
