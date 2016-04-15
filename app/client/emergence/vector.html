@@ -21,10 +21,10 @@
 <template name="VectorSideBar">
   {{> search_emergence_side_bar }}
   {{> VectoMetrics }}
-  {{> Vector_Extend_SideMenu }}
+  {{!-- > Vector_Extend_SideMenu --}}
   {{> Vector_AddRelationship_SideMenu }}
-  {{> Vector_Integrate_SideMenu }}
-  {{> Vector_Request_SideMenu }}
+  {{!-- > Vector_Integrate_SideMenu --}}
+  {{!-- >  Vector_Request_SideMenu --}}
   {{> Vector_Items_SideMenu }}
   {{!-- > VectorIntegrations --}}
 </template>
@@ -32,14 +32,7 @@
 
 
 <template name="Vector_Items_SideMenu">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <a class="accordion-toggle" data-toggle="collapse" href="#collapseVectorItemsSideMenu" aria-expanded="false" aria-controls="collapseMetric">
-         <p><strong>Side menu items</strong></p>
-      </a>
-      {{> Menubar }}
-    </div>
-  </div>
+      {{> SideMenubar }}
 </template>
 
 
@@ -54,9 +47,6 @@
     <div class="list-group collapse" id="collapseVectorAddRelationship">
       <a href="#" class="list-group-item">
         <strong>Scientific Question</strong>
-      </a>
-      <a href="#" class="list-group-item">
-        <strong>Model</strong>
       </a>
     </div>
   </div>
