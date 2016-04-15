@@ -67,11 +67,11 @@
 
 <template name="Menubar">
   <ul class="nav navbar-nav navbar-left">
-    <li>
+<!--    <li>
         <a href="{{ url }}">
             External
         </a>
-    </li>
+    </li> -->
     {{#each item }}
       {{#if there_is "href" }}
         <li>
@@ -118,7 +118,6 @@
       {{/if}}
     {{/each}}
   </ul>
-
 <!-- Align right -->
   <ul class="nav navbar-nav navbar-right">
     {{> loginButtons}} <!-- here -->

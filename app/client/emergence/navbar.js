@@ -35,6 +35,7 @@ var menu = [
     {text: "Review", icon: "fa-gavel"},
     {text: "Raise a Question", icon: "fa-question-circle"}]},
 */
+/*
   {text: "Extend", icon: "fa fa-arrows-v", items: [
     {text: "Summarise", icon: "fa-compress"},
     {text: "Popularize", icon: "fa-globe"},
@@ -110,7 +111,7 @@ var menu = [
     {text: "Full PDF"},
     {text: "To the Readers", separator: true},
     {text: "Review"},
-    {text: "Reproduction"}]},
+    {text: "Reproduction"}]},*/
   {text: "Donate", icon: "fa-bitcoin",
     href: "https://coinkite.com/pay/04815AF9C7-2C4BC4"},
   {text: "Emerge",
