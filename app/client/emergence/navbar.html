@@ -35,11 +35,6 @@
                 {{> Template.dynamic template=type_template }}
               </div>
          </div>
-        <div class="col-xs-6 col-sm-3"></div>
-        <div class="clearfix visible-xs"></div>
-        <div class="col-xs-6 col-sm-3"> </div>
-        <div class="col-xs-6 col-sm-3">
-        </div>
       </div>
     </div>
 </template>
@@ -60,7 +55,8 @@
   <span id="year">
       {{ year }}.
   </span>
-  <a id="link" href="{{ url }}">{{ doi }}</a>
+  <a id="link" href="{{ url }}" tyle="color: blue">{{ doi }}</a>
+  <!--<div class="Emergence-title"><hr></div> -->
 </template>
 
 
@@ -156,16 +152,16 @@
       {{else}}
       <li>
         <div class="link">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-           role="button" aria-haspopup="true" aria-expanded="false">
+        <a href="#">
           {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
           {{ text }}</a>
-          <i class="fa fa-chevron-down"></i></div>
+          <i class="fa fa-chevron-down"></i>
+        </div>
           <ul class="submenu">
               {{#each items }}
                 {{#if there_is "separator" }}
                   {{#if separator }}<li role="separator" class="divider"></li>{{/if}}
-              <li>{{ text }}</li>
+              <li class="dropdown-header">{{ text }}</li>
                 {{else}}
                   <li>
                     {{#if modal}}
