@@ -227,6 +227,7 @@ font-weight: 900;
 
 /* Home Style*/
 #tf-home{
+	position: relative;
 	background: url('../img/ff.jpg') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -537,30 +538,6 @@ img.img-circle.team-img {
 #tf-team .thumbnail .caption {
 	padding: 9px;
 	color: #F2F2F2;
-}
-
-.owl-theme .owl-controls .owl-page span {
-	display: block;
-	width: 10px;
-	height: 10px;
-	margin: 5px 7px;
-	filter: Alpha(Opacity=1);
-	opacity: 1;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 20px;
-	border-radius: 0;
-	background: #FFFFFF;
-	transition: all 0.5s;
-}
-
-.owl-theme .owl-controls .owl-page.active span,
-.owl-theme .owl-controls.clickable .owl-page:hover span {
-	filter: Alpha(Opacity=100);
-	opacity: 1;
-	background: #FCAC45;
-}
-.owl-theme .owl-controls .owl-page.active span{
-	background: #FCAC45;
 }
 
 
@@ -985,18 +962,17 @@ box_contents {
     width:100%;
 }
 .squareboxForSlider {
-    float:left;
     position: relative;
-    /*width: 75%;*/
 		padding: 2% 4%;
 		padding-bottom: 2%;
-    margin:5%;
+		max-width: 700px;
+    margin:auto;
     overflow:hidden;
 		background-color: lightgoldenrodyellow;
 		color: black;
 		border-radius: 20px;
 		text-align: left;
-		border: black 2px solid;
+		border: grey 1px solid;
 		font-size: x-large;
 		/* change border to be inside the box */
     box-sizing:border-box;

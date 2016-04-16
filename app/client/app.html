@@ -98,9 +98,7 @@
            <!--to make it easier for researchers, scientists, students and engineers-->
           to share, track and discover all the hidden work behind scientific publications.
         </span>
-        <br>
-        <br>
-        <br>
+        <br><br>
         <!--
         <a class="btn btn-success btn-lg" role="button"
            href="/emergence">
@@ -125,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <br><br><br>
+        <br><br>
         <div class="container-fluid" align="center">
           <form class="search">
             <div class="col-sm-3"></div>
@@ -296,7 +294,7 @@
            </div>
         </div>
     </div>
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
   </div>
 </template>
 
@@ -503,11 +501,11 @@
             <h2>What can i do with emergence?</h2>
             <h3>We simply want you to spend less time looking and more time making</h3>
         </div>
-        <div class="owl-carousel owl-theme">
+        <div id="owl" class="owl-carousel owl-theme">
                     <div class="squareboxForSlider">
-                            <span style="color: #8b0000; font-weight: bold">Register knowledge bits:</span>
-                            Register the knowledge bits used in an article OR register any related
-                            knowledge bits which could potentially be useful for that same article.
+                          <span style="color: #8b0000; font-weight: bold">Register knowledge bits:</span>
+                          Register the knowledge bits used in an article OR register any related
+                          knowledge bits which could potentially be useful for that same article.
                     </div>
                     <div class="squareboxForSlider">
                           <span style="color: #8b0000; font-weight: bold">Access knowledge bits:</span>
@@ -557,10 +555,16 @@
           //javascript jquery code sliders
           $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
+              stagePadding: 50,
               loop:true,
               nav:true,
               items: 1,
               singleItem: true,
+              mouseDrag   :   true,
+              responsive: true,
+              margin: 100,
+              loop: true,
+              stagePadding: 100
             });
             $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
             $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
