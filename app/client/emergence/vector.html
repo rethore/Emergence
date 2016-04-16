@@ -20,11 +20,8 @@
 
 <template name="VectorSideBar">
   {{> search_emergence_side_bar }}
+  {{> Vector_EmergeButton_SideMenu }}
   {{> VectoMetrics }}
-  {{!-- > Vector_Extend_SideMenu --}}
-  {{> Vector_AddRelationship_SideMenu }}
-  {{!-- > Vector_Integrate_SideMenu --}}
-  {{!-- >  Vector_Request_SideMenu --}}
   {{> Vector_Items_SideMenu }}
   {{!-- > VectorIntegrations --}}
 </template>
@@ -35,39 +32,17 @@
       {{> SideMenubar }}
 </template>
 
-
-
-<template name="Vector_AddRelationship_SideMenu">
+<template name="Vector_EmergeButton_SideMenu">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <a class="accordion-toggle" data-toggle="collapse" href="#collapseVectorAddRelationship" aria-expanded="false" aria-controls="collapseMetric">
-         <p><strong>Add Relationship</strong></p>
+      <a class="fa fa-rocket accordion-toggle" data-toggle="collapse" href="#collapseVectorAddRelationship" aria-expanded="false" aria-controls="collapseMetric">
+         <i style="font-size:120%;">Emerge!</i>
       </a>
     </div>
     <div class="list-group collapse" id="collapseVectorAddRelationship">
-      <a href="#" class="list-group-item">
-        <strong>Scientific Question</strong>
-      </a>
-    </div>
-  </div>
-</template>
-
-
-
-<template name="Vector_Extend_SideMenu">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <a class="accordion-toggle" data-toggle="collapse" href="#collapseVectorExtend" aria-expanded="false" aria-controls="collapseMetric">
-         <p><strong>Extend</strong></p>
-      </a>
-    </div>
-    <div class="list-group collapse" id="collapseVectorExtend">
-      <a href="#" class="list-group-item">
-        <strong>Summarize</strong>
-      </a>
-      <a href="#" class="list-group-item">
-        <strong>Popularize</strong>
-      </a>
+      <a href="#" class="list-group-item">Fracals</a>
+      <a href="#" class="list-group-item">Content</a>
+      <a href="#" class="list-group-item">Agents</a>
     </div>
   </div>
 </template>
@@ -75,49 +50,6 @@
 
 
 
-<template name="Vector_Integrate_SideMenu">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <a class="accordion-toggle" data-toggle="collapse" href="#collapseVectorIntegrate" aria-expanded="false" aria-controls="collapseMetric">
-         <p><strong>Integrate</strong></p>
-      </a>
-    </div>
-    <div class="list-group collapse" id="collapseVectorIntegrate">
-      <a href="#" class="list-group-item">
-        <strong>github</strong>
-      </a>
-      <a href="#" class="list-group-item">
-        <strong>Dropbox</strong>
-      </a>
-      <a href="#" class="list-group-item">
-        <strong>Zenodo</strong>
-      </a>
-      <a href="#" class="list-group-item">
-        <strong>Figshare</strong>
-      </a>
-    </div>
-  </div>
-</template>
-
-
-
-<template name="Vector_Request_SideMenu">
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <a class="accordion-toggle" data-toggle="collapse" href="#collapseVectorRequest" aria-expanded="false" aria-controls="collapseMetric">
-         <p><strong>Request</strong></p>
-      </a>
-    </div>
-    <div class="list-group collapse" id="collapseVectorRequest">
-      <a href="#" class="list-group-item">
-        <strong>Data/Code</strong>
-      </a>
-      <a href="#" class="list-group-item">
-        <strong>Reviews</strong>
-      </a>
-    </div>
-  </div>
-</template>
 
 
 
@@ -125,8 +57,8 @@
 <template name="VectoMetrics">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <a class="accordion-toggle" data-toggle="collapse" href="#collapseMetric" aria-expanded="false" aria-controls="collapseMetric">
-         Total Reputation: 0
+      <a class="fa fa-arrow-down accordion-toggle" data-toggle="collapse" href="#collapseMetric" aria-expanded="false" aria-controls="collapseMetric">
+         <i style="font-size:120%;">Total Reputation: 0</i>
       </a>
     </div>
     <div class="list-group collapse" id="collapseMetric">
@@ -166,6 +98,8 @@
     </div>
   </div>
 </template>
+
+
 
 <template name="VectorMain">
   {{> VectorText }}

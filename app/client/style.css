@@ -1,6 +1,5 @@
 <@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400);
-
 body, html{
 	font-family: 'Lato', sans-serif;
 	text-rendering: optimizeLegibility !important;
@@ -1002,12 +1001,12 @@ box_contents {
 
 
 
-/*
+/*-----------------------------------*/
   Simple Grid
   Project Page - http://thisisdallas.github.com/Simple-Grid/
   Author - Dallas Bass
   Site - http://dallasbass.com
-*/
+	/*-----------------------------------*/
 
 *, *:after, *:before {
 	-webkit-box-sizing: border-box;
@@ -1297,4 +1296,143 @@ ul {
 li {
     padding-left: 0px;
 		font-size:16px;
+}
+
+
+
+
+
+
+
+/*-----------------------------------*/
+/*---------ACCORDION-----------------*/
+/*http://www.jqueryscript.net/menu/Super-Smooth-Accordion-Dropdown-Menu-with-jQuery-CSS3.html*/
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+	font-family: 'Lato', sans-serif;
+}
+
+ul { list-style-type: none; }
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+
+h1 {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 80px;
+}
+
+h1 a {
+  color: #c12c42;
+  font-size: 16px;
+}
+
+.accordion {
+  width: 100%;
+  max-width: 360px;
+  margin: 30px auto 20px;
+  background: #ccffe6;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+
+.accordion .link {
+  cursor: pointer;
+  display: block;
+  padding: 15px 15px 15px 22px;
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: 700;
+	border: 0px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  position: relative;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/*Special effects when hovering over accordion*/
+.accordion .link:hover {
+	border-left: 5px solid #CCC;
+}
+
+/*A small hack to prevent flickering on some browsers*/
+.accordian ul {
+	width: 2000px;
+	/*This will give ample space to the last item to move
+	instead of falling down/flickering during hovers.*/
+}
+
+.accordion li:last-child .link { border-bottom: 0; }
+
+.accordion li i {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  font-size: 18px;
+  color: #595959;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+  right: 12px;
+  left: auto;
+  font-size: 16px;
+}
+
+.accordion li.open .link { color: #b63b4d; }
+
+.accordion li.open i { color: #b63b4d; }
+
+.accordion li.open i.fa-chevron-down {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/**Submenu -----------------------------*/
+
+
+.submenu {
+  display: none;
+  background: white;
+  font-size: 14px;
+}
+
+.submenu li { border-bottom: 0px solid grey; }
+
+.submenu a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 6px;
+  padding-left: 40px;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.submenu a:hover {
+  background: #A8A8A8;
+  color: #FFF;
 }

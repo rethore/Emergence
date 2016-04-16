@@ -131,23 +131,119 @@
 
 
 <template name="SideMenubar">
+  <!--
+  <ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>Global<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Google</a></li>
+      <li><a href="#">Bing</a></li>
+      <li><a href="#">Yahoo</a></li>
+    </ul>
+  </li>
+</ul>
+-->
+  <ul id="accordion" class="accordion">
+    {{#each item }}
+      {{#if there_is "href" }}
+      <li>
+          <a href="{{ href }}">
+              {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+              {{ text }}
+          </a>
+            <i class="fa fa-chevron-down"></i>
+        </li>
+      {{else}}
+      <li>
+        <div class="link">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+           role="button" aria-haspopup="true" aria-expanded="false">
+          {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
+          {{ text }}</a>
+          <i class="fa fa-chevron-down"></i></div>
+          <ul class="submenu">
+              {{#each items }}
+                {{#if there_is "separator" }}
+                  {{#if separator }}<li role="separator" class="divider"></li>{{/if}}
+              <li>{{ text }}</li>
+                {{else}}
+                  <li>
+                    {{#if modal}}
+                        <a class="navbar_link"
+                           id="{{ id }}"
+                           href="#">
+                          {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+                          {{ text }}
+                        </a>
+                    {{else}}
+                      <a class="navbar_link"
+                         id="{{ id }}"
+                         href="{{ href }}"
+                         style="color:red">
+                        {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+                        {{ text }}
+                      </a>
+                    {{/if}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+
+  <script>
+    $(function() {
+    	var Accordion = function(el, multiple) {
+    		this.el = el || {};
+    		this.multiple = multiple || false;
+
+    		// Variables privadas
+    		var links = this.el.find('.link');
+    		// Evento
+    		links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+    	}
+
+    	Accordion.prototype.dropdown = function(e) {
+    		var $el = e.data.el;
+    			$this = $(this),
+    			$next = $this.next();
+
+    		$next.slideToggle();
+    		$this.parent().toggleClass('open');
+
+    		if (!e.data.multiple) {
+    			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+    		};
+    	}
+    	var accordion = new Accordion($('#accordion'), false);
+    });
+  </script>
+</template>
+
+
+
+
+
+<template name="SideMenubar_main">
   <ul class="list-group">
     {{#each item }}
       {{#if there_is "href" }}
-        <li class="list-group-item">
-            <a data-toggle="collapse" href="{{ href }}">
-                {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
-                {{ text }}
-            </a>
+      <li>
+          <a href="{{ href }}">
+              {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
+              {{ text }}
+          </a>
         </li>
       {{else}}
-        <li class="list-group-item">
+       <li class="list-group-item">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
              role="button" aria-haspopup="true" aria-expanded="false">
             {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
             {{ text }}
             <span class="caret"></span></a>
-            <ul class="dropdown-menu">
+          <ul class="dropdown-menu">
               {{#each items }}
                 {{#if there_is "separator" }}
                   {{#if separator }}<li role="separator" class="divider"></li>{{/if}}
