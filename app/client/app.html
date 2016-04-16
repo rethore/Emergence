@@ -241,7 +241,7 @@
 
 <template name="Mailing">
   <div id="Mailing" class="text-center">
-    <br><br><br><br><br>
+    <br><br>
       <div class="overlay">
         <div class="section-title center">
             <h2><strong>Interested in what we’re doing? Join our mailing list.</strong></h2>
@@ -498,12 +498,11 @@
 <!-- take a tour story     ==========================================-->
 <template name="tf_tour_whattodo">
     <div id="tf-tour-tf_tour_whattodo">
-        <br><br><br><br><br>
+        <br><br>
         <div class="text-center">
             <h2>What can i do with emergence?</h2>
             <h3>We simply want you to spend less time looking and more time making</h3>
         </div>
-
         <div class="owl-carousel owl-theme">
                     <div class="squareboxForSlider">
                             <span style="color: #8b0000; font-weight: bold">Register knowledge bits:</span>
@@ -558,19 +557,16 @@
           //javascript jquery code sliders
           $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
+              loop:true,
+              nav:true,
               items: 1,
               singleItem: true,
-              navigation:true,
-              navigationText: [
-                "<i class='icon-chevron-left icon-white'><</i>",
-                "<i class='icon-chevron-right icon-white'>></i>"
-              ],
             });
             $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
             $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
           });
         </script>
-        <br><br><br><br><br>
+        <hr width="100%">
     </div>
 </template>
 
@@ -646,7 +642,7 @@
 <template name="tf_tour_story_start_1">
     <div id="tf-tour-story_start" class="text-center">
         <div class="section-title center">
-          <br><br><br><br><br>
+          <br><br>
             <h2><strong> Ready to take Emergence for a spin right now? let´s go.</strong></h2>
             <div class="line"><hr></div>
             <div class="clearfix"></div>
@@ -666,7 +662,7 @@
                 </div>
             </div>
       </div>
-      <br><br><br><br><br>
+      <br><br>
   <!--    <hr width="100%">-->
     </div>
 </template>
