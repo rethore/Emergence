@@ -233,7 +233,10 @@ font-weight: 900;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-background-size: cover;
-	color: #cfcfcf;
+	background-size: cover;
+	color: #e3e3e3;
+	height: auto;
+	min-height: 100%;
 }
 
 #tf-home .overlay{
@@ -266,14 +269,7 @@ font-weight: 900;
   font-size: large
 }
 /* Home Style of the tour page*/
-#modal{
-	background: url('../img/DigitalWater_0005_Ebene 7.jpg');
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	color: #cfcfcf;
-}
+
 
 #modal .overlay{
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.73) 17%, rgba(0,0,0,0.66) 35%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
