@@ -231,32 +231,42 @@
               {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
               {{ text }}
           </a>
-        </li>
+      </li>
       {{else}}
        <li class="list-group-item">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-             role="button" aria-haspopup="true" aria-expanded="false">
-            {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
+          <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+             role="button" aria-haspopup="true" aria-expanded="false"> -->
+          <a  class="link"
+              role="button"
+              data-toggle="collapse"
+              href="#collapse{{slugify text}}"
+              aria-expanded="false"
+              aria-controls="collapse{{slugify text}}">
+
+           {{#if there_is "icon" }}<i class="fa {{ icon }}"></i>{{/if}}
             {{ text }}
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+            <!-- <span class="caret"></span> -->
+            <i class="fa fa-chevron-down"></i>
+          </a>
+          <div class="collapse" id="collapse{{slugify text}}">
+          <ul>
               {{#each items }}
                 {{#if there_is "separator" }}
                   {{#if separator }}<li role="separator" class="divider"></li>{{/if}}
-                  <li class="dropdown-header">{{ text }}</li>
+                  <li style="color:gray">{{ text }}</li>
                 {{else}}
                   <li>
                     {{#if modal}}
-                        <a class="navbar_link"
+                        <a class="sidebar_link"
                            id="{{ id }}"
                            href="#">
                           {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                           {{ text }}
                         </a>
                     {{else}}
-                      <a class="navbar_link"
-                         id="{{ id }}"
-                         href="{{ href }}"
+                      <a class="sidebar_link"
+                         id="{{ slugify text }}"
+                         href="#"
                          style="color:red">
                         {{#if there_is "icon" }}<i class="fa {{ icon }}"></i> {{/if}}
                         {{ text }}
@@ -266,6 +276,7 @@
                 {{/if}}
               {{/each}}
             </ul>
+          </div>
         </li>
       {{/if}}
     {{/each}}
