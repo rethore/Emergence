@@ -54,7 +54,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/emergence" class="page-scroll"><b>Emergence</b></a></li>
+          <!--  <li><a href="/emergence" class="page-scroll"><b>Emergence</b></a></li>-->
             <li><a href="about" class="page-scroll"><b>Learn more</b></a></li>
         <!--    <li><a href="HowItWorks" class="page-scroll"><b>Features</b></a></li> -->
         <!--    <li><a href="http://emergencefractalflows.tumblr.com/" class="page-scroll"><b>Our Blog</b></a></li> -->
@@ -96,15 +96,15 @@
         <br>
         <span class="emph3">Leverage the power of the Blockchain
            <!--to make it easier for researchers, scientists, students and engineers-->
-          to share, track, expose and discover all the hidden work behind scientific publications.
+          to share, track and discover all the hidden work behind scientific publications.
         </span>
-        <br>
-        <br>
-        <br>
+        <br><br>
+        <!--
         <a class="btn btn-success btn-lg" role="button"
            href="/emergence">
           Launch <strong>Emergence</strong> &#8594;
         </a>
+      -->
         <a class="btn btn-success btn-lg" role="button"
            href="https://github.com/FractalFlows/Emergence/wiki/Emergence-White-Paper" >
           Read the Paper &#8594;
@@ -122,6 +122,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <br><br>
+        <div class="container-fluid" align="center">
+          <form class="search">
+            <div class="col-sm-3"></div>
+            <div class="form-group col-sm-6"  style="float:center">
+              {{> search_emergence_side_bar}}
+            </div>
+            <div class="col-sm-3"></div>
+          </form>
         </div>
       </div>
     </div>
@@ -206,7 +216,7 @@
                   at best the blocks represent the transaction
                   log of a specific database implementation.--> The Blockchain is also an enabler of smart contracts
                   which allows the platform operators/agents/cooperating entities to define complex and fully
-                  customisable rules which govern the Blockchain interactions. For exampe a smart contract
+                  customisable rules which govern the Blockchain interactions. For example a smart contract
                   automatically triggers a predifined reward to the author
                   any time his/her data are being used by others.
                   One thing we are addressing through the Blockchain is building a pseudoanonymous scientific
@@ -229,7 +239,7 @@
 
 <template name="Mailing">
   <div id="Mailing" class="text-center">
-    <br><br><br><br><br>
+    <br><br>
       <div class="overlay">
         <div class="section-title center">
             <h2><strong>Interested in what we’re doing? Join our mailing list.</strong></h2>
@@ -284,7 +294,7 @@
            </div>
         </div>
     </div>
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
   </div>
 </template>
 
@@ -486,17 +496,16 @@
 <!-- take a tour story     ==========================================-->
 <template name="tf_tour_whattodo">
     <div id="tf-tour-tf_tour_whattodo">
-        <br><br><br><br><br>
+        <br><br>
         <div class="text-center">
             <h2>What can i do with emergence?</h2>
             <h3>We simply want you to spend less time looking and more time making</h3>
         </div>
-
-        <div class="owl-carousel owl-theme">
+        <div id="owl" class="owl-carousel owl-theme">
                     <div class="squareboxForSlider">
-                            <span style="color: #8b0000; font-weight: bold">Register knowledge bits:</span>
-                            Register the knowledge bits used in an article OR register any related
-                            knowledge bits which could potentially be useful for that same article.
+                          <span style="color: #8b0000; font-weight: bold">Register knowledge bits:</span>
+                          Register the knowledge bits used in an article OR register any related
+                          knowledge bits which could potentially be useful for that same article.
                     </div>
                     <div class="squareboxForSlider">
                           <span style="color: #8b0000; font-weight: bold">Access knowledge bits:</span>
@@ -546,19 +555,22 @@
           //javascript jquery code sliders
           $(document).ready(function(){
             $('.owl-carousel').owlCarousel({
+              stagePadding: 50,
+              loop:true,
+              nav:true,
               items: 1,
               singleItem: true,
-              navigation:true,
-              navigationText: [
-                "<i class='icon-chevron-left icon-white'><</i>",
-                "<i class='icon-chevron-right icon-white'>></i>"
-              ],
+              mouseDrag   :   true,
+              responsive: true,
+              margin: 100,
+              loop: true,
+              stagePadding: 100
             });
             $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
             $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
           });
         </script>
-        <br><br><br><br><br>
+        <hr width="100%">
     </div>
 </template>
 
@@ -634,11 +646,11 @@
 <template name="tf_tour_story_start_1">
     <div id="tf-tour-story_start" class="text-center">
         <div class="section-title center">
-          <br><br><br><br><br>
+          <br><br>
             <h2><strong> Ready to take Emergence for a spin right now? let´s go.</strong></h2>
             <div class="line"><hr></div>
             <div class="clearfix"></div>
-            <a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
+            <!--<a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a> -->
             <button href="" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Demo</button>
             <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -654,7 +666,7 @@
                 </div>
             </div>
       </div>
-      <br><br><br><br><br>
+      <br><br>
   <!--    <hr width="100%">-->
     </div>
 </template>

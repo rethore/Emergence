@@ -1,6 +1,5 @@
 <@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400);
-
 body, html{
 	font-family: 'Lato', sans-serif;
 	text-rendering: optimizeLegibility !important;
@@ -53,7 +52,13 @@ a{ color: black;}
 a:hover,
 a:focus{
 	text-decoration: none;
-	color: black;
+	color: blue;
+}
+
+.Emergence-title hr{
+	border-color: #fcac45;
+	border-width: 2px;
+	width: 100%;
 }
 
 .section-title hr{
@@ -222,12 +227,21 @@ font-weight: 900;
 
 /* Home Style*/
 #tf-home{
+	position: relative;
 	background: url('../img/ff.jpg') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	-background-size: cover;
-	color: #cfcfcf;
+	background-size: cover;
+	color: #e3e3e3;
+	position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
 
 #tf-home .overlay{
@@ -238,8 +252,15 @@ font-weight: 900;
 	background: -ms-linear-gradient(top,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.73) 17%,rgba(0,0,0,0.66) 35%,rgba(0,0,0,0.55) 62%,rgba(0,0,0,0.4) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
-	height: 715px;
 	background-attachment: cover;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	/* Preserve aspet ratio */
+	min-width: 100%;
+	min-height: 100%;
 }
 #tf-home p.lead{
 	color: #e3e3e3;
@@ -260,14 +281,7 @@ font-weight: 900;
   font-size: large
 }
 /* Home Style of the tour page*/
-#modal{
-	background: url('../img/DigitalWater_0005_Ebene 7.jpg');
-	background-size: cover;
-	background-position: center;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	color: #cfcfcf;
-}
+
 
 #modal .overlay{
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.73) 17%, rgba(0,0,0,0.66) 35%, rgba(0,0,0,0.55) 62%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
@@ -532,30 +546,6 @@ img.img-circle.team-img {
 #tf-team .thumbnail .caption {
 	padding: 9px;
 	color: #F2F2F2;
-}
-
-.owl-theme .owl-controls .owl-page span {
-	display: block;
-	width: 10px;
-	height: 10px;
-	margin: 5px 7px;
-	filter: Alpha(Opacity=1);
-	opacity: 1;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 20px;
-	border-radius: 0;
-	background: #FFFFFF;
-	transition: all 0.5s;
-}
-
-.owl-theme .owl-controls .owl-page.active span,
-.owl-theme .owl-controls.clickable .owl-page:hover span {
-	filter: Alpha(Opacity=100);
-	opacity: 1;
-	background: #FCAC45;
-}
-.owl-theme .owl-controls .owl-page.active span{
-	background: #FCAC45;
 }
 
 
@@ -980,18 +970,17 @@ box_contents {
     width:100%;
 }
 .squareboxForSlider {
-    float:left;
     position: relative;
-    /*width: 75%;*/
-		padding: 5% 5%;
-		padding-bottom: 5%; /* = width for a 1:1 aspect ratio */
-    margin:10%;
+		padding: 2% 4%;
+		padding-bottom: 2%;
+		max-width: 700px;
+    margin:auto;
     overflow:hidden;
 		background-color: lightgoldenrodyellow;
 		color: black;
 		border-radius: 20px;
 		text-align: left;
-		border: black 2px solid;
+		border: grey 1px solid;
 		font-size: x-large;
 		/* change border to be inside the box */
     box-sizing:border-box;
@@ -1002,12 +991,12 @@ box_contents {
 
 
 
-/*
+/*-----------------------------------*/
   Simple Grid
   Project Page - http://thisisdallas.github.com/Simple-Grid/
   Author - Dallas Bass
   Site - http://dallasbass.com
-*/
+	/*-----------------------------------*/
 
 *, *:after, *:before {
 	-webkit-box-sizing: border-box;
@@ -1297,4 +1286,143 @@ ul {
 li {
     padding-left: 0px;
 		font-size:16px;
+}
+
+
+
+
+
+
+
+/*-----------------------------------*/
+/*---------ACCORDION-----------------*/
+/*http://www.jqueryscript.net/menu/Super-Smooth-Accordion-Dropdown-Menu-with-jQuery-CSS3.html*/
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+	font-family: 'Lato', sans-serif;
+}
+
+ul { list-style-type: none; }
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+
+h1 {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 80px;
+}
+
+h1 a {
+  color: #c12c42;
+  font-size: 16px;
+}
+
+.accordion {
+  width: 100%;
+  max-width: 360px;
+  margin: 30px auto 20px;
+  background: #ccffe6;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+
+.accordion .link {
+  cursor: pointer;
+  display: block;
+  padding: 15px 15px 15px 22px;
+  color: #4D4D4D;
+  font-size: 16px;
+  font-weight: 700;
+	border: 0px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  position: relative;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/*Special effects when hovering over accordion*/
+.accordion .link:hover {
+	border-left: 5px solid #CCC;
+}
+
+/*A small hack to prevent flickering on some browsers*/
+.accordian ul {
+	width: 2000px;
+	/*This will give ample space to the last item to move
+	instead of falling down/flickering during hovers.*/
+}
+
+.accordion li:last-child .link { border-bottom: 0; }
+
+.accordion li i {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  font-size: 18px;
+  color: #595959;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.accordion li i.fa-chevron-down {
+  right: 12px;
+  left: auto;
+  font-size: 16px;
+}
+
+.accordion li.open .link { color: #b63b4d; }
+
+.accordion li.open i { color: #b63b4d; }
+
+.accordion li.open i.fa-chevron-down {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/**Submenu -----------------------------*/
+
+
+.submenu {
+  display: none;
+  background: white;
+  font-size: 14px;
+}
+
+.submenu li { border-bottom: 0px solid grey; }
+
+.submenu a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 3px;
+  padding-left: 30px;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.submenu a:hover {
+  background: #A8A8A8;
+  color: #FFF;
 }

@@ -20,17 +20,47 @@
 
 <template name="VectorSideBar">
   {{> search_emergence_side_bar }}
+  {{> Vector_EmergeButton_SideMenu }}
   {{> VectoMetrics }}
+  {{> Vector_Items_SideMenu }}
   {{!-- > VectorIntegrations --}}
 </template>
+
+
+
+<template name="Vector_Items_SideMenu">
+      {{> SideMenubar_main }}
+</template>
+
+<template name="Vector_EmergeButton_SideMenu">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <a class="fa fa-rocket accordion-toggle" data-toggle="collapse" href="#collapseVectorAddRelationship" aria-expanded="false" aria-controls="collapseMetric">
+         <i style="font-size:120%;">Emerge!</i>
+      </a>
+    </div>
+    <div class="list-group collapse" id="collapseVectorAddRelationship">
+      <a href="#" class="list-group-item">Fracals</a>
+      <a href="#" class="list-group-item">Content</a>
+      <a href="#" class="list-group-item">Agents</a>
+    </div>
+  </div>
+</template>
+
+
+
+
+
+
 
 
 <template name="VectoMetrics">
   <div class="panel panel-info">
     <div class="panel-heading">
       <a class="accordion-toggle" data-toggle="collapse" href="#collapseMetric" aria-expanded="false" aria-controls="collapseMetric">
-         Total Elevation: 5 m
+         <i style="font-size:120%;">Total Reputation: 0</i>
       </a>
+      <i class="fa fa-chevron-down"></i>
     </div>
     <div class="list-group collapse" id="collapseMetric">
       <a href="#" class="list-group-item">
@@ -69,6 +99,8 @@
     </div>
   </div>
 </template>
+
+
 
 <template name="VectorMain">
   {{> VectorText }}
@@ -143,7 +175,6 @@
       {{/each}}
   {{/MainPanel}}
 </template>
-
 
 <template name="VectorSummary">
   {{#MainPanel id="summary" title="Summary"}}
