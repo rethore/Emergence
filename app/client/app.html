@@ -90,7 +90,7 @@
     <div class="overlay">
       <div class="content">
         <h1 class="emph"><strong>Emergence from Fractal Flows</strong></h1>
-        <span class="emph2">Science and engineering </span><span class="subtltType emph2"></span>
+        <span class="emph2">Science and engineering unchained </span><span class="subtltType emph2"></span>
         <!--
         <span class="emph2">Science and engineering </span>
         <div id="typed-strings">
@@ -147,12 +147,14 @@
 <script>
   setTimeout(function(){
           $(".subtltType").typed({
-              strings: ["unchained on the <em>Blockchain!</em>"],
-              typeSpeed: 50, // typing speed
+              strings: ["on the <em>Blockchain!</em>"],
+              typeSpeed: 30, // typing speed
               backDelay: 750, // pause before backspacing
               loop: true, // loop on or off (true or false)
               loopCount: false, // number of loops, false = infinite
               contentType: 'html', // or 'text'
+              cursorChar: "|",
+              startDelay: 0,              // time before typing starts
               callback: function(){ } // call function after typing is done
           });
       }, 1000);
@@ -166,7 +168,8 @@
             backDelay: 750, // pause before backspacing
             loop: true, // loop on or off (true or false)
             loopCount: false, // number of loops, false = infinite
-            contentType: 'html' // or 'text'
+            contentType: 'html', // or 'text'
+            callback: function(){ } // call function after typing is done
         });
     },1000);
 </script>
