@@ -293,7 +293,7 @@ font-weight: 900;
 
 .content{
 	position: relative;
-	padding: 12% 0 0;
+	padding: 10% 0 0;
 }
 
 .color{
@@ -807,6 +807,30 @@ button.btn.tf-btn.btn-default {
 	outline: none;
 	outline-offset: none;
 }
+
+.typed-cursor{
+    opacity: 10;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+
 /* Footer */
 nav#footer{
 	background: #222222;

@@ -90,15 +90,22 @@
     <div class="overlay">
       <div class="content">
         <h1 class="emph"><strong>Emergence from Fractal Flows</strong></h1>
-        <br>
-        <span class="emph2">Science and engineering unchained on the Blockchain</span>
-        <span class="emph2"></span>
-        <br>
-        <span class="emph3">Leverage the power of the Blockchain
-           <!--to make it easier for researchers, scientists, students and engineers-->
-          to share, track and discover all the hidden work behind scientific publications.
+        <span class="emph2">Science and engineering </span><span class="subtltType emph2"></span>
+        <!--
+        <span class="emph2">Science and engineering </span>
+        <div id="typed-strings">
+          <p><span class="emph2">unchained on the <em>Blockchain.</em> </span></p>
+        </div>
+        <span id="typed"></span>
+      -->
+        <br><br>
+        <span class="emph3">
+           <!--Leverage the power of the Blockchain to
+           to make it easier for researchers, scientists, students and engineers-->
+          Share, track and discover all the hidden work behind scientific publications.
         </span>
         <br><br>
+        <!--below is another solution but resulted in flicker everytime the page loads-->
         <!--
         <a class="btn btn-success btn-lg" role="button"
            href="/emergence">
@@ -136,6 +143,34 @@
       </div>
     </div>
   </div>
+
+<script>
+  setTimeout(function(){
+          $(".subtltType").typed({
+              strings: ["unchained on the <em>Blockchain!</em>"],
+              typeSpeed: 50, // typing speed
+              backDelay: 750, // pause before backspacing
+              loop: true, // loop on or off (true or false)
+              loopCount: false, // number of loops, false = infinite
+              contentType: 'html', // or 'text'
+              callback: function(){ } // call function after typing is done
+          });
+      }, 1000);
+</script>
+
+<script>
+    setTimeout(function(){
+        $("#typed").typed({
+            stringsElement: $('#typed-strings'),
+            typeSpeed: 60, // typing speed
+            backDelay: 750, // pause before backspacing
+            loop: true, // loop on or off (true or false)
+            loopCount: false, // number of loops, false = infinite
+            contentType: 'html' // or 'text'
+        });
+    },1000);
+</script>
+
 </template>
 
 <!-- About The product ====================================================== -->
