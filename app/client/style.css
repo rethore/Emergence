@@ -817,9 +817,9 @@ button.btn.tf-btn.btn-default {
   	font-size: xx-large;
 		color: #FCAC45;
     opacity: 10;
-    -webkit-animation: blink 0.7s infinite;
-    -moz-animation: blink 0.7s infinite;
-    animation: blink 0.7s infinite;
+    -webkit-animation: blink 0.7s infinite linear;
+    -moz-animation: blink 0.7s infinite linear;
+    animation: blink 0.7s infinite linear;
 }
 @keyframes blink{
     0% { opacity:1; }
