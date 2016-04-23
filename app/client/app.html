@@ -104,8 +104,8 @@
         <span id="typed"></span>
       -->
         <br><br>
-        <span class="emph2">Track, share and discover </span>
-        <span style="color:red" class="optionsType emph2"></span>
+        <span style="color:#FCAC45" class="actionsType emph2"></span>
+        <span style="color:#FCAC45" class="optionsType emph2"></span>
            <!--Leverage the power of the Blockchain to
            to make it easier for researchers, scientists, students and engineers
            all the hidden work behind scientific publications.-->
@@ -155,7 +155,7 @@
               strings: ["on the <em>Blockchain!</em>"],
               startDelay: 50,              // time before typing starts
               typeSpeed: 50, // typing speed
-              backDelay: 750, // pause before backspacing
+              backDelay: 500, // pause before backspacing
               loop: true, // loop on or off (true or false)
               loopCount: false, // number of loops, false = infinite
               contentType: 'html', // or 'text'
@@ -174,9 +174,9 @@ setTimeout(function(){
             "<em>simulation results.</em>","<em>experimental results.</em>","<em>detailed analysis.</em>",
             "<em>mathematical formulations.</em>","<em>scripts.</em>","<em>reviews.</em>",
             "<em>reproduction of results.</em>","<em>methodologies.</em>"],
-            startDelay: 500,              // time before typing starts
+            startDelay: 2000,              // time before typing starts
             typeSpeed: 50, // typing speed
-            backDelay: 750, // pause before backspacing
+            backDelay: 500, // pause before backspacing
             loop: true, // loop on or off (true or false)
             loopCount: false, // number of loops, false = infinite
             contentType: 'html', // or 'text'
@@ -186,6 +186,25 @@ setTimeout(function(){
         });
     }, 1000);
 </script>
+
+<script>
+setTimeout(function(){
+        $(".actionsType").typed({
+            strings: ["<em>Track </em>","<em>Share </em>",
+            "<em>Discover </em>","<em>Review </em>"],
+            startDelay: 1000,              // time before typing starts
+            typeSpeed: 50, // typing speed
+            backDelay: 5000, // pause before backspacing
+            loop: true, // loop on or off (true or false)
+            loopCount: false, // number of loops, false = infinite
+            contentType: 'html', // or 'text'
+            showCursor: true,
+            cursorChar: "|",
+            callback: function(){ } // call function after typing is done
+        });
+    }, 1000);
+</script>
+
 
 <script>
     setTimeout(function(){

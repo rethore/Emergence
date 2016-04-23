@@ -815,7 +815,7 @@ button.btn.tf-btn.btn-default {
 
 .typed-cursor{
   	font-size: xx-large;
-		color: red;
+		color: #FCAC45;
     opacity: 10;
     -webkit-animation: blink 0.7s infinite;
     -moz-animation: blink 0.7s infinite;
