@@ -452,7 +452,12 @@ ul.about-list li span{
 
 
 #tf-tour-story_start{
-	background-color: lightgoldenrodyellow;
+	background: url('../img/specialpink.png') no-repeat center center fixed;
+	/*background-color: lightgoldenrodyellow;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-background-size: cover;
 	padding: 0px 0;
 }
 ul.about-list{ margin: 0px 0 0 ;}
@@ -809,6 +814,8 @@ button.btn.tf-btn.btn-default {
 }
 
 .typed-cursor{
+  	font-size: xx-large;
+		color: red;
     opacity: 10;
     -webkit-animation: blink 0.7s infinite;
     -moz-animation: blink 0.7s infinite;

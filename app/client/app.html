@@ -90,7 +90,12 @@
     <div class="overlay">
       <div class="content">
         <h1 class="emph"><strong>Emergence from Fractal Flows</strong></h1>
+        <!--
+
         <span class="emph2">Science and engineering unchained </span><span class="subtltType emph2"></span>
+      -->
+      <span class="emph2">Science and engineering unchained on the <em>Blockchain!</em></span>
+
         <!--
         <span class="emph2">Science and engineering </span>
         <div id="typed-strings">
@@ -99,11 +104,11 @@
         <span id="typed"></span>
       -->
         <br><br>
-        <span class="emph3">
+        <span class="emph2">Track, share and discover </span>
+        <span style="color:red" class="optionsType emph2"></span>
            <!--Leverage the power of the Blockchain to
-           to make it easier for researchers, scientists, students and engineers-->
-          Share, track and discover all the hidden work behind scientific publications.
-        </span>
+           to make it easier for researchers, scientists, students and engineers
+           all the hidden work behind scientific publications.-->
         <br><br>
         <!--below is another solution but resulted in flicker everytime the page loads-->
         <!--
@@ -148,27 +153,52 @@
   setTimeout(function(){
           $(".subtltType").typed({
               strings: ["on the <em>Blockchain!</em>"],
-              typeSpeed: 30, // typing speed
+              startDelay: 50,              // time before typing starts
+              typeSpeed: 50, // typing speed
               backDelay: 750, // pause before backspacing
               loop: true, // loop on or off (true or false)
               loopCount: false, // number of loops, false = infinite
               contentType: 'html', // or 'text'
+              showCursor: true,
               cursorChar: "|",
-              startDelay: 0,              // time before typing starts
               callback: function(){ } // call function after typing is done
           });
       }, 1000);
 </script>
 
 <script>
-    setTimeout(function(){
-        $("#typed").typed({
-            stringsElement: $('#typed-strings'),
-            typeSpeed: 60, // typing speed
+setTimeout(function(){
+        $(".optionsType").typed({
+            strings: ["<em>articles.</em>","<em>publications.</em>",
+            "<em>code.</em>","<em>models.</em>","<em>datasets.</em>",
+            "<em>simulation results.</em>","<em>experimental results.</em>","<em>detailed analysis.</em>",
+            "<em>mathematical formulations.</em>","<em>scripts.</em>","<em>reviews.</em>",
+            "<em>reproduction of results.</em>","<em>methodologies.</em>"],
+            startDelay: 500,              // time before typing starts
+            typeSpeed: 50, // typing speed
             backDelay: 750, // pause before backspacing
             loop: true, // loop on or off (true or false)
             loopCount: false, // number of loops, false = infinite
             contentType: 'html', // or 'text'
+            showCursor: true,
+            cursorChar: "|",
+            callback: function(){ } // call function after typing is done
+        });
+    }, 1000);
+</script>
+
+<script>
+    setTimeout(function(){
+        $("#typed").typed({
+            stringsElement: $('#typed-strings'),
+            startDelay: 50,              // time before typing starts
+            typeSpeed: 50, // typing speed
+            backDelay: 750, // pause before backspacing
+            loop: true, // loop on or off (true or false)
+            loopCount: false, // number of loops, false = infinite
+            contentType: 'html', // or 'text'
+            showCursor: true,
+            cursorChar: "|",
             callback: function(){ } // call function after typing is done
         });
     },1000);
@@ -226,12 +256,11 @@
                   application called <strong>Emergence</strong> that allows anyone to create
                   relationships between articles and their associated knowledge
                   bits which are scattered on the web. This empowers scientist, researchers, engineers and students
-                  to quickly discover
-                  the relevant scientific activities behind an article and makes it easier to search, discover,
+                  to quickly discover the relevant scientific activities behind an article and makes it easier to search, discover,
                   collaborate, share, acquire and exchange the necessary knowledge bits revolving around an
                   article, allowing to create an impactful utility for an article beyond
-                  the number of citations it received. Emergence is a decentralized web app that leverages the power
-                  of the Blockchain technology to access, track, share, expose and discover the hidden work behind
+                  the number of citations it received. Emergence is integrated with external web Apps/Services such as Github.
+                  Emergence leverages the power of the Blockchain technology to access, track, share, expose and discover the hidden work behind
                   scientific publications. Through Blockchains and smart contracts Emergence from Fractal Flows is in effect decentralizing
                   the funding and publication processes.
                 </p>
