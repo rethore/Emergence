@@ -29,6 +29,9 @@ UI.registerHelper("process_nolinks", function(text){
 UI.registerHelper("jsonify", function(text){
   return JSON.stringify(text, undefined, 2)
 });
+UI.registerHelper("slugify", function(text){
+  return slugify(text)
+});
 
 Template.VectorText.events({
   "submit .comment_form"(e, t){
