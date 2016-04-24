@@ -48,6 +48,16 @@ p.intro{
 	line-height: 24px;
 	font-family: 'Lato', sans-serif;*/
 }
+p.intro_left{
+	font-size: 18px;
+	padding-left:10%;
+	padding-right:0%;
+}
+p.intro_right{
+	font-size: 18px;
+	padding-left:0%;
+	padding-right:10%;
+}
 a{ color: black;}
 a:hover,
 a:focus{
@@ -117,7 +127,7 @@ ul, ol{
     clear: both;
 }
 img {
-    max-width: 100%;
+    max-width: 75%;
     height: auto;
 }
 @media screen and (max-width: 480px) {
@@ -136,6 +146,15 @@ div.container {
 	padding: 0px 25px;
 }
 
+div.containerInColumnsLeft {
+  display: block;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+div.containerInColumnsRight {
+  display: block;
+	margin-right: 5%;
+}
 /* Navigation */
 #tf-menu {
 	padding: 20px;
@@ -154,7 +173,7 @@ font-weight: 900;
 }
 #tf-menu.navbar-default .navbar-nav > li > a {
 	text-transform: uppercase;
-	color: gray;
+	color: white;
 	/*font-size: 14px;*/
 	letter-spacing: 1px;
 	transition-duration: 0.25s;
@@ -301,7 +320,7 @@ font-weight: 900;
 
 .content{
 	position: relative;
-	padding: 20% 0 0;
+	padding: 10% 0 0;
 }
 
 .color{
@@ -460,7 +479,12 @@ ul.about-list li span{
 
 
 #tf-tour-story_start{
-	background-color: lightgoldenrodyellow;
+	background: url('../img/specialpink.png') no-repeat center center fixed;
+	/*background-color: lightgoldenrodyellow;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-background-size: cover;
 	padding: 0px 0;
 }
 ul.about-list{ margin: 0px 0 0 ;}
@@ -471,6 +495,27 @@ ul.about-list li{
 ul.about-list li span{
 	margin-right: 0px;
 }
+
+
+
+#tf-features{
+	background: url('../img/dao-bg-2200.jpg') no-repeat center center fixed;
+	/*background-color: lightgoldenrodyellow;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	-background-size: cover;
+	padding: 0px 0;
+}
+ul.about-list{ margin: 0px 0 0 ;}
+ul.about-list li{
+	display: block;
+	font-family: 'Lato', sans-serif;
+}
+ul.about-list li span{
+	margin-right: 0px;
+}
+
 
 
 
@@ -815,6 +860,32 @@ button.btn.tf-btn.btn-default {
 	outline: none;
 	outline-offset: none;
 }
+
+.typed-cursor{
+  	font-size: xx-large;
+		color: #FCAC45;
+    opacity: 10;
+    -webkit-animation: blink 0.7s infinite linear;
+    -moz-animation: blink 0.7s infinite linear;
+    animation: blink 0.7s infinite linear;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+
 /* Footer */
 nav#footer{
 	background: #222222;
