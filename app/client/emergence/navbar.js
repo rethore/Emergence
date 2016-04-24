@@ -160,9 +160,9 @@ Template.Menubar.events({
 
 var Sidemenu = [
   {text: "Extend", items: [
-    {text: "Summarise", icon: "fa-compress"},
-    {text: "Popularize", icon: "fa-globe"},
-    {text: "Add a keyword", icon: "fa-list"}]},
+    {text: "Summarise", icon: "fa-compress", id:"summarise"},
+    {text: "Popularize", icon: "fa-globe", id:"popularize"},
+    {text: "Add a keyword", icon: "fa-list", id:"keyword"}]},
     // {text: "Review", icon: "fa-gavel"},
   {text: "Add Relationship", items: [
     Meteor.elements.question,
@@ -239,14 +239,14 @@ function find_in_Sidemenu(id) {
 }
 
 
-Template.SideMenubar.helpers({
+Template.SideMenubar_main.helpers({
   item: () => Sidemenu,
   url: () => null,
 });
 
 
-Template.SideMenubar.events({
-  "click .navbar_link": function(event, template){
+Template.SideMenubar_main.events({
+  "click .sidebar_link": function(event, template){
       event.preventDefault();
       // Get the corresponding item in the menu array
       let item = find_in_Sidemenu(event.target.id);
