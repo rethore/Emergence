@@ -74,7 +74,6 @@
             if(scroll_start > offset.top) {
                 var alpha=Math.max(0.0, Math.min(0.8,(scroll_start-offset.top)/(10.0*offset.top)));
                 $('.navbar-default').css('background-color', `rgba(255,255,255, ${alpha})`);
-                // $('.navbar-default').css('border-color', 'rgb(231,76,60)');
              } else {
                 $('.navbar-default').css('background-color', 'transparent');
                 $('.navbar-default').css('border-color', 'rgba(231, 231, 231, 0)');
@@ -117,24 +116,34 @@
           Launch <strong>Emergence</strong> &#8594;
         </a>
       -->
-        <button href="#" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Video</button>
-        <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
+
+        <!-- <div class="container">
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
+          </div>
+        </div> -->
+
+        <!--<a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a> -->
+        <!-- <button href="" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Tour</button>
+        <div class="modal fade bs-example-modal-lg">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-center" id="gridSystemModalLabel">What is Emergence From Fractal Flows?</h4>
-                    </div>
                     <div class="modal-body">
-                        <iframe width="871" height="480" src="https://www.youtube.com/embed/D3KH5cbAKUc?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item allowfullscreen" width="871" height="480" src="https://www.youtube.com/embed/D3KH5cbAKUc?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                      </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+
         <a class="btn btn-success btn-lg" role="button"
            href="about" >Learn more &#8594;
         </a>
+
         <br><br>
+
         <div class="container-fluid" align="center">
           <form class="search">
             <div class="col-sm-3"></div>
@@ -144,84 +153,84 @@
             <div class="col-sm-3"></div>
           </form>
         </div>
+
       </div>
     </div>
   </div>
 
-<script>
-  setTimeout(function(){
-          $(".subtltType").typed({
-              strings: ["on the <em>Blockchain!</em>"],
-              startDelay: 50,              // time before typing starts
-              typeSpeed: 50, // typing speed
-              backDelay: 500, // pause before backspacing
-              loop: true, // loop on or off (true or false)
-              loopCount: false, // number of loops, false = infinite
-              contentType: 'html', // or 'text'
-              showCursor: true,
-              cursorChar: "|",
-              callback: function(){ } // call function after typing is done
-          });
-      }, 1000);
-</script>
+      <script>
+        setTimeout(function(){
+                $(".subtltType").typed({
+                    strings: ["on the <em>Blockchain!</em>"],
+                    startDelay: 50,              // time before typing starts
+                    typeSpeed: 50, // typing speed
+                    backDelay: 500, // pause before backspacing
+                    loop: true, // loop on or off (true or false)
+                    loopCount: false, // number of loops, false = infinite
+                    contentType: 'html', // or 'text'
+                    showCursor: true,
+                    cursorChar: "|",
+                    callback: function(){ } // call function after typing is done
+                });
+            }, 1000);
+      </script>
 
-<script>
-setTimeout(function(){
-        $(".optionsType").typed({
-            strings: ["<em>articles.</em>","<em>publications.</em>",
-            "<em>code.</em>","<em>models.</em>","<em>datasets.</em>",
-            "<em>simulation results.</em>","<em>experimental results.</em>","<em>detailed analysis.</em>",
-            "<em>mathematical formulations.</em>","<em>scripts.</em>","<em>reviews.</em>",
-            "<em>reproduction of results.</em>","<em>methodologies.</em>"],
-            startDelay: 500,              // time before typing starts
-            typeSpeed: 50, // typing speed
-            backDelay: 500, // pause before backspacing
-            loop: true, // loop on or off (true or false)
-            loopCount: false, // number of loops, false = infinite
-            contentType: 'html', // or 'text'
-            showCursor: true,
-            cursorChar: "|",
-            callback: function(){ } // call function after typing is done
-        });
-    }, 1000);
-</script>
+      <script>
+      setTimeout(function(){
+              $(".optionsType").typed({
+                  strings: ["<em>articles.</em>","<em>publications.</em>",
+                  "<em>code.</em>","<em>models.</em>","<em>datasets.</em>",
+                  "<em>simulation results.</em>","<em>experimental results.</em>","<em>detailed analysis.</em>",
+                  "<em>mathematical formulations.</em>","<em>scripts.</em>","<em>reviews.</em>",
+                  "<em>reproduction of results.</em>","<em>methodologies.</em>"],
+                  startDelay: 500,              // time before typing starts
+                  typeSpeed: 50, // typing speed
+                  backDelay: 500, // pause before backspacing
+                  loop: true, // loop on or off (true or false)
+                  loopCount: false, // number of loops, false = infinite
+                  contentType: 'html', // or 'text'
+                  showCursor: true,
+                  cursorChar: "|",
+                  callback: function(){ } // call function after typing is done
+              });
+          }, 1000);
+      </script>
 
-<script>
-setTimeout(function(){
-        $(".actionsType").typed({
-            strings: ["<em>Track </em>","<em>Share </em>",
-            "<em>Discover </em>","<em>Review </em>"],
-            startDelay: 1000,              // time before typing starts
-            typeSpeed: 50, // typing speed
-            backDelay: 5000, // pause before backspacing
-            loop: true, // loop on or off (true or false)
-            loopCount: false, // number of loops, false = infinite
-            contentType: 'html', // or 'text'
-            showCursor: true,
-            cursorChar: "|",
-            callback: function(){ } // call function after typing is done
-        });
-    }, 1000);
-</script>
+      <script>
+      setTimeout(function(){
+              $(".actionsType").typed({
+                  strings: ["<em>Track </em>","<em>Share </em>",
+                  "<em>Discover </em>","<em>Review </em>"],
+                  startDelay: 1000,              // time before typing starts
+                  typeSpeed: 50, // typing speed
+                  backDelay: 5000, // pause before backspacing
+                  loop: true, // loop on or off (true or false)
+                  loopCount: false, // number of loops, false = infinite
+                  contentType: 'html', // or 'text'
+                  showCursor: true,
+                  cursorChar: "|",
+                  callback: function(){ } // call function after typing is done
+              });
+          }, 1000);
+      </script>
 
 
-<script>
-    setTimeout(function(){
-        $("#typed").typed({
-            stringsElement: $('#typed-strings'),
-            startDelay: 50,              // time before typing starts
-            typeSpeed: 50, // typing speed
-            backDelay: 750, // pause before backspacing
-            loop: true, // loop on or off (true or false)
-            loopCount: false, // number of loops, false = infinite
-            contentType: 'html', // or 'text'
-            showCursor: true,
-            cursorChar: "|",
-            callback: function(){ } // call function after typing is done
-        });
-    },1000);
-</script>
-
+      <script>
+          setTimeout(function(){
+              $("#typed").typed({
+                  stringsElement: $('#typed-strings'),
+                  startDelay: 50,              // time before typing starts
+                  typeSpeed: 50, // typing speed
+                  backDelay: 750, // pause before backspacing
+                  loop: true, // loop on or off (true or false)
+                  loopCount: false, // number of loops, false = infinite
+                  contentType: 'html', // or 'text'
+                  showCursor: true,
+                  cursorChar: "|",
+                  callback: function(){ } // call function after typing is done
+              });
+          },1000);
+      </script>
 </template>
 
 <!-- About The product ====================================================== -->
@@ -271,15 +280,15 @@ setTimeout(function(){
                   <div class="clearfix"></div>
                 </div>
                 <p class="intro">We, at <strong>FractalFlows</strong>, are developing a decentralized web
-                  application called <strong>Emergence</strong> that allows anyone to create
+                  application called <strong><em>Emergence</em></strong> that allows anyone to create
                   relationships between articles and their associated knowledge
                   bits which are scattered on the web. This empowers scientist, researchers, engineers and students
                   to quickly discover the relevant scientific activities behind an article and makes it easier to search, discover,
                   collaborate, share, acquire and exchange the necessary knowledge bits revolving around an
                   article, allowing to create an impactful utility for an article beyond
-                  the number of citations it received. Emergence is integrated with external web Apps/Services such as Github.
-                  Emergence leverages the power of the Blockchain technology to access, track, share, expose and discover the hidden work behind
-                  scientific publications. Through Blockchains and smart contracts Emergence from Fractal Flows is in effect decentralizing
+                  the number of citations it received. <em>Emergence</em> is integrated with external web Apps/Services such as Github.
+                  <em>Emergence</em> leverages the power of the Blockchain technology to access, track, share, expose and discover the hidden work behind
+                  scientific publications. Through Blockchains and smart contracts <em>Emergence</em> from Fractal Flows is in effect decentralizing
                   the funding and publication processes.
                 </p>
                 <div class="space"></div>
@@ -288,7 +297,7 @@ setTimeout(function(){
                   <hr>
                   <div class="clearfix"></div>
                 </div>
-                <p class="intro"> Emergence relies on the Blockchain
+                <p class="intro"> <em>Emergence</em> relies on the Blockchain
                   to facilitate a cooperation ecosystem for students, scientists,
                   researchers and engineers through incentive schemes, without the need for
                   any intermediary authority or centralized agency. One can think of the Blockchain
@@ -307,9 +316,9 @@ setTimeout(function(){
                   One thing we are addressing through the Blockchain is building a pseudoanonymous scientific
                   reputation system
                   As well as a pseudo-anonymous scientific micro-publication hub of knowledge bits.
-                  Agents can publish/register on Emergence any unfinished work such as partial simulation results or partial
+                  Agents can publish/register on <em>Emergence</em> any unfinished work such as partial simulation results or partial
                   mathematical proofs without the need to wait for the final journal publication to be ready.
-                  Their work and authorship is forever saved on the Blockchain in complete
+                  Their work and authorship is forever preserved on the Blockchain in complete
                   pseudo-anonynimaty. Anybody working on those knowledge bits in the meanwhile
                   would increase the reputation and reward (credit) of the chain of authors through smart
                   contracts.
@@ -350,33 +359,47 @@ setTimeout(function(){
 
 <template name="Resources">
   <div id="tf-resources">
-    <div class="grid grid-pad">
-        <div class="col-1-2">
-           <div class="content">
-               <h2><b>Developer Resources</b></h2>
-               <ul>
-                 <li><a href="https://github.com/FractalFlows" class="fa fa-code-fork"><b> Source code on GitHub</b></a></li>
-                 <li><a href="https://github.com/FractalFlows/Emergence/wiki/Emergence-White-Paper" class="fa fa-map-o"><b> White Paper</b></a></li>
-                 <li><a href="https://github.com/FractalFlows/Emergence/wiki/FAQ" class="fa fa-question-circle"><b> FAQ</b></a></li>
-                 <li><a href="#" class="fa fa-cog"><b> API</b></a></li>
-               </ul>
-           </div>
-        </div>
-        <div class="col-1-2">
-           <div class="content">
-               <h2><b>Community</b></h2>
-               <ul>
-                 <li><a href="http://emergencefractalflows.tumblr.com/" class="fa fa-book"><b> Blog</b></a></li>
-                 <li><a href="#" class="fa fa-slack"><b> Slack</b></a></li>
-                 <li><a href="#" class="fa fa-linkedin-square"><b> LinkedIn</b></a></li>
-                 <li><a href="#" class="fa fa-twitter-square"><b> Twitter</b></a></li>
-                 <li><a href="#" class="fa fa-youtube"><b> Youtube</b></a></li>
-                 <li><a href="#" class="fa fa-reddit"><b> Reddit</b></a></li>
-                 <li><a href="#" class="fa fa-stack-exchange"><b> Stack Exchange</b></a></li>
-                 <li><a href="#" class="fa fa-facebook-square"><b> Facebook</b></a></li>
-                 <li><a href="mailto:AI@fractalflows.com" class="fa fa-envelope"><b> Email us</b></a></li>
-               </ul>
-           </div>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-5">
+            <h2 style="color:#33bbff"><b>Developers resources</b></h2>
+              <ul class="resources">
+                <li><a href="https://github.com/FractalFlows"><i class="fa fa-code-fork" aria-hidden="true"></i><b> Source code on GitHub</b></a></li>
+                <br>
+                <li><a href="https://github.com/FractalFlows/Emergence/wiki/Emergence-White-Paper"><i class="fa fa-book" aria-hidden="true"></i><b> White Paper</b></a></li>
+                <br>
+                <li><a href="https://github.com/FractalFlows/Emergence/wiki/FAQ"><i class="fa fa-question-circle" aria-hidden="true"></i><b> FAQ</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><b> API</b></a></li>
+              </ul>
+          </div>
+          <div class="col-md-5">
+            <h2 style="color:#33bbff"><b>Community</b></h2>
+              <ul class="resources">
+                <li><a href="http://emergencefractalflows.tumblr.com/" class="fa fa-book"><b> Blog</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-slack" aria-hidden="true"></i><b> Slack</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i><b> LinkedIn</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i><b> Twitter</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i><b> Youtube</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-reddit" aria-hidden="true"></i><b> Reddit</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-stack-exchange" aria-hidden="true"></i><b> Stack Exchange</b></a></li>
+                <br>
+                <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i><b> Facebook</b></a></li>
+                <br>
+                <li><a href="mailto:AI@fractalflows.com"><i class="fa fa-envelope" aria-hidden="true"></i><b> Email us</b></a></li>
+                <br>
+              </ul>
+          </div>
+          <div class="col-md-1">
+          </div>
         </div>
     </div>
     <br><br><br><br><br>
@@ -412,7 +435,7 @@ setTimeout(function(){
         <div class="line"><hr></div>
         <div class="clearfix"></div>
         <p style="padding: 10px; color: grey; background-color: white; width: 800px; height: 70px; border-radius: 20px; text-align: center; margin-left: auto; margin-right: auto; border: black 2px solid">
-        <span>Check out how it works! Learn what Emergence from Fractal Flows can do for you.</span>
+        <span>Check out how it works! Learn what <em>Emergence</em> from Fractal Flows can do for you.</span>
         <a class="btn btn-success btn-lg" href="taketour" role="button">Take a tour &#8594;</a>
         </p>
       </div>
@@ -583,7 +606,7 @@ setTimeout(function(){
     <div id="tf-tour-tf_tour_whattodo">
         <br><br>
         <div class="text-center">
-            <h2>What can i do with emergence?</h2>
+            <h2>What can i do with <em>Emergence</em>?</h2>
             <h3>We simply want you to spend less time looking and more time making</h3>
         </div>
         <div id="owl" class="owl-carousel owl-theme">
@@ -596,7 +619,7 @@ setTimeout(function(){
                           <span style="color: #8b0000; font-weight: bold">Access knowledge bits:</span>
                           Be it a researcher, scientist, engineer or student you can search for an
                           article by DOI number or keywords and access its related knowledge bits
-                          on Emergence.
+                          on <em>Emergence</em>.
                     </div>
                     <div class="squareboxForSlider">
                          <span style="color: #8b0000; font-weight: bold">Raise issues & requests:</span>
@@ -606,7 +629,7 @@ setTimeout(function(){
                    </div>
                    <div class="squareboxForSlider">
                         <span style="color: #8b0000; font-weight: bold">External integrations:</span>
-                        Emergence is integrated with <u>Github</u> and the <u>DOI</u> network (..and more to come).
+                        <em>Emergence</em> is integrated with <u>Github</u> and the <u>DOI</u> network (..and more to come).
                         Integrations with external tools lets you keep on working on such services that you
                         already use today while maintaining an overview of the activities related to an article from Emergence.
                   </div>
@@ -614,23 +637,23 @@ setTimeout(function(){
                        <span style="color: #8b0000; font-weight: bold">Register reproductions:</span>
                        Make an article significantly more impactful by reproducing or requesting others to reproduce
                        the results in it. By doing so, one will have to show how they reproduced the results by registering
-                       their new knowledge bits on Emergence.
+                       their new knowledge bits on <em>Emergence</em>.
                  </div>
                  <div class="squareboxForSlider">
                       <span style="color: #8b0000; font-weight: bold">Add relationships:</span>
-                      Create meaningful relationships between Emergence and existing knowledge bits accessible on external web
+                      Create meaningful relationships between <em>Emergence</em> and existing knowledge bits accessible on external web
                       services (e.g. github, zenodo, dropbox, email, etc.). You can also create meaningful relationships
-                      between knowledge bits and publications already registered on Emergence.
+                      between knowledge bits and publications already registered on <em>Emergence</em>.
                 </div>
                 <div class="squareboxForSlider">
                      <span style="color: #8b0000; font-weight: bold">Proof of authorship:</span>
-                    Register on Emergence any unfinished work such as partial simulation results or partial
+                    Register on <em>Emergence</em> any unfinished work such as partial simulation results or partial
                     mathematical proofs without the need to wait for the final publication to be ready.
                     The work and authorship are indeed forever saved on the Blockchain in complete pseudo-anonymity.
                </div>
                <div class="squareboxForSlider">
                     <span style="color: #8b0000; font-weight: bold">Increase your reputation:</span>
-                    Register on Emergence unfinished knowledge bits and anybody working on those knowledge bits would
+                    Register on <em>Emergence</em> unfinished knowledge bits and anybody working on those knowledge bits would
                     increase the reputation and reward of the chain of authors through smart contracts. Keeping those
                     knowledge bits for yourself until you have your paper accepted for publication will result in loss of
                     reputation and revenue.
@@ -726,33 +749,36 @@ setTimeout(function(){
 
 
 
-<!-- Use Emergence from Fractal Flows    ==========================================-->
+<!-- Use <em>Emergence</em> from Fractal Flows    ==========================================-->
 <template name="tf_tour_story_start_1">
     <div id="tf-tour-story_start" class="text-center">
         <div class="section-title center">
           <br><br>
-            <h2><strong> Ready to take Emergence for a spin right now? let´s go.</strong></h2>
-            <div class="line"><hr></div>
+            <h2><strong> Ready to take <em>Emergence</em> for a spin right now? let´s go.</strong></h2>
+            <br>
+            <!-- <div class="line"><hr></div> -->
             <div class="clearfix"></div>
             <a class="btn btn-success btn-lg" role="button"
                href="https://github.com/FractalFlows/Emergence/wiki/Emergence-White-Paper" >
-              Read the Paper &#8594;
+              <i class="fa fa-book" aria-hidden="true"></i> White Paper<!--&#8594;-->
             </a>
             <!--<a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a> -->
-            <button href="" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Watch the Demo</button>
+            <button href="" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">
+              <i class="fa fa-play-circle" aria-hidden="true"></i> Watch the Tour</button>
             <div class="modal fade bs-example-modal-lg" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title text-center" id="gridSystemModalLabel">Emergence Demo!</h4>
-                        </div>
                         <div class="modal-body">
-                            <iframe width="871" height="480" src="https://www.youtube.com/embed/D3KH5cbAKUc?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                          <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item allowfullscreen" width="871" height="480" src="https://www.youtube.com/embed/D3KH5cbAKUc?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                          </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <br><br>
+
             <div class="container-fluid" align="center">
               <form class="search">
                 <div class="col-sm-3"></div>
@@ -772,10 +798,10 @@ setTimeout(function(){
 <template name="tf_tour_story_start_2">
     <div id="tf-tour-story_start" class="text-center">
         <div class="section-title center">
-            <h2><strong> Take Emergence for a Spin right now.</strong></h2>
+            <h2><strong> Take <em>Emergence</em> for a Spin right now.</strong></h2>
             <div class="line"><hr></div>
             <div class="clearfix"></div>
-            <a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong>Emergence</strong> &#8594;</a>
+            <a class="btn btn-success btn-lg" href="/emergence" role="button">Get started with <strong><em>Emergence</em></strong> &#8594;</a>
       </div>
       <hr width="100%">
     </div>
@@ -787,8 +813,8 @@ setTimeout(function(){
 <template name="tf_features">
     <div id="tf-features">
       <div class="section-title center text-center">
-          <h2><strong>What can I do with Emergence?</strong></h2>
-          <div class="line"><hr></div>
+          <h2><strong>What can I do with <em>Emergence</em>?</strong></h2>
+          <!-- <div class="line"><hr></div> -->
           <div class="clearfix"></div>
           <h3>We simply want you to spend less time looking and more time making</h3>
       </div>
@@ -800,16 +826,18 @@ setTimeout(function(){
             <div class="col-md-1">
             </div>
             <div class="col-md-5">
-              <h3 style="color:#33bbff">Blockchains and smart contract</h3>
+              <h3 style="color:#004a6f">Register relationships on the Blockchain</h3>
                 <p class="intro">
-                  Register on Emergence any unfinished work such as partial simulation results or partial
+                  Create meaningful relationships between science/engineering publications and
+                  knowledge bits accessible on external web services (e.g. github, zenodo, dropbox, email, etc.).
+                  Also, register and share on <em>Emergence</em> any unfinished work such as partial simulation results or partial
                   mathematical proofs without the need to wait for the final publication to be ready.
-                  The work and authorship are indeed forever saved on the Blockchain in complete pseudo-anonymity.
+                  The relationships, work and authorship are indeed forever preserved on the Blockchain in complete pseudo-anonymity.
                 </p>
             </div>
             <div class="col-md-5">
                   <div class="imgAbt">
-                      <img class="intro_right" src="../img/dao-crowd.png" />
+                      <img class="intro_right" src="../img/CreateRelationships.png" style="width: 150%; height: 150%"/>
                   </div>
             </div>
             <div class="col-md-1">
@@ -825,14 +853,14 @@ setTimeout(function(){
             </div>
             <div class="col-md-5">
                 <div class="imgAbt">
-                    <img class="intro_right" src="../img/passionate.png" />
+                    <img class="intro_right" src=""/>
                 </div>
             </div>
             <div class="col-md-5">
-              <h3 style="color:#ff8080">External Integration</h3>
-                <p class="intro">Emergence is integrated with <u>Github</u> and the <u>DOI</u> network (..and more to come).
+              <h3 style="color:#ff5353">External Integrations</h3>
+                <p class="intro"><em>Emergence</em> is integrated with <u>Github</u> and the <u>DOI</u> network (..and more to come).
                   Integrations with external tools lets you keep on working on such services that you
-                  already use today while maintaining an overview of the activities related to an article from Emergence.
+                  already use today while maintaining an overview of the activities related to science/engineering publications from <em>Emergence</em>.
                 </p>
             </div>
               <div class="col-md-1">
@@ -847,23 +875,51 @@ setTimeout(function(){
             <div class="col-md-1">
             </div>
             <div class="col-md-5">
-              <h3 style="color:#80ffaa">Incentives and reputations</h3>
+              <h3 style="color:#2f5d3c">Incentives and reputations through smart contracts</h3>
                 <p class="intro">
-                  Register on Emergence unfinished knowledge bits and anybody working on those knowledge bits would
+                  Register and share on <em>Emergence</em> unfinished knowledge bits and anybody working on
+                  those knowledge bits would
                   increase the reputation and reward of the chain of authors through smart contracts. Keeping those
                   knowledge bits for yourself until you have your paper accepted for publication will result in loss of
-                  reputation and revenue.
+                  reputation and real revenue.
                 </p>
             </div>
               <div class="col-md-5">
                   <div class="imgAbt">
-                      <img class="intro_right" src="../img/dao-crowd.png" />
+                      <img class="intro_right" src="" />
                   </div>
               </div>
               <div class="col-md-1">
               </div>
           </div>
       </div>
+
+      <br><br>
+
+      <div class="container">
+          <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
+                <div class="imgAbt">
+                    <img class="intro_right" src=""/>
+                </div>
+            </div>
+            <div class="col-md-5">
+              <h3 style="color:#c154c1">Track knowledge bits</h3>
+                <p class="intro">Through Blockchains and smart contracts you can track the chain
+                  of knowledge bits / changes / authors / applications / etc related and connected to your work.
+                  This way you can very quickly discover who is using your work, how and in which applications.
+                  This way you can also discover the real impact of your work beyond the standard citations
+                  model used today.
+                </p>
+            </div>
+              <div class="col-md-1">
+              </div>
+          </div>
+      </div>
+
+      <br><br>
 
     </div>
 </template>
